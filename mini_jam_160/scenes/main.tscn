@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbq2m4my57ncn"]
+[gd_scene load_steps=5 format=3 uid="uid://cbq2m4my57ncn"]
 
 [ext_resource type="Texture2D" uid="uid://dm2xoo1bqxdot" path="res://addons/monochrome_tilemap_packed.png" id="1_r4fx3"]
+[ext_resource type="PackedScene" uid="uid://dsxka4e5rc308" path="res://scenes/player.tscn" id="2_5a5nc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g4kk3"]
 texture = ExtResource("1_r4fx3")
@@ -471,3 +472,6 @@ sources/1 = SubResource("TileSetAtlasSource_g4kk3")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray(0, 0, 18, 0, 19, 0, 1, 0, 10, 0, 13, 0, 0, 0, 19, 0, 19, 0, 1, 0, 11, 0, 13, 0, 0, 0, 20, 0, 19, 0, 1, 0, 12, 0, 13, 0, 0, 0)
 tile_set = SubResource("TileSet_nb8tq")
+
+[node name="Player" parent="." instance=ExtResource("2_5a5nc")]
+position = Vector2(304, 248)
