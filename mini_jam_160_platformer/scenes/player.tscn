@@ -96,13 +96,6 @@ centered = false
 position = Vector2(8, 10)
 shape = SubResource("CircleShape2D_h5cer")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-process_priority = 1
-process_physics_priority = 1
-zoom = Vector2(3, 3)
-process_callback = 0
-position_smoothing_enabled = true
-
 [node name="GravityComponent" parent="." instance=ExtResource("3_pdeae")]
 
 [node name="InputComponent" parent="." instance=ExtResource("4_rqgq7")]
