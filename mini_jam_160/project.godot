@@ -28,6 +28,11 @@ folder_colors={
 "res://scripts/": "yellow"
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
