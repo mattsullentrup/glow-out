@@ -28,6 +28,14 @@ window/stretch/scale_mode="integer"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "red",
+"res://scenes/": "orange",
+"res://scripts/": "yellow"
+}
+
 [gui]
 
 theme/custom_font="res://addons/kenney_assets/Kenney Mini.ttf"
@@ -61,6 +69,8 @@ jump={
 
 [physics]
 
+common/physics_ticks_per_second=120
+common/max_physics_steps_per_frame=16
 common/physics_jitter_fix=0.0
 common/physics_interpolation=true
 
@@ -70,3 +80,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
