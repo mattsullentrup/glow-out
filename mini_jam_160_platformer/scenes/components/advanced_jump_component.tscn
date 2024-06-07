@@ -6,7 +6,6 @@
 script = ExtResource("1_ivj76")
 jump_buffer_timer = NodePath("JumpBufferTimer")
 coyote_timer = NodePath("CoyoteTimer")
-coyote_time = 0.08
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
 wait_time = 0.1

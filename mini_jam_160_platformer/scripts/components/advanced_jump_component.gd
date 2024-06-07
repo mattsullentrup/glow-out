@@ -8,7 +8,7 @@ extends Node
 
 @export_subgroup("Settings")
 @export var jump_velocity: float = -350.0
-@export var coyote_time: float = 2.0
+@export_range(0.05, 0.4, 0.01) var coyote_time: float = 0.08
 
 var is_going_up: bool = false
 var is_jumping: bool = false
