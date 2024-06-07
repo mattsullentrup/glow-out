@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_aywbf"]
 [ext_resource type="Texture2D" uid="uid://cb4v2cx04mh3i" path="res://addons/kenney_assets/monochrome_tilemap_packed.png" id="2_4crom"]
-[ext_resource type="Script" path="res://scripts/state_machine/platformer_state_machine.gd" id="3_q2yxr"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/idle.gd" id="4_75gv8"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/move.gd" id="5_n7b2v"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/in_air/jump.gd" id="6_s6eql"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/in_air/falling.gd" id="7_36rh8"]
+[ext_resource type="Script" path="res://scripts/components/gravity_component.gd" id="3_cew2o"]
+[ext_resource type="Script" path="res://scripts/components/input_component.gd" id="4_he3uk"]
+[ext_resource type="Script" path="res://scripts/components/movement_component.gd" id="5_dt6kl"]
+[ext_resource type="Script" path="res://scripts/components/animation_component.gd" id="6_oacvi"]
+[ext_resource type="Script" path="res://scripts/components/jump_component.gd" id="7_4326d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ld5i0"]
 atlas = ExtResource("2_4crom")
@@ -76,10 +76,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5cer"]
 radius = 7.07107
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component")]
 position = Vector2(280, 160)
 collision_layer = 2
 script = ExtResource("1_aywbf")
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+jump_component = NodePath("JumpComponent")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -98,23 +103,18 @@ zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "sprite", "initial_state")]
-script = ExtResource("3_q2yxr")
-character = NodePath("..")
+[node name="GravityComponent" type="Node" parent="."]
+script = ExtResource("3_cew2o")
+
+[node name="InputComponent" type="Node" parent="."]
+script = ExtResource("4_he3uk")
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("5_dt6kl")
+
+[node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("6_oacvi")
 sprite = NodePath("../AnimatedSprite2D")
-initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("4_75gv8")
-
-[node name="Move" type="Node" parent="StateMachine"]
-script = ExtResource("5_n7b2v")
-
-[node name="Jump" type="Node" parent="StateMachine"]
-script = ExtResource("6_s6eql")
-jump_height = 50.0
-jump_time_to_peak = 0.7
-jump_time_to_descent = 0.5
-
-[node name="Falling" type="Node" parent="StateMachine"]
-script = ExtResource("7_36rh8")
+[node name="JumpComponent" type="Node" parent="."]
+script = ExtResource("7_4326d")
