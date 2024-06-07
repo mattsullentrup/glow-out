@@ -449,7 +449,6 @@ animations = [{
 radius = 7.07107
 
 [node name="Main" type="Node"]
-physics_interpolation_mode = 2
 script = ExtResource("1_flt37")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -457,9 +456,6 @@ tile_map_data = PackedByteArray("AAABABAAAAALAA0AAAACABAAAAALAA0AAAADABAAAAALAA0
 tile_set = SubResource("TileSet_2fdhb")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-process_priority = -1
-process_physics_priority = -1
-physics_interpolation_mode = 1
 position = Vector2(280, 160)
 collision_layer = 2
 script = ExtResource("2_erds6")
