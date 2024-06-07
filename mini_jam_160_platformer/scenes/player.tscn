@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_aywbf"]
 [ext_resource type="Texture2D" uid="uid://cb4v2cx04mh3i" path="res://addons/kenney_assets/monochrome_tilemap_packed.png" id="2_4crom"]
-[ext_resource type="Script" path="res://scripts/components/gravity_component.gd" id="3_cew2o"]
-[ext_resource type="Script" path="res://scripts/components/input_component.gd" id="4_he3uk"]
-[ext_resource type="Script" path="res://scripts/components/movement_component.gd" id="5_dt6kl"]
-[ext_resource type="Script" path="res://scripts/components/animation_component.gd" id="6_oacvi"]
-[ext_resource type="Script" path="res://scripts/components/jump_component.gd" id="7_4326d"]
+[ext_resource type="PackedScene" uid="uid://8ae3us1t6ex0" path="res://scenes/components/gravity_component.tscn" id="3_pdeae"]
+[ext_resource type="PackedScene" uid="uid://dvxfyko6go10j" path="res://scenes/components/input_component.tscn" id="4_rqgq7"]
+[ext_resource type="PackedScene" uid="uid://c5go11ej7di68" path="res://scenes/components/movement_component.tscn" id="5_8s3m7"]
+[ext_resource type="PackedScene" uid="uid://dy66inpcaslud" path="res://scenes/components/animation_component.tscn" id="6_6271w"]
+[ext_resource type="PackedScene" uid="uid://bd654d0hadfnf" path="res://scenes/components/jump_component.tscn" id="7_h258b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ld5i0"]
 atlas = ExtResource("2_4crom")
@@ -80,11 +80,11 @@ radius = 7.07107
 position = Vector2(280, 160)
 collision_layer = 2
 script = ExtResource("1_aywbf")
-gravity_component = NodePath("GravityComponent")
-input_component = NodePath("InputComponent")
-movement_component = NodePath("MovementComponent")
-animation_component = NodePath("AnimationComponent")
-jump_component = NodePath("JumpComponent")
+gravity_component = NodePath("")
+input_component = NodePath("")
+movement_component = NodePath("")
+animation_component = NodePath("")
+jump_component = NodePath("")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -103,18 +103,12 @@ zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 
-[node name="GravityComponent" type="Node" parent="."]
-script = ExtResource("3_cew2o")
+[node name="GravityComponent" parent="." instance=ExtResource("3_pdeae")]
 
-[node name="InputComponent" type="Node" parent="."]
-script = ExtResource("4_he3uk")
+[node name="InputComponent" parent="." instance=ExtResource("4_rqgq7")]
 
-[node name="MovementComponent" type="Node" parent="."]
-script = ExtResource("5_dt6kl")
+[node name="MovementComponent" parent="." instance=ExtResource("5_8s3m7")]
 
-[node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("6_oacvi")
-sprite = NodePath("../AnimatedSprite2D")
+[node name="AnimationComponent" parent="." instance=ExtResource("6_6271w")]
 
-[node name="JumpComponent" type="Node" parent="."]
-script = ExtResource("7_4326d")
+[node name="JumpComponent" parent="." instance=ExtResource("7_h258b")]
