@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvxfyko6go10j" path="res://scenes/components/input_component.tscn" id="4_rqgq7"]
 [ext_resource type="PackedScene" uid="uid://c5go11ej7di68" path="res://scenes/components/movement_component.tscn" id="5_8s3m7"]
 [ext_resource type="PackedScene" uid="uid://dy66inpcaslud" path="res://scenes/components/animation_component.tscn" id="6_6271w"]
-[ext_resource type="PackedScene" uid="uid://bd654d0hadfnf" path="res://scenes/components/jump_component.tscn" id="7_h258b"]
+[ext_resource type="PackedScene" uid="uid://bhgvwnre44ugb" path="res://scenes/components/advanced_jump_component.tscn" id="7_fd5fn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ld5i0"]
 atlas = ExtResource("2_4crom")
@@ -80,11 +80,11 @@ radius = 7.07107
 position = Vector2(280, 160)
 collision_layer = 2
 script = ExtResource("1_aywbf")
-gravity_component = NodePath("")
-input_component = NodePath("")
-movement_component = NodePath("")
-animation_component = NodePath("")
-jump_component = NodePath("")
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+jump_component = NodePath("AdvancedJumpComponent")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -109,6 +109,9 @@ position_smoothing_enabled = true
 
 [node name="MovementComponent" parent="." instance=ExtResource("5_8s3m7")]
 
-[node name="AnimationComponent" parent="." instance=ExtResource("6_6271w")]
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_6271w")]
+sprite = NodePath("../AnimatedSprite2D")
 
-[node name="JumpComponent" parent="." instance=ExtResource("7_h258b")]
+[node name="AdvancedJumpComponent" parent="." node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer") instance=ExtResource("7_fd5fn")]
+jump_buffer_timer = NodePath("JumpBufferTimer")
+coyote_timer = NodePath("CoyoteTimer")
