@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dsxka4e5rc308"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_bdha1"]
-[ext_resource type="Texture2D" uid="uid://dm2xoo1bqxdot" path="res://addons/monochrome_tilemap_packed.png" id="1_g2n4v"]
+[ext_resource type="Texture2D" uid="uid://dm2xoo1bqxdot" path="res://addons/kenney_assets/monochrome_tilemap_packed.png" id="1_g2n4v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6qeb"]
 atlas = ExtResource("1_g2n4v")
@@ -73,3 +73,7 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_c6ndl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
