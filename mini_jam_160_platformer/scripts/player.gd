@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var animation_component: AnimationComponent
 @export var jump_component: AdvancedJumpComponent
 
+var has_key := false
+
 
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
@@ -19,3 +21,7 @@ func _physics_process(delta: float) -> void:
 	animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling)
 
 	move_and_slide()
+
+
+func enable_key() -> void:
+	has_key = true

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://5ofc1neaxvil"]
+[gd_scene load_steps=11 format=4 uid="uid://5ofc1neaxvil"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_u8dme"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="2_v2db8"]
 [ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="2_ypko2"]
 [ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="3_q0fuq"]
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="4_fda3e"]
+[ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/key.tscn" id="6_tcviu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypob3"]
 size = Vector2(16, 64)
@@ -102,6 +103,9 @@ script = ExtResource("2_v2db8")
 position = Vector2(0, 176)
 script = ExtResource("2_v2db8")
 
+[node name="Key" parent="Rooms/Room3" index="0" instance=ExtResource("6_tcviu")]
+position = Vector2(88, 104)
+
 [node name="Room4" type="Node2D" parent="Rooms" index="3" groups=["rooms"]]
 position = Vector2(-320, 176)
 script = ExtResource("2_v2db8")
@@ -114,3 +118,4 @@ script = ExtResource("2_v2db8")
 [connection signal="body_entered" from="Exits/RoomExit2" to="Exits/RoomExit2" method="_on_body_entered"]
 [connection signal="body_entered" from="Exits/RoomExit3" to="Exits/RoomExit3" method="_on_body_entered"]
 [connection signal="body_entered" from="Exits/RoomExit4" to="Exits/RoomExit4" method="_on_body_entered"]
+[connection signal="player_found_key" from="Rooms/Room3/Key" to="." method="_on_key_player_found_key"]

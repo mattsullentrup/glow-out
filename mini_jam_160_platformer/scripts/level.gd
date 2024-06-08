@@ -11,9 +11,6 @@ static var current_room: Room
 
 
 func _ready() -> void:
-	for i in 640:
-		if i % 16 == 0:
-			print(i)
 	player.position = $StartPosition.position
 
 	current_room = initial_room
@@ -46,7 +43,6 @@ func toggle_room(room: Room, should_be_active: bool) -> void:
 		room.process_mode = Node.PROCESS_MODE_DISABLED
 		#remove_child(room)
 	room.visible = should_be_active
-	#room.get_node("TileMapLayer").enabled = should_be_active
 
 
 func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
@@ -55,3 +51,7 @@ func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
 	load_new_room.call_deferred(new_room, entry_door, exit_direction)
+
+
+func _on_key_player_found_key() -> void:
+	player.enable_key()
