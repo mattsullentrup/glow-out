@@ -9,8 +9,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4p67o"]
 size = Vector2(18, 80)
 
-[node name="LevelOne" node_paths=PackedStringArray("initial_room") instance=ExtResource("1_u8dme")]
+[node name="LevelOne" node_paths=PackedStringArray("initial_room", "player") instance=ExtResource("1_u8dme")]
 initial_room = NodePath("Room1")
+player = NodePath("Player")
 
 [node name="Player" parent="." index="0" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("2_ypko2")]
 gravity_component = NodePath("GravityComponent")
@@ -33,12 +34,13 @@ position = Vector2(0, 4)
 tile_map_data = PackedByteArray("AAABAAoAAAAQAAkAAAACAAoAAAAQAAkAAAADAAoAAAAQAAkAAAAEAAoAAAAQAAkAAAAFAAoAAAAQAAkAAAAGAAoAAAAQAAkAAAAHAAoAAAAQAAkAAAAIAAoAAAAQAAkAAAAJAAoAAAAQAAkAAAAKAAoAAAAQAAkAAAALAAoAAAAQAAkAAAAMAAoAAAAQAAkAAAANAAoAAAAQAAkAAAAOAAoAAAAQAAkAAAAPAAoAAAAQAAkAAAAQAAoAAAAQAAkAAAARAAoAAAAQAAkAAAASAAoAAAAQAAkAAAABAAAAAAAQAAsAAAACAAAAAAAQAAsAAAADAAAAAAAQAAsAAAAEAAAAAAAQAAsAAAAFAAAAAAAQAAsAAAAGAAAAAAAQAAsAAAAHAAAAAAAQAAsAAAAIAAAAAAAQAAsAAAAJAAAAAAAQAAsAAAAKAAAAAAAQAAsAAAALAAAAAAAQAAsAAAAMAAAAAAAQAAsAAAANAAAAAAAQAAsAAAAOAAAAAAAQAAsAAAAPAAAAAAAQAAsAAAAQAAAAAAAQAAsAAAARAAAAAAAQAAsAAAASAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAQAAAAPAAoAAAATAAUAAAAPAAoAAAATAAYAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAAAAAAQAAkAAAATAAoAAAAQAAsAAAA=")
 tile_set = ExtResource("3_q0fuq")
 
-[node name="RoomExit" type="Area2D" parent="Room1" index="1" node_paths=PackedStringArray("new_room")]
+[node name="RoomExit" type="Area2D" parent="Room1" index="1" node_paths=PackedStringArray("new_room", "new_door")]
 position = Vector2(-8, 88)
 collision_mask = 2
 script = ExtResource("4_fda3e")
 exit_direction = 3
 new_room = NodePath("../../Room2")
+new_door = NodePath("../../Room2/RoomExit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/RoomExit" index="0"]
 position = Vector2(-1, 0)
@@ -57,12 +59,13 @@ position = Vector2(0, 4)
 tile_map_data = PackedByteArray("AAABAAoAAAAQAAkAAAACAAoAAAAQAAkAAAADAAoAAAAQAAkAAAAEAAoAAAAQAAkAAAAFAAoAAAAQAAkAAAAGAAoAAAAQAAkAAAAHAAoAAAAQAAkAAAAIAAoAAAAQAAkAAAAJAAoAAAAQAAkAAAAKAAoAAAAQAAkAAAALAAoAAAAQAAkAAAAMAAoAAAAQAAkAAAANAAoAAAAQAAkAAAAOAAoAAAAQAAkAAAAPAAoAAAAQAAkAAAAQAAoAAAAQAAkAAAARAAoAAAAQAAkAAAASAAoAAAAQAAkAAAABAAAAAAAQAAsAAAACAAAAAAAQAAsAAAADAAAAAAAQAAsAAAAEAAAAAAAQAAsAAAAFAAAAAAAQAAsAAAAGAAAAAAAQAAsAAAAHAAAAAAAQAAsAAAAIAAAAAAAQAAsAAAAJAAAAAAAQAAsAAAAKAAAAAAAQAAsAAAALAAAAAAAQAAsAAAAMAAAAAAAQAAsAAAANAAAAAAAQAAsAAAAOAAAAAAAQAAsAAAAPAAAAAAAQAAsAAAAQAAAAAAAQAAsAAAARAAAAAAAQAAsAAAASAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAQAAAARAAoAAAAAAAUAAAARAAoAAAAAAAYAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAAAAAAQAAkAAAATAAoAAAAQAAsAAAA=")
 tile_set = ExtResource("3_q0fuq")
 
-[node name="RoomExit" type="Area2D" parent="Room2" index="1" node_paths=PackedStringArray("new_room")]
+[node name="RoomExit" type="Area2D" parent="Room2" index="1" node_paths=PackedStringArray("new_room", "new_door")]
 position = Vector2(328, 88)
 collision_mask = 2
 script = ExtResource("4_fda3e")
 exit_direction = 2
 new_room = NodePath("../../Room1")
+new_door = NodePath("../../Room1/RoomExit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/RoomExit" index="0"]
 shape = SubResource("RectangleShape2D_4p67o")

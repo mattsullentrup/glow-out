@@ -9,8 +9,8 @@ enum Directions {
 }
 
 var direction_pairs: Dictionary = {
-	Directions.NORTH: Vector2.DOWN,
-	Directions.SOUTH: Vector2.UP,
-	Directions.EAST: Vector2.LEFT,
-	Directions.WEST: Vector2.RIGHT
+	Directions.NORTH: Vector2.UP,
+	Directions.SOUTH: Vector2.DOWN,
+	Directions.EAST: Vector2.RIGHT,
+	Directions.WEST: Vector2.LEFT
 }
