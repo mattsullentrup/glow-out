@@ -12,7 +12,7 @@ config_version=5
 
 config/name="mini_jam_160_platformer"
 config/tags=PackedStringArray("2d", "gdscript", "personal")
-run/main_scene="res://scenes/levels/level_one/level_one.tscn"
+run/main_scene="res://scenes/levels/level_one.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -41,7 +41,6 @@ folder_colors={
 "res://addons/": "red",
 "res://scenes/": "orange",
 "res://scenes/levels/": "green",
-"res://scenes/levels/level_one/": "gray",
 "res://scripts/": "yellow"
 }
 
