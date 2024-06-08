@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=4 uid="uid://m3q5bsmix7yo"]
+
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_8v2vq"]
+[ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="2_n6nh8"]
+[ext_resource type="PackedScene" uid="uid://bcl0nsj6yqdmp" path="res://scenes/room_exit.tscn" id="3_lg23w"]
+[ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="4_l33fe"]
+[ext_resource type="PackedScene" uid="uid://b221uqxm7kksu" path="res://scenes/levels/level_one/rooms/room_two.tscn" id="4_pvj4p"]
+
+[node name="RoomOne" type="Node2D" node_paths=PackedStringArray("initial_player_position")]
+script = ExtResource("1_8v2vq")
+initial_player_velocity = 300.0
+initial_player_position = NodePath("WestExit")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 4)
+tile_map_data = PackedByteArray("AAABAAoAAAAQAAkAAAACAAoAAAAQAAkAAAADAAoAAAAQAAkAAAAEAAoAAAAQAAkAAAAFAAoAAAAQAAkAAAAGAAoAAAAQAAkAAAAHAAoAAAAQAAkAAAAIAAoAAAAQAAkAAAAJAAoAAAAQAAkAAAAKAAoAAAAQAAkAAAALAAoAAAAQAAkAAAAMAAoAAAAQAAkAAAANAAoAAAAQAAkAAAAOAAoAAAAQAAkAAAAPAAoAAAAQAAkAAAAQAAoAAAAQAAkAAAARAAoAAAAQAAkAAAASAAoAAAAQAAkAAAABAAAAAAAQAAsAAAACAAAAAAAQAAsAAAADAAAAAAAQAAsAAAAEAAAAAAAQAAsAAAAFAAAAAAAQAAsAAAAGAAAAAAAQAAsAAAAHAAAAAAAQAAsAAAAIAAAAAAAQAAsAAAAJAAAAAAAQAAsAAAAKAAAAAAAQAAsAAAALAAAAAAAQAAsAAAAMAAAAAAAQAAsAAAANAAAAAAAQAAsAAAAOAAAAAAAQAAsAAAAPAAAAAAAQAAsAAAAQAAAAAAAQAAsAAAARAAAAAAAQAAsAAAASAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAQAAAAPAAoAAAATAAUAAAAPAAoAAAATAAYAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAAAAAAQAAkAAAATAAoAAAAQAAsAAAA=")
+tile_set = ExtResource("2_n6nh8")
+
+[node name="WestExit" parent="." instance=ExtResource("3_lg23w")]
+position = Vector2(0, 88)
+exit_direction = 3
+path_to_new_scene = ExtResource("4_pvj4p")
+
+[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("4_l33fe")]
+position = Vector2(152, 112)
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+jump_component = NodePath("AdvancedJumpComponent")

@@ -77,7 +77,6 @@ animations = [{
 radius = 7.07107
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component")]
-position = Vector2(280, 160)
 collision_layer = 2
 script = ExtResource("1_aywbf")
 gravity_component = NodePath("GravityComponent")

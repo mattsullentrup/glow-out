@@ -1,23 +1,14 @@
-[gd_scene load_steps=4 format=4 uid="uid://bk0wjas8gxg6j"]
+[gd_scene load_steps=4 format=3 uid="uid://bk0wjas8gxg6j"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_flt37"]
-[ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="2_kyuj1"]
-[ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="3_l5rmq"]
+[ext_resource type="PackedScene" uid="uid://5ofc1neaxvil" path="res://scenes/levels/level_one/level_one.tscn" id="2_xonw4"]
+[ext_resource type="PackedScene" uid="uid://m3q5bsmix7yo" path="res://scenes/levels/level_one/rooms/room_one.tscn" id="3_cornc"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_flt37")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(4, 2)
-tile_map_data = PackedByteArray("AAAAAAkAAAARAAoAAAAGAAkAAAASAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAQAAAARAAoAAAAAAAUAAAARAAoAAAAAAAYAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAABAAAAAAAQAAsAAAABAAoAAAAQAAkAAAACAAAAAAAQAAsAAAACAAoAAAAQAAkAAAADAAAAAAAQAAsAAAADAAoAAAAQAAkAAAAEAAAAAAAQAAsAAAAEAAoAAAAQAAkAAAAFAAAAAAAQAAsAAAAFAAoAAAAQAAkAAAAGAAAAAAAQAAsAAAAGAAcAAAASAAkAAAAGAAgAAAASAAoAAAAGAAoAAAAQAAkAAAAHAAAAAAAQAAsAAAAHAAoAAAAQAAkAAAAIAAAAAAAQAAsAAAAIAAoAAAAQAAkAAAAJAAAAAAAQAAsAAAAJAAoAAAAQAAkAAAAKAAAAAAAQAAsAAAAKAAoAAAAQAAkAAAALAAAAAAAQAAsAAAALAAoAAAAQAAkAAAAMAAAAAAAQAAsAAAAMAAoAAAAQAAkAAAANAAAAAAAQAAsAAAANAAoAAAAQAAkAAAAOAAAAAAAQAAsAAAAOAAcAAAAPAAwAAAAOAAoAAAAQAAkAAAAPAAAAAAAQAAsAAAAPAAcAAAAQAAwAAAAPAAoAAAAQAAkAAAAQAAAAAAAQAAsAAAAQAAcAAAARAAwAAAAQAAoAAAAQAAkAAAARAAAAAAAQAAsAAAARAAQAAAAPAAwAAAARAAoAAAAQAAkAAAASAAAAAAAQAAsAAAASAAQAAAAQAAwAAAASAAoAAAAQAAkAAAATAAAAAAAQAAsAAAATAAQAAAARAAwAAAATAAoAAAAQAAkAAAAUAAAAAAAQAAsAAAAUAAoAAAAQAAkAAAAVAAEAAAAPAAoAAAAVAAIAAAAPAAoAAAAVAAMAAAAPAAoAAAAVAAQAAAAPAAoAAAAVAAUAAAAPAAoAAAAVAAYAAAAPAAoAAAAVAAcAAAAPAAoAAAAVAAgAAAAPAAoAAAAVAAkAAAAPAAoAAAAUAAsAAAARAAoAAAAUAP//AAARAAoAAAAAAAAAAAAQAAkAAAAVAAAAAAAQAAkAAAD//wAAAAAQAAkAAAAWAAAAAAAQAAkAAAA=")
-tile_set = ExtResource("2_kyuj1")
+[node name="LevelOne" parent="." node_paths=PackedStringArray("initial_room") instance=ExtResource("2_xonw4")]
+initial_room = NodePath("RoomOne")
 
-[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("3_l5rmq")]
-physics_interpolation_mode = 1
-z_index = -1
-position = Vector2(184, 88)
-gravity_component = NodePath("GravityComponent")
-input_component = NodePath("InputComponent")
-movement_component = NodePath("MovementComponent")
-animation_component = NodePath("AnimationComponent")
-jump_component = NodePath("AdvancedJumpComponent")
+[node name="RoomOne" parent="LevelOne" node_paths=PackedStringArray("initial_player_position") instance=ExtResource("3_cornc")]
+initial_player_position = NodePath("WestExit")
