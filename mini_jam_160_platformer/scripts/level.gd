@@ -1,11 +1,13 @@
+class_name Level
 extends Node2D
 
 
 @export var initial_room: Room
 @export var player: Player
 
-var current_room: Room
-var offset: int = 16
+static var current_room: Room
+
+@onready var camera: Camera2D = $Camera2D
 
 
 func _ready() -> void:
@@ -14,18 +16,19 @@ func _ready() -> void:
 	current_room = initial_room
 	#toggle_room(current_room, true)
 
-	var rooms = get_tree().get_nodes_in_group("rooms")
-	for child: Room in rooms:
-		for exit: RoomExit in child.exits:
-			exit.player_exited_room.connect(_on_player_exited_room)
-		child.position = Vector2.ZERO
+	for child: Room in get_tree().get_nodes_in_group("rooms"):
 		if child != initial_room:
 			toggle_room(child, false)
+
+	for exit: RoomExit in get_tree().get_nodes_in_group("exits"):
+		exit.player_exited_room.connect(_on_player_exited_room)
 
 
 func load_new_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
 	toggle_room(current_room, false)
+
 	toggle_room(new_room, true)
+	camera.enabled = true
 
 	new_room.player = player
 	new_room.setup_player(entry_door, exit_direction)
@@ -44,4 +47,7 @@ func toggle_room(room: Room, should_be_active: bool) -> void:
 
 
 func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
+	camera.enabled = false
+	camera.position = new_room.position
+	camera.reset_physics_interpolation()
 	load_new_room.call_deferred(new_room, entry_door, exit_direction)

@@ -2,12 +2,12 @@ class_name Room
 extends Node2D
 
 
-@export var initial_player_velocity: float
+@export var initial_player_upwards_velocity: float = 200
 @export var initial_player_position: Node2D
 
 var exits: Array[RoomExit] = []
 var player: Player
-var offset: int = 24
+var offset: int = 16
 
 
 func _ready() -> void:
@@ -25,4 +25,4 @@ func setup_player(entry_door, exit_direction) -> void:
 	player.reset_physics_interpolation()
 
 	if exit_direction == Globals.Directions.NORTH:
-		player.velocity = Vector2(-1, -1) * 200
+		player.velocity = -Vector2.ONE * initial_player_upwards_velocity

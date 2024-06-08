@@ -4,9 +4,11 @@ extends Area2D
 
 signal player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions)
 
-@export var exit_direction: Globals.Directions
-@export var new_room: Room
-@export var new_door: RoomExit
+@export var room_one_exit_direction: Globals.Directions
+@export var room_two_exit_direction: Globals.Directions
+
+@export var room_one: Room
+@export var room_two: Room
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -17,4 +19,8 @@ func _on_body_entered(body: Node2D) -> void:
 	body.set_process(false)
 	set_physics_process(false)
 	set_process(false)
-	player_exited_room.emit(new_room, new_door, exit_direction)
+
+	if Level.current_room == room_one:
+		player_exited_room.emit(room_two, self, room_one_exit_direction)
+	elif Level.current_room == room_two:
+		player_exited_room.emit(room_one, self, room_two_exit_direction)

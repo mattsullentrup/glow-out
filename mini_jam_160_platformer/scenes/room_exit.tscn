@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="1_7ulho"]
 
-[node name="RoomExit" type="Area2D" groups=["rooms"]]
+[node name="RoomExit" type="Area2D" groups=["exits"]]
 collision_mask = 2
 script = ExtResource("1_7ulho")
 
