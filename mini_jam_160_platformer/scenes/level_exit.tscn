@@ -9,6 +9,7 @@ size = Vector2(8, 12)
 [node name="LevelExit" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_4ad6g")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_r17a0")

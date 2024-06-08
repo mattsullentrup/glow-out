@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=4 uid="uid://cjbspbevfghhj"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_di2ib"]
+[ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="2_6yqe5"]
+[ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="3_t2bsn"]
+[ext_resource type="Script" path="res://scripts/room_exit.gd" id="4_nq5il"]
+[ext_resource type="Script" path="res://scripts/room.gd" id="5_ait4q"]
+[ext_resource type="Script" path="res://scripts/key.gd" id="6_2m7k2"]
+[ext_resource type="Texture2D" uid="uid://cb4v2cx04mh3i" path="res://addons/kenney_assets/monochrome_tilemap_packed.png" id="7_4n5s0"]
+[ext_resource type="Script" path="res://scripts/level_exit.gd" id="8_fuecg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjp4k"]
+radius = 6.08276
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l60h"]
+size = Vector2(8, 12)
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_di2ib")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAKAAAAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAAAAAoAAAAKAAAAAAABAAAAAAAQAAsAAAABAAoAAAAQAAkAAAACAAAAAAAQAAsAAAACAAoAAAAQAAkAAAADAAAAAAAQAAsAAAADAAoAAAAQAAkAAAAEAAAAAAAQAAsAAAAEAAoAAAAQAAkAAAAFAAAAAAAQAAsAAAAFAAoAAAAQAAkAAAAGAAAAAAAQAAsAAAAGAAoAAAAQAAkAAAAHAAAAAAAQAAsAAAAHAAoAAAAQAAkAAAAIAAAAAAAQAAsAAAAIAAoAAAAQAAkAAAAJAAAAAAAQAAsAAAAJAAoAAAAQAAkAAAAKAAAAAAAQAAsAAAAKAAoAAAAQAAkAAAALAAAAAAAQAAsAAAALAAoAAAAQAAkAAAAMAAAAAAAQAAsAAAAMAAoAAAAQAAkAAAANAAAAAAAQAAsAAAANAAoAAAAQAAkAAAAOAAAAAAAQAAsAAAAPAAAAAAAQAAsAAAAQAAAAAAAQAAsAAAARAAAAAAAQAAsAAAARAAoAAAAQAAkAAAASAAAAAAAQAAsAAAASAAoAAAAQAAkAAAATAAAAAAAKAAAAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAQAAAAPAAoAAAATAAUAAAAPAAoAAAATAAYAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAoAAAAKAAAAAAA=")
+tile_set = ExtResource("2_6yqe5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("3_t2bsn")]
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+jump_component = NodePath("AdvancedJumpComponent")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(160, 128)
+
+[node name="RoomExits" type="Node" parent="."]
+
+[node name="RoomExit" type="Area2D" parent="RoomExits" groups=["exits"]]
+collision_mask = 2
+script = ExtResource("4_nq5il")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExits/RoomExit"]
+
+[node name="Rooms" type="Node" parent="."]
+
+[node name="RoomTemplate" type="Node2D" parent="Rooms" groups=["rooms"]]
+script = ExtResource("5_ait4q")
+
+[node name="Key" type="Area2D" parent="Rooms/RoomTemplate"]
+position = Vector2(48, 104)
+collision_mask = 2
+script = ExtResource("6_2m7k2")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rooms/RoomTemplate/Key"]
+texture = ExtResource("7_4n5s0")
+region_enabled = true
+region_rect = Rect2(272, 64, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTemplate/Key"]
+shape = SubResource("CircleShape2D_xjp4k")
+
+[node name="LevelExit" type="Area2D" parent="Rooms/RoomTemplate"]
+position = Vector2(280, 120)
+collision_mask = 2
+script = ExtResource("8_fuecg")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rooms/RoomTemplate/LevelExit"]
+texture = ExtResource("7_4n5s0")
+region_enabled = true
+region_rect = Rect2(256, 32, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTemplate/LevelExit"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_8l60h")
+
+[connection signal="body_entered" from="RoomExits/RoomExit" to="RoomExits/RoomExit" method="_on_body_entered"]
+[connection signal="body_entered" from="Rooms/RoomTemplate/Key" to="Rooms/RoomTemplate/Key" method="_on_body_entered"]
+[connection signal="body_entered" from="Rooms/RoomTemplate/LevelExit" to="Rooms/RoomTemplate/LevelExit" method="_on_body_entered"]
