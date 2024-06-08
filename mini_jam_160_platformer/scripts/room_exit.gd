@@ -15,6 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 	body.set_physics_process(false)
 	body.set_process(false)
+	set_physics_process(false)
+	set_process(false)
 	player_exited_room.emit(new_room, new_door, exit_direction)
-	#set_physics_process(false)
-	#set_process(false)
