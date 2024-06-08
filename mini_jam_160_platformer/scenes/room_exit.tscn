@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="1_7ulho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4p67o"]
-size = Vector2(20, 64)
+size = Vector2(18, 80)
 
-[node name="RoomExit" type="Area2D"]
+[node name="RoomExit" type="Area2D" groups=["rooms"]]
 collision_mask = 2
 script = ExtResource("1_7ulho")
 
@@ -13,4 +13,3 @@ script = ExtResource("1_7ulho")
 shape = SubResource("RectangleShape2D_4p67o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

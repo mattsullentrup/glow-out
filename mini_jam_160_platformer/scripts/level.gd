@@ -7,14 +7,20 @@ var current_room: Room
 
 
 func _ready() -> void:
+	$Player.position = $StartPosition.position
+
 	current_room = initial_room
-	var room_children = current_room.get_children()
-	for child in room_children:
-		if child is RoomExit:
-			child.player_exited_room.connect(_on_player_exited_room)
+	var rooms = get_tree().get_nodes_in_group("rooms")
+	for child: Room in rooms:
+		if child is Room:
+			for exit: RoomExit in child.exits:
+				exit.player_exited_room.connect(_on_player_exited_room)
+			child.position = Vector2.ZERO
+			if child != initial_room:
+				remove_child(child)
 
 
-func load_new_room(new_scene: PackedScene, exit_direction: Globals.Directions) -> void:
+func load_new_room(new_scene: Room, exit_direction: Globals.Directions) -> void:
 	var new_room = new_scene.instantiate()
 	if new_room is Room:
 		new_room.previous_player_direction = exit_direction
@@ -23,5 +29,5 @@ func load_new_room(new_scene: PackedScene, exit_direction: Globals.Directions) -
 		current_room = new_room
 
 
-func _on_player_exited_room(new_scene: PackedScene, exit_direction: Globals.Directions) -> void:
-	load_new_room(new_scene, exit_direction)
+func _on_player_exited_room(new_room: Room, exit_direction: Globals.Directions) -> void:
+	load_new_room(new_room, exit_direction)
