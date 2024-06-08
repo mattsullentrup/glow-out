@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="4_nq5il"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="5_ait4q"]
 [ext_resource type="Script" path="res://scripts/key.gd" id="6_2m7k2"]
-[ext_resource type="Texture2D" uid="uid://cb4v2cx04mh3i" path="res://addons/kenney_assets/monochrome_tilemap_packed.png" id="7_4n5s0"]
+[ext_resource type="Texture2D" uid="uid://b4s7ddwqfrqbx" path="res://addons/kenney_assets/monochrome_tilemap_transparent_packed.png" id="7_7n2g8"]
 [ext_resource type="Script" path="res://scripts/level_exit.gd" id="8_fuecg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjp4k"]
@@ -62,7 +62,7 @@ script = ExtResource("6_2m7k2")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Rooms/RoomTemplate/Key"]
-texture = ExtResource("7_4n5s0")
+texture = ExtResource("7_7n2g8")
 region_enabled = true
 region_rect = Rect2(272, 64, 16, 16)
 
@@ -76,7 +76,7 @@ script = ExtResource("8_fuecg")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Rooms/RoomTemplate/LevelExit"]
-texture = ExtResource("7_4n5s0")
+texture = ExtResource("7_7n2g8")
 region_enabled = true
 region_rect = Rect2(256, 32, 16, 16)
 
