@@ -2,9 +2,11 @@ extends Node
 
 
 const LEVEL_ONE := preload("res://scenes/levels/level_one.tscn") as PackedScene
+const LEVEL_TWO := preload("res://scenes/levels/level_two.tscn") as PackedScene
 
 var level_paths: Array[PackedScene] = [
 		LEVEL_ONE,
+		LEVEL_TWO,
 ]
 
 @onready var current_level: int

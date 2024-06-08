@@ -6,14 +6,14 @@ extends Node2D
 @export var player: Player
 @export var level_exit: LevelExit
 @export var key: Key
+@export var start_position: Marker2D
+@export var camera: Camera2D
 
 static var current_room: Room
 
-@onready var camera: Camera2D = $Camera2D
-
 
 func _ready() -> void:
-	player.position = $StartPosition.position
+	player.position = start_position.position
 
 	level_exit.player_exiting_level.connect(SceneManager._on_player_exiting_level)
 
