@@ -23,7 +23,7 @@ func handle_move_animation(move_direction: float) -> void:
 
 
 func handle_jump_animation(is_jumping: bool, is_falling: bool) -> void:
-	if is_jumping:
+	if is_jumping or is_falling:
 		sprite.play("jump")
-	elif is_falling:
-		sprite.play("fall")
+	#elif is_falling:
+		#sprite.play("fall")
