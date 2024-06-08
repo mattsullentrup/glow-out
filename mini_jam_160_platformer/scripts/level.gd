@@ -5,35 +5,50 @@ extends Node2D
 @export var player: Player
 
 var current_room: Room
+var offset: int = 16
 
 
 func _ready() -> void:
 	player.position = $StartPosition.position
 
 	current_room = initial_room
+	toggle_room(current_room, true)
+
 	var rooms = get_tree().get_nodes_in_group("rooms")
 	for child: Room in rooms:
 		for exit: RoomExit in child.exits:
 			exit.player_exited_room.connect(_on_player_exited_room)
 		child.position = Vector2.ZERO
 		if child != initial_room:
-			remove_child(child)
+			toggle_room(child, false)
+			#remove_child(child)
+
+
+func _process(delta: float) -> void:
+	print(current_room.process_mode)
 
 
 func load_new_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
-	remove_child.call_deferred(current_room)
-	add_child.call_deferred(new_room)
+	toggle_room(current_room, false)
+	#remove_child(current_room)
 
-	new_room.previous_player_direction = exit_direction
-	new_room.visible = true
+	#add_child(new_room)
+	toggle_room(new_room, true)
 
-	player.position = entry_door.position + Globals.direction_pairs[exit_direction] * 16
-	player.set_physics_process(true)
-	player.set_process(true)
-	player.reset_physics_interpolation()
-
+	new_room.player = player
+	new_room.setup_player(entry_door, exit_direction)
 	current_room = new_room
 
 
+func toggle_room(room: Room, should_be_active: bool) -> void:
+	if should_be_active == true:
+		room.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		room.process_mode = Node.PROCESS_MODE_DISABLED
+	room.visible = should_be_active
+	room.get_node("TileMapLayer").enabled = should_be_active
+	#print(room.process_mode)
+
+
 func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
-	load_new_room(new_room, entry_door, exit_direction)
+	load_new_room.call_deferred(new_room, entry_door, exit_direction)

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="4_fda3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4p67o"]
-size = Vector2(18, 80)
+size = Vector2(16.5, 80)
 
 [node name="LevelOne" node_paths=PackedStringArray("initial_room", "player") instance=ExtResource("1_u8dme")]
 initial_room = NodePath("Room1")
@@ -47,8 +47,6 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_4p67o")
 
 [node name="Room2" type="Node2D" parent="." index="3" node_paths=PackedStringArray("exits") groups=["rooms"]]
-process_mode = 4
-visible = false
 position = Vector2(-320, 0)
 script = ExtResource("2_v2db8")
 initial_player_velocity = 500.0
@@ -68,6 +66,7 @@ new_room = NodePath("../../Room1")
 new_door = NodePath("../../Room1/RoomExit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/RoomExit" index="0"]
+position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_4p67o")
 
 [connection signal="body_entered" from="Room1/RoomExit" to="Room1/RoomExit" method="_on_body_entered"]
