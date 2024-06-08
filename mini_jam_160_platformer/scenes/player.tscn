@@ -88,12 +88,13 @@ jump_component = NodePath("AdvancedJumpComponent")
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 16.0
+color = Color(0.873376, 0.858963, 0.769827, 1)
 shadow_enabled = true
 texture = ExtResource("8_y83mj")
-texture_scale = 28.25
+texture_scale = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(58.599, 57.962, 35.668, 1)
 sprite_frames = SubResource("SpriteFrames_ave6c")
 animation = &"walk"
 
