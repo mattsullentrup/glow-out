@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scripts/scene_manager.gd"
-Globals="*res://scripts/globals.gd"
+SceneManager="*res://scripts/autoloads/level_manager.gd"
+Globals="*res://scripts/autoloads/globals.gd"
 
 [display]
 

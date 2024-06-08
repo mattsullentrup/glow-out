@@ -4,6 +4,8 @@ extends Node2D
 
 @export var initial_room: Room
 @export var player: Player
+@export var level_exit: LevelExit
+@export var key: Key
 
 static var current_room: Room
 
@@ -12,6 +14,8 @@ static var current_room: Room
 
 func _ready() -> void:
 	player.position = $StartPosition.position
+
+	level_exit.player_exiting_level.connect(SceneManager._on_player_exiting_level)
 
 	current_room = initial_room
 	#toggle_room(current_room, true)
