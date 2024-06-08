@@ -1,6 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtx6ao6lixuw1"]
+[gd_scene load_steps=10 format=3 uid="uid://dtx6ao6lixuw1"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_pc1v3"]
+[ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="2_f4txp"]
+[ext_resource type="Script" path="res://scripts/room_exit.gd" id="3_vu80b"]
+[ext_resource type="Script" path="res://scripts/room.gd" id="4_iwte3"]
+[ext_resource type="Script" path="res://scripts/key.gd" id="5_hqmq8"]
+[ext_resource type="Texture2D" uid="uid://cb4v2cx04mh3i" path="res://addons/kenney_assets/monochrome_tilemap_packed.png" id="6_nvuhp"]
+[ext_resource type="Script" path="res://scripts/level_exit.gd" id="7_rlxi3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjp4k"]
+radius = 6.08276
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l60h"]
+size = Vector2(8, 12)
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_pc1v3")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("2_f4txp")]
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+jump_component = NodePath("AdvancedJumpComponent")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="RoomExits" type="Node" parent="."]
+
+[node name="RoomExit" type="Area2D" parent="RoomExits" groups=["exits"]]
+collision_mask = 2
+script = ExtResource("3_vu80b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExits/RoomExit"]
+
+[node name="Rooms" type="Node" parent="."]
+
+[node name="RoomTemplate" type="Node2D" parent="Rooms" groups=["rooms"]]
+script = ExtResource("4_iwte3")
+
+[node name="Key" type="Area2D" parent="Rooms/RoomTemplate"]
+collision_mask = 2
+script = ExtResource("5_hqmq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rooms/RoomTemplate/Key"]
+texture = ExtResource("6_nvuhp")
+region_enabled = true
+region_rect = Rect2(272, 64, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTemplate/Key"]
+shape = SubResource("CircleShape2D_xjp4k")
+
+[node name="LevelExit" type="Area2D" parent="Rooms/RoomTemplate"]
+collision_mask = 2
+script = ExtResource("7_rlxi3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rooms/RoomTemplate/LevelExit"]
+texture = ExtResource("6_nvuhp")
+region_enabled = true
+region_rect = Rect2(256, 32, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTemplate/LevelExit"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_8l60h")
+
+[connection signal="body_entered" from="RoomExits/RoomExit" to="RoomExits/RoomExit" method="_on_body_entered"]
+[connection signal="body_entered" from="Rooms/RoomTemplate/Key" to="Rooms/RoomTemplate/Key" method="_on_body_entered"]
+[connection signal="body_entered" from="Rooms/RoomTemplate/LevelExit" to="Rooms/RoomTemplate/LevelExit" method="_on_body_entered"]

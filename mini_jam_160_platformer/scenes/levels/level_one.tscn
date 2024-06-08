@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://5ofc1neaxvil"]
 
-[ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_u8dme"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_ndnis"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="2_v2db8"]
 [ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="2_ypko2"]
 [ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="3_q0fuq"]
@@ -20,30 +20,31 @@ size = Vector2(16, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46x0i"]
 size = Vector2(48, 16)
 
-[node name="LevelOne" node_paths=PackedStringArray("initial_room") instance=ExtResource("1_u8dme")]
+[node name="LevelOne" type="Node2D" node_paths=PackedStringArray("initial_room")]
+script = ExtResource("1_ndnis")
 initial_room = NodePath("Rooms/Room1")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." index="0"]
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAoAAAAQAAkAAAACAAoAAAAQAAkAAAADAAoAAAAQAAkAAAAEAAoAAAAQAAkAAAAFAAoAAAAQAAkAAAAGAAoAAAAQAAkAAAAHAAoAAAAQAAkAAAAIAAoAAAAQAAkAAAAJAAoAAAAQAAkAAAAKAAoAAAAQAAkAAAALAAoAAAAQAAkAAAAMAAoAAAAQAAkAAAANAAoAAAAQAAkAAAARAAoAAAAQAAkAAAASAAoAAAAQAAkAAAABAAAAAAAQAAsAAAACAAAAAAAQAAsAAAADAAAAAAAQAAsAAAAEAAAAAAAQAAsAAAAFAAAAAAAQAAsAAAAGAAAAAAAQAAsAAAAHAAAAAAAQAAsAAAAIAAAAAAAQAAsAAAAJAAAAAAAQAAsAAAAKAAAAAAAQAAsAAAALAAAAAAAQAAsAAAAMAAAAAAAQAAsAAAANAAAAAAAQAAsAAAAOAAAAAAAQAAsAAAAPAAAAAAAQAAsAAAAQAAAAAAAQAAsAAAARAAAAAAAQAAsAAAASAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAQAAAAPAAoAAAATAAUAAAAPAAoAAAATAAYAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAAAAAAKAAAAAAATAAoAAAAKAAAAAAAAAAoAAAAKAAAAAAAAAAAAAAAKAAAAAADs/wAAAAAKAAAAAADs/wEAAAARAAoAAADs/wIAAAARAAoAAADs/wMAAAARAAoAAADs/wcAAAARAAoAAADs/wgAAAARAAoAAADs/wkAAAARAAoAAADs/woAAAAKAAAAAADt/wAAAAAQAAsAAADt/woAAAAQAAkAAADu/wAAAAAQAAsAAADu/woAAAAQAAkAAADv/wAAAAAQAAsAAADv/woAAAAQAAkAAADw/wAAAAAQAAsAAADw/woAAAAQAAkAAADx/wAAAAAQAAsAAADx/woAAAAQAAkAAADy/wAAAAAQAAsAAADy/woAAAAQAAkAAADz/wAAAAAQAAsAAADz/woAAAAQAAkAAAD0/wAAAAAQAAsAAAD0/woAAAAQAAkAAAD1/wAAAAAQAAsAAAD1/woAAAAQAAkAAAD2/wAAAAAQAAsAAAD2/woAAAAQAAkAAAD3/wAAAAAQAAsAAAD3/woAAAAQAAkAAAD4/wAAAAAQAAsAAAD4/woAAAAQAAkAAAD5/wAAAAAQAAsAAAD5/woAAAAQAAkAAAD6/wAAAAAQAAsAAAD7/wAAAAAQAAsAAAD8/wAAAAAQAAsAAAD9/wAAAAAQAAsAAAD9/woAAAAQAAkAAAD+/wAAAAAQAAsAAAD+/woAAAAQAAkAAAD//wAAAAAKAAAAAAD//wEAAAAPAAoAAAD//wIAAAAPAAoAAAD//wMAAAAPAAoAAAD//wcAAAAPAAoAAAD//wgAAAAPAAoAAAD//wkAAAAPAAoAAAD//woAAAAKAAAAAADs/wsAAAAKAAAAAADs/wwAAAARAAoAAADs/w0AAAARAAoAAADs/w4AAAARAAoAAADs/xIAAAARAAoAAADs/xMAAAARAAoAAADs/xQAAAARAAoAAADs/xUAAAAKAAAAAADt/wsAAAAQAAsAAADt/xUAAAAQAAkAAADu/wsAAAAQAAsAAADu/xUAAAAQAAkAAADv/wsAAAAQAAsAAADv/xUAAAAQAAkAAADw/wsAAAAQAAsAAADw/xUAAAAQAAkAAADx/wsAAAAQAAsAAADx/xUAAAAQAAkAAADy/wsAAAAQAAsAAADy/xUAAAAQAAkAAADz/wsAAAAQAAsAAADz/xUAAAAQAAkAAAD0/wsAAAAQAAsAAAD0/xUAAAAQAAkAAAD1/wsAAAAQAAsAAAD1/xUAAAAQAAkAAAD2/wsAAAAQAAsAAAD2/xUAAAAQAAkAAAD3/wsAAAAQAAsAAAD3/xUAAAAQAAkAAAD4/wsAAAAQAAsAAAD4/xUAAAAQAAkAAAD5/wsAAAAQAAsAAAD5/xUAAAAQAAkAAAD9/wsAAAAQAAsAAAD9/xUAAAAQAAkAAAD+/wsAAAAQAAsAAAD+/xUAAAAQAAkAAAD//wsAAAAKAAAAAAD//wwAAAAPAAoAAAD//w0AAAAPAAoAAAD//w4AAAAPAAoAAAD//xIAAAAPAAoAAAD//xMAAAAPAAoAAAD//xQAAAAPAAoAAAD//xUAAAAKAAAAAAAAAAsAAAAKAAAAAAAAAAwAAAARAAoAAAAAAA0AAAARAAoAAAAAAA4AAAARAAoAAAAAABIAAAARAAoAAAAAABMAAAARAAoAAAAAABQAAAARAAoAAAAAABUAAAAKAAAAAAABAAsAAAAQAAsAAAABABUAAAAQAAkAAAACAAsAAAAQAAsAAAACABUAAAAQAAkAAAADAAsAAAAQAAsAAAADABMAAAAQAAkAAAADABUAAAAQAAkAAAAEAAsAAAAQAAsAAAAEABMAAAAQAAkAAAAEABUAAAAQAAkAAAAFAAsAAAAQAAsAAAAFABMAAAAQAAkAAAAFABUAAAAQAAkAAAAGAAsAAAAQAAsAAAAGABMAAAAQAAkAAAAGABUAAAAQAAkAAAAHAAsAAAAQAAsAAAAHABUAAAAQAAkAAAAIAAsAAAAQAAsAAAAIABUAAAAQAAkAAAAJAAsAAAAQAAsAAAAJABIAAAAQAAkAAAAJABUAAAAQAAkAAAAKAAsAAAAQAAsAAAAKABUAAAAQAAkAAAALAAsAAAAQAAsAAAALABAAAAAQAAkAAAALABUAAAAQAAkAAAAMAAsAAAAQAAsAAAAMABAAAAAQAAkAAAAMABUAAAAQAAkAAAANAAsAAAAQAAsAAAANABUAAAAQAAkAAAAOABIAAAAQAAkAAAAPAA4AAAAQAAkAAAAPABIAAAAQAAkAAAAQABIAAAAQAAkAAAARAAsAAAAQAAsAAAARABUAAAAQAAkAAAASAAsAAAAQAAsAAAASABUAAAAQAAkAAAATAAsAAAAKAAAAAAATAAwAAAAPAAoAAAATAA0AAAAPAAoAAAATAA4AAAAPAAoAAAATAA8AAAAPAAoAAAATABAAAAAPAAoAAAATABEAAAAPAAoAAAATABIAAAAPAAoAAAATABMAAAAPAAoAAAATABQAAAAPAAoAAAATABUAAAAKAAAAAAAAABYAAAAKAAAAAAAAABcAAAARAAoAAAAAABgAAAARAAoAAAAAABkAAAARAAoAAAAAAB0AAAARAAoAAAAAAB4AAAARAAoAAAAAAB8AAAARAAoAAAAAACAAAAAKAAAAAAABABYAAAAQAAsAAAABACAAAAAQAAkAAAACABYAAAAQAAsAAAACACAAAAAQAAkAAAADABYAAAAQAAsAAAADAB4AAAAQAAkAAAADACAAAAAQAAkAAAAEABYAAAAQAAsAAAAEAB4AAAAQAAkAAAAEACAAAAAQAAkAAAAFABYAAAAQAAsAAAAFAB4AAAAQAAkAAAAFACAAAAAQAAkAAAAGABYAAAAQAAsAAAAGAB4AAAAQAAkAAAAGACAAAAAQAAkAAAAHABYAAAAQAAsAAAAHACAAAAAQAAkAAAAIABYAAAAQAAsAAAAIACAAAAAQAAkAAAAJABYAAAAQAAsAAAAJAB0AAAAQAAkAAAAJACAAAAAQAAkAAAAKABYAAAAQAAsAAAAKACAAAAAQAAkAAAALABYAAAAQAAsAAAALABsAAAAQAAkAAAALACAAAAAQAAkAAAAMABYAAAAQAAsAAAAMABsAAAAQAAkAAAAMACAAAAAQAAkAAAANABYAAAAQAAsAAAANACAAAAAQAAkAAAAOAB0AAAAQAAkAAAAPABkAAAAQAAkAAAAPAB0AAAAQAAkAAAAQAB0AAAAQAAkAAAARABYAAAAQAAsAAAARACAAAAAQAAkAAAASABYAAAAQAAsAAAASACAAAAAQAAkAAAATABYAAAAKAAAAAAATABcAAAAPAAoAAAATABgAAAAPAAoAAAATABkAAAAPAAoAAAATABoAAAAPAAoAAAATABsAAAAPAAoAAAATABwAAAAPAAoAAAATAB0AAAAPAAoAAAATAB4AAAAPAAoAAAATAB8AAAAPAAoAAAATACAAAAAKAAAAAAA=")
 tile_set = ExtResource("3_q0fuq")
 
-[node name="Camera2D" type="Camera2D" parent="." index="1"]
+[node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 process_callback = 0
 
-[node name="Player" parent="." index="2" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("2_ypko2")]
+[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("2_ypko2")]
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
 
-[node name="StartPosition2" type="Marker2D" parent="." index="3"]
+[node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(160, 120)
 
-[node name="Exit" type="Node" parent="." index="4"]
+[node name="RoomExits" type="Node" parent="."]
 
-[node name="RoomExit1" type="Area2D" parent="Exit" index="0" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
+[node name="RoomExit1" type="Area2D" parent="RoomExits" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
 position = Vector2(0, 88)
 collision_mask = 2
 script = ExtResource("4_fda3e")
@@ -52,10 +53,10 @@ room_two_exit_direction = 2
 room_one = NodePath("../../Rooms/Room1")
 room_two = NodePath("../../Rooms/Room2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/RoomExit1" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExits/RoomExit1"]
 shape = SubResource("RectangleShape2D_ypob3")
 
-[node name="RoomExit2" type="Area2D" parent="Exit" index="1" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
+[node name="RoomExit2" type="Area2D" parent="RoomExits" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
 position = Vector2(248, 176)
 collision_mask = 2
 script = ExtResource("4_fda3e")
@@ -63,10 +64,10 @@ room_one_exit_direction = 1
 room_one = NodePath("../../Rooms/Room1")
 room_two = NodePath("../../Rooms/Room3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/RoomExit2" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExits/RoomExit2"]
 shape = SubResource("RectangleShape2D_qyu3t")
 
-[node name="RoomExit3" type="Area2D" parent="Exit" index="2" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
+[node name="RoomExit3" type="Area2D" parent="RoomExits" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
 position = Vector2(0, 264)
 collision_mask = 2
 script = ExtResource("4_fda3e")
@@ -75,10 +76,10 @@ room_two_exit_direction = 2
 room_one = NodePath("../../Rooms/Room3")
 room_two = NodePath("../../Rooms/Room4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/RoomExit3" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExits/RoomExit3"]
 shape = SubResource("RectangleShape2D_wary0")
 
-[node name="RoomExit4" type="Area2D" parent="Exit" index="3" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
+[node name="RoomExit4" type="Area2D" parent="RoomExits" node_paths=PackedStringArray("room_one", "room_two") groups=["exits"]]
 position = Vector2(248, 352)
 collision_mask = 2
 script = ExtResource("4_fda3e")
@@ -86,38 +87,38 @@ room_two_exit_direction = 1
 room_one = NodePath("../../Rooms/Room5")
 room_two = NodePath("../../Rooms/Room3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/RoomExit4" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExits/RoomExit4"]
 shape = SubResource("RectangleShape2D_46x0i")
 
-[node name="Rooms" type="Node" parent="." index="5"]
+[node name="Rooms" type="Node" parent="."]
 
-[node name="Room1" type="Node2D" parent="Rooms" index="0" groups=["rooms"]]
+[node name="Room1" type="Node2D" parent="Rooms" groups=["rooms"]]
 script = ExtResource("2_v2db8")
 
-[node name="LevelExit" parent="Rooms/Room1" index="0" instance=ExtResource("6_hllo0")]
+[node name="LevelExit" parent="Rooms/Room1" instance=ExtResource("6_hllo0")]
 position = Vector2(64, 152)
 
-[node name="Room2" type="Node2D" parent="Rooms" index="1" groups=["rooms"]]
+[node name="Room2" type="Node2D" parent="Rooms" groups=["rooms"]]
 position = Vector2(-320, 0)
 script = ExtResource("2_v2db8")
 
-[node name="Room3" type="Node2D" parent="Rooms" index="2" groups=["rooms"]]
+[node name="Room3" type="Node2D" parent="Rooms" groups=["rooms"]]
 position = Vector2(0, 176)
 script = ExtResource("2_v2db8")
 
-[node name="Key" parent="Rooms/Room3" index="0" instance=ExtResource("6_tcviu")]
+[node name="Key" parent="Rooms/Room3" instance=ExtResource("6_tcviu")]
 position = Vector2(88, 104)
 
-[node name="Room4" type="Node2D" parent="Rooms" index="3" groups=["rooms"]]
+[node name="Room4" type="Node2D" parent="Rooms" groups=["rooms"]]
 position = Vector2(-320, 176)
 script = ExtResource("2_v2db8")
 
-[node name="Room5" type="Node2D" parent="Rooms" index="4" groups=["rooms"]]
+[node name="Room5" type="Node2D" parent="Rooms" groups=["rooms"]]
 position = Vector2(0, 352)
 script = ExtResource("2_v2db8")
 
-[connection signal="body_entered" from="Exit/RoomExit1" to="Exit/RoomExit1" method="_on_body_entered"]
-[connection signal="body_entered" from="Exit/RoomExit2" to="Exit/RoomExit2" method="_on_body_entered"]
-[connection signal="body_entered" from="Exit/RoomExit3" to="Exit/RoomExit3" method="_on_body_entered"]
-[connection signal="body_entered" from="Exit/RoomExit4" to="Exit/RoomExit4" method="_on_body_entered"]
+[connection signal="body_entered" from="RoomExits/RoomExit1" to="RoomExits/RoomExit1" method="_on_body_entered"]
+[connection signal="body_entered" from="RoomExits/RoomExit2" to="RoomExits/RoomExit2" method="_on_body_entered"]
+[connection signal="body_entered" from="RoomExits/RoomExit3" to="RoomExits/RoomExit3" method="_on_body_entered"]
+[connection signal="body_entered" from="RoomExits/RoomExit4" to="RoomExits/RoomExit4" method="_on_body_entered"]
 [connection signal="player_found_key" from="Rooms/Room3/Key" to="." method="_on_key_player_found_key"]
