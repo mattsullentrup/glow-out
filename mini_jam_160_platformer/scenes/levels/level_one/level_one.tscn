@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://5ofc1neaxvil"]
+[gd_scene load_steps=10 format=4 uid="uid://5ofc1neaxvil"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_u8dme"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="2_v2db8"]
@@ -6,8 +6,17 @@
 [ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="3_q0fuq"]
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="4_fda3e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p67o"]
-size = Vector2(16.5, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ielb6"]
+size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wntqj"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5vbe"]
+size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2wxg"]
+size = Vector2(48, 8)
 
 [node name="LevelOne" node_paths=PackedStringArray("initial_room", "player") instance=ExtResource("1_u8dme")]
 initial_room = NodePath("Room1")
@@ -23,15 +32,14 @@ jump_component = NodePath("AdvancedJumpComponent")
 [node name="StartPosition" type="Marker2D" parent="." index="1"]
 position = Vector2(160, 104)
 
-[node name="Room1" type="Node2D" parent="." index="2" node_paths=PackedStringArray("initial_player_position", "exits") groups=["rooms"]]
+[node name="Room1" type="Node2D" parent="." index="2" node_paths=PackedStringArray("initial_player_position") groups=["rooms"]]
 script = ExtResource("2_v2db8")
 initial_player_velocity = 500.0
 initial_player_position = NodePath("../StartPosition")
-exits = [NodePath("RoomExit")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Room1" index="0"]
 position = Vector2(0, 4)
-tile_map_data = PackedByteArray("AAABAAoAAAAQAAkAAAACAAoAAAAQAAkAAAADAAoAAAAQAAkAAAAEAAoAAAAQAAkAAAAFAAoAAAAQAAkAAAAGAAoAAAAQAAkAAAAHAAoAAAAQAAkAAAAIAAoAAAAQAAkAAAAJAAoAAAAQAAkAAAAKAAoAAAAQAAkAAAALAAoAAAAQAAkAAAAMAAoAAAAQAAkAAAANAAoAAAAQAAkAAAAOAAoAAAAQAAkAAAAPAAoAAAAQAAkAAAAQAAoAAAAQAAkAAAARAAoAAAAQAAkAAAASAAoAAAAQAAkAAAABAAAAAAAQAAsAAAACAAAAAAAQAAsAAAADAAAAAAAQAAsAAAAEAAAAAAAQAAsAAAAFAAAAAAAQAAsAAAAGAAAAAAAQAAsAAAAHAAAAAAAQAAsAAAAIAAAAAAAQAAsAAAAJAAAAAAAQAAsAAAAKAAAAAAAQAAsAAAALAAAAAAAQAAsAAAAMAAAAAAAQAAsAAAANAAAAAAAQAAsAAAAOAAAAAAAQAAsAAAAPAAAAAAAQAAsAAAAQAAAAAAAQAAsAAAARAAAAAAAQAAsAAAASAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAQAAAAPAAoAAAATAAUAAAAPAAoAAAATAAYAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAAAAAAQAAkAAAATAAoAAAAQAAsAAAA=")
+tile_map_data = PackedByteArray("AAABAAoAAAAQAAkAAAACAAoAAAAQAAkAAAADAAoAAAAQAAkAAAAEAAoAAAAQAAkAAAAFAAoAAAAQAAkAAAAGAAoAAAAQAAkAAAAHAAoAAAAQAAkAAAAIAAoAAAAQAAkAAAAJAAoAAAAQAAkAAAAKAAoAAAAQAAkAAAALAAoAAAAQAAkAAAAMAAoAAAAQAAkAAAANAAoAAAAQAAkAAAARAAoAAAAQAAkAAAASAAoAAAAQAAkAAAABAAAAAAAQAAsAAAACAAAAAAAQAAsAAAADAAAAAAAQAAsAAAAEAAAAAAAQAAsAAAAFAAAAAAAQAAsAAAAGAAAAAAAQAAsAAAAHAAAAAAAQAAsAAAAIAAAAAAAQAAsAAAAJAAAAAAAQAAsAAAAKAAAAAAAQAAsAAAALAAAAAAAQAAsAAAAMAAAAAAAQAAsAAAANAAAAAAAQAAsAAAAOAAAAAAAQAAsAAAAPAAAAAAAQAAsAAAAQAAAAAAAQAAsAAAARAAAAAAAQAAsAAAASAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAQAAAAPAAoAAAATAAUAAAAPAAoAAAATAAYAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAAAAAAQAAkAAAATAAoAAAAQAAsAAAA=")
 tile_set = ExtResource("3_q0fuq")
 
 [node name="RoomExit" type="Area2D" parent="Room1" index="1" node_paths=PackedStringArray("new_room", "new_door")]
@@ -43,14 +51,23 @@ new_room = NodePath("../../Room2")
 new_door = NodePath("../../Room2/RoomExit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/RoomExit" index="0"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_4p67o")
+shape = SubResource("RectangleShape2D_ielb6")
 
-[node name="Room2" type="Node2D" parent="." index="3" node_paths=PackedStringArray("exits") groups=["rooms"]]
+[node name="RoomExit2" type="Area2D" parent="Room1" index="2" node_paths=PackedStringArray("new_room", "new_door")]
+position = Vector2(248, 176)
+collision_mask = 2
+script = ExtResource("4_fda3e")
+exit_direction = 1
+new_room = NodePath("../../Room3")
+new_door = NodePath("../../Room3/RoomExit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/RoomExit2" index="0"]
+shape = SubResource("RectangleShape2D_wntqj")
+
+[node name="Room2" type="Node2D" parent="." index="3" groups=["rooms"]]
 position = Vector2(-320, 0)
 script = ExtResource("2_v2db8")
 initial_player_velocity = 500.0
-exits = [NodePath("RoomExit")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Room2" index="0"]
 position = Vector2(0, 4)
@@ -66,8 +83,30 @@ new_room = NodePath("../../Room1")
 new_door = NodePath("../../Room1/RoomExit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/RoomExit" index="0"]
-position = Vector2(0.25, 0)
-shape = SubResource("RectangleShape2D_4p67o")
+shape = SubResource("RectangleShape2D_r5vbe")
+
+[node name="Room3" type="Node2D" parent="." index="4" groups=["rooms"]]
+position = Vector2(0, 176)
+script = ExtResource("2_v2db8")
+initial_player_velocity = 500.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Room3" index="0"]
+position = Vector2(0, 4)
+tile_map_data = PackedByteArray("AAABAAoAAAAQAAkAAAACAAoAAAAQAAkAAAADAAoAAAAQAAkAAAAEAAoAAAAQAAkAAAAFAAoAAAAQAAkAAAAGAAoAAAAQAAkAAAAHAAoAAAAQAAkAAAAIAAoAAAAQAAkAAAAJAAoAAAAQAAkAAAAKAAoAAAAQAAkAAAALAAoAAAAQAAkAAAAMAAoAAAAQAAkAAAANAAoAAAAQAAkAAAAOAAoAAAAQAAkAAAAPAAoAAAAQAAkAAAAQAAoAAAAQAAkAAAARAAoAAAAQAAkAAAASAAoAAAAQAAkAAAABAAAAAAAQAAsAAAACAAAAAAAQAAsAAAADAAAAAAAQAAsAAAAEAAAAAAAQAAsAAAAFAAAAAAAQAAsAAAAGAAAAAAAQAAsAAAAHAAAAAAAQAAsAAAAIAAAAAAAQAAsAAAAJAAAAAAAQAAsAAAAKAAAAAAAQAAsAAAALAAAAAAAQAAsAAAAMAAAAAAAQAAsAAAANAAAAAAAQAAsAAAARAAAAAAAQAAsAAAASAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAIAAAARAAoAAAAAAAMAAAARAAoAAAAAAAQAAAARAAoAAAAAAAUAAAARAAoAAAAAAAYAAAARAAoAAAAAAAcAAAARAAoAAAAAAAgAAAARAAoAAAAAAAkAAAARAAoAAAATAAEAAAAPAAoAAAATAAIAAAAPAAoAAAATAAMAAAAPAAoAAAATAAQAAAAPAAoAAAATAAUAAAAPAAoAAAATAAYAAAAPAAoAAAATAAcAAAAPAAoAAAATAAgAAAAPAAoAAAATAAkAAAAPAAoAAAATAAAAAAAQAAkAAAATAAoAAAAQAAsAAAA=")
+tile_set = ExtResource("3_q0fuq")
+
+[node name="RoomExit" type="Area2D" parent="Room3" index="1" node_paths=PackedStringArray("new_room", "new_door")]
+position = Vector2(248, 16)
+collision_mask = 2
+script = ExtResource("4_fda3e")
+new_room = NodePath("../../Room1")
+new_door = NodePath("../../Room1/RoomExit2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room3/RoomExit" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_h2wxg")
 
 [connection signal="body_entered" from="Room1/RoomExit" to="Room1/RoomExit" method="_on_body_entered"]
+[connection signal="body_entered" from="Room1/RoomExit2" to="Room1/RoomExit2" method="_on_body_entered"]
 [connection signal="body_entered" from="Room2/RoomExit" to="Room2/RoomExit" method="_on_body_entered"]
+[connection signal="body_entered" from="Room3/RoomExit" to="Room3/RoomExit" method="_on_body_entered"]

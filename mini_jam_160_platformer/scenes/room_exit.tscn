@@ -1,15 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcl0nsj6yqdmp"]
+[gd_scene load_steps=2 format=3 uid="uid://bcl0nsj6yqdmp"]
 
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="1_7ulho"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p67o"]
-size = Vector2(16.5, 80)
 
 [node name="RoomExit" type="Area2D" groups=["rooms"]]
 collision_mask = 2
 script = ExtResource("1_7ulho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4p67o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

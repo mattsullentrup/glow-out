@@ -12,7 +12,7 @@ func _ready() -> void:
 	player.position = $StartPosition.position
 
 	current_room = initial_room
-	toggle_room(current_room, true)
+	#toggle_room(current_room, true)
 
 	var rooms = get_tree().get_nodes_in_group("rooms")
 	for child: Room in rooms:
@@ -21,18 +21,10 @@ func _ready() -> void:
 		child.position = Vector2.ZERO
 		if child != initial_room:
 			toggle_room(child, false)
-			#remove_child(child)
-
-
-func _process(delta: float) -> void:
-	print(current_room.process_mode)
 
 
 func load_new_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
 	toggle_room(current_room, false)
-	#remove_child(current_room)
-
-	#add_child(new_room)
 	toggle_room(new_room, true)
 
 	new_room.player = player
@@ -43,11 +35,12 @@ func load_new_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals
 func toggle_room(room: Room, should_be_active: bool) -> void:
 	if should_be_active == true:
 		room.process_mode = Node.PROCESS_MODE_INHERIT
+		#add_child(room)
 	else:
 		room.process_mode = Node.PROCESS_MODE_DISABLED
+		#remove_child(room)
 	room.visible = should_be_active
 	room.get_node("TileMapLayer").enabled = should_be_active
-	#print(room.process_mode)
 
 
 func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
