@@ -89,10 +89,9 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ave6c")
 animation = &"idle"
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 10)
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_h5cer")
 
 [node name="GravityComponent" parent="." instance=ExtResource("3_pdeae")]

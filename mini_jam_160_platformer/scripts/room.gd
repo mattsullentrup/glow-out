@@ -7,7 +7,7 @@ extends Node2D
 
 var exits: Array[RoomExit] = []
 var player: Player
-var offset: int = 32
+var offset: int = 24
 
 
 func _ready() -> void:
@@ -24,6 +24,5 @@ func setup_player(entry_door, exit_direction) -> void:
 	player.set_process(true)
 	player.reset_physics_interpolation()
 
-	for i in exits:
-		var a = i.get_signal_connection_list("area_entered")
-		print(a)
+	if exit_direction == Globals.Directions.NORTH:
+		player.velocity = Vector2(-1, -1) * 200
