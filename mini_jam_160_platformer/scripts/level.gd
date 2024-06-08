@@ -14,8 +14,9 @@ static var current_room: Room
 
 func _ready() -> void:
 	player.position = start_position.position
+	player.reset_physics_interpolation()
 
-	level_exit.player_exiting_level.connect(SceneManager._on_player_exiting_level)
+	level_exit.player_exiting_level.connect(LevelManager._on_player_exiting_level)
 
 	current_room = initial_room
 	#toggle_room(current_room, true)
