@@ -29,6 +29,7 @@ tile_set = ExtResource("2_jypi0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+process_callback = 0
 
 [node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("2_f4txp")]
 gravity_component = NodePath("GravityComponent")
