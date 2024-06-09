@@ -33,7 +33,6 @@ func load_new_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals
 	toggle_room(current_room, false)
 
 	toggle_room(new_room, true)
-	camera.enabled = true
 
 	new_room.player = player
 	new_room.setup_player(entry_door, exit_direction)
@@ -51,7 +50,6 @@ func toggle_room(room: Room, should_be_active: bool) -> void:
 
 
 func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
-	camera.enabled = false
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
 	load_new_room.call_deferred(new_room, entry_door, exit_direction)

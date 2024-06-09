@@ -9,31 +9,31 @@
 [ext_resource type="PackedScene" uid="uid://bhgvwnre44ugb" path="res://scenes/components/advanced_jump_component.tscn" id="7_fd5fn"]
 [ext_resource type="Texture2D" uid="uid://bdfna5bobinqt" path="res://addons/2d_lights_and_shadows_neutral_point_light.webp" id="8_y83mj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjhdr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_68jin"]
 atlas = ExtResource("4_pwqt4")
-region = Rect2(304, 112, 16, 16)
+region = Rect2(304, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_odvnp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jopr"]
 atlas = ExtResource("4_pwqt4")
-region = Rect2(288, 112, 16, 16)
+region = Rect2(288, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1shmi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8h2c"]
 atlas = ExtResource("4_pwqt4")
-region = Rect2(336, 112, 16, 16)
+region = Rect2(336, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ktfn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_exg3b"]
 atlas = ExtResource("4_pwqt4")
-region = Rect2(288, 112, 16, 16)
+region = Rect2(288, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpp12"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_righs"]
 atlas = ExtResource("4_pwqt4")
-region = Rect2(320, 112, 16, 16)
+region = Rect2(320, 128, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ave6c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fjhdr")
+"texture": SubResource("AtlasTexture_68jin")
 }],
 "loop": true,
 "name": &"fall",
@@ -41,7 +41,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_odvnp")
+"texture": SubResource("AtlasTexture_0jopr")
 }],
 "loop": true,
 "name": &"idle",
@@ -49,7 +49,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1shmi")
+"texture": SubResource("AtlasTexture_q8h2c")
 }],
 "loop": true,
 "name": &"jump",
@@ -57,10 +57,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ktfn")
+"texture": SubResource("AtlasTexture_exg3b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gpp12")
+"texture": SubResource("AtlasTexture_righs")
 }],
 "loop": true,
 "name": &"walk",
