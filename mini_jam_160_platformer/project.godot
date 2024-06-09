@@ -41,6 +41,7 @@ folder_colors={
 "res://addons/": "red",
 "res://scenes/": "orange",
 "res://scenes/levels/": "green",
+"res://scenes/one_way_wall/": "blue",
 "res://scripts/": "yellow"
 }
 

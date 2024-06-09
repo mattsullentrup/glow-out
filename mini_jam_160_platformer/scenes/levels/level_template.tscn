@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="2_jypi0"]
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="3_vu80b"]
 [ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/key.tscn" id="6_uvrb7"]
-[ext_resource type="PackedScene" uid="uid://vambnod1vkbf" path="res://scenes/level_exit.tscn" id="7_og3pe"]
+[ext_resource type="PackedScene" uid="uid://vambnod1vkbf" path="res://scenes/levels/level_exit.tscn" id="7_og3pe"]
 
 [node name="LevelTemplate" type="Node2D" node_paths=PackedStringArray("player", "level_exit", "key", "start_position", "camera")]
 script = ExtResource("1_pc1v3")
