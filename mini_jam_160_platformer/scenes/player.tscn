@@ -68,8 +68,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_esj2h"]
-radius = 5.0
-height = 12.0
+radius = 6.0
+height = 14.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component")]
 z_index = 1
@@ -90,10 +90,9 @@ texture_scale = 5.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ave6c")
 animation = &"fall"
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 10)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_esj2h")
 
 [node name="GravityComponent" parent="." instance=ExtResource("3_pdeae")]

@@ -9,12 +9,11 @@ size = Vector2(16, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_suayu")
-centered = false
 offset = Vector2(0, -1)
 region_enabled = true
 region_rect = Rect2(288, 80, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 4)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_52trk")
 one_way_collision = true
