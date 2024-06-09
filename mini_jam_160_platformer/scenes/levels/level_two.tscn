@@ -27,3 +27,6 @@ light_timer = NodePath("../LightTimer")
 position = Vector2(162, 146)
 
 [node name="Room1" parent="Rooms" index="0" instance=ExtResource("2_wj6cs")]
+
+[node name="Room2" parent="Rooms" index="1" instance=ExtResource("2_wj6cs")]
+position = Vector2(0, 184)

@@ -9,13 +9,15 @@ var level_paths: Array[PackedScene] = [
 		LEVEL_TWO,
 ]
 
-@onready var current_level: int
+@onready var current_level: int = 1
 
 
 func start_new_level() -> void:
 	current_level += 1
 	if level_paths.size() < current_level:
-		current_level -= 1
+		#current_level -= 1
+		get_tree().change_scene_to_file.call_deferred("res://scenes/end_screen.tscn")
+		return
 	var new_level: PackedScene = level_paths[current_level - 1]
 	get_tree().change_scene_to_packed.call_deferred(new_level)
 

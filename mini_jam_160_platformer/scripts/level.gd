@@ -19,7 +19,6 @@ func _ready() -> void:
 	level_exit.player_exiting_level.connect(LevelManager._on_player_exiting_level)
 
 	current_room = initial_room
-	#toggle_room(current_room, true)
 
 	for child: Room in get_tree().get_nodes_in_group("rooms"):
 		if child != initial_room:
