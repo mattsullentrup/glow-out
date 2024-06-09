@@ -15,6 +15,7 @@ static var current_room: Room
 func _ready() -> void:
 	player.position = start_position.position
 	player.reset_physics_interpolation()
+	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
 
 	level_exit.player_exiting_level.connect(LevelManager._on_player_exiting_level)
 
@@ -58,3 +59,9 @@ func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction
 
 func _on_key_player_found_key() -> void:
 	player.enable_key()
+
+
+func _on_player_collided_with_spike() -> void:
+	var restart_pos = current_room.get_node("RestartPosition") as Marker2D
+	player.position = restart_pos.global_position
+	player.reset_physics_interpolation()
