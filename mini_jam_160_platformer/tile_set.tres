@@ -1,7 +1,6 @@
-[gd_resource type="TileSet" load_steps=47 format=3 uid="uid://c1oit26yj6eev"]
+[gd_resource type="TileSet" load_steps=46 format=3 uid="uid://c1oit26yj6eev"]
 
 [ext_resource type="Texture2D" uid="uid://bn8votpu7n3ye" path="res://addons/kenney_assets/colored_packed.png" id="1_0hgnn"]
-[ext_resource type="PackedScene" uid="uid://biy07jpe7jpsa" path="res://scenes/spike.tscn" id="1_5qr75"]
 [ext_resource type="PackedScene" uid="uid://c3mb6i6x1if21" path="res://scenes/one_way_wall/left_one_way_wall.tscn" id="1_7jwoj"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0t0je"]
@@ -54,7 +53,6 @@ tile_data = PackedInt32Array(65536, 1245185, 0, 1, 1310721, 3, 65537, 1245185, 4
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3cjjf"]
 resource_name = "gameplay_items"
-scenes/1/scene = ExtResource("1_5qr75")
 scenes/2/scene = ExtResource("1_7jwoj")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_78vk8"]
