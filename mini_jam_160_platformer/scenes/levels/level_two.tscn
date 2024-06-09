@@ -49,10 +49,10 @@ script = ExtResource("4_nq5il")
 script = ExtResource("5_ait4q")
 
 [node name="Key" parent="Rooms/RoomTemplate" instance=ExtResource("6_llh2g")]
-position = Vector2(56, 168)
+position = Vector2(64, 152)
 
 [node name="LevelExit" parent="Rooms/RoomTemplate" instance=ExtResource("7_pqvon")]
-position = Vector2(104, 168)
+position = Vector2(120, 152)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.15, 0.15, 0.15, 1)
