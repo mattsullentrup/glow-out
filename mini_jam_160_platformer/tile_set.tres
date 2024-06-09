@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=46 format=3 uid="uid://c1oit26yj6eev"]
 
-[ext_resource type="Texture2D" uid="uid://bn8votpu7n3ye" path="res://addons/kenney_assets/colored_packed.png" id="1_0hgnn"]
+[ext_resource type="Texture2D" path="res://addons/kenney_assets/colored_packed.png" id="1_0hgnn"]
 [ext_resource type="PackedScene" uid="uid://c3mb6i6x1if21" path="res://scenes/one_way_wall/left_one_way_wall.tscn" id="1_7jwoj"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0t0je"]

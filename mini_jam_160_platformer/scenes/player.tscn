@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_aywbf"]
 [ext_resource type="PackedScene" uid="uid://8ae3us1t6ex0" path="res://scenes/player_components/gravity_component.tscn" id="3_pdeae"]
-[ext_resource type="Texture2D" uid="uid://c7n4vxmhmwbcq" path="res://addons/kenney_assets/colored-transparent_packed.png" id="4_pwqt4"]
+[ext_resource type="Texture2D" path="res://addons/kenney_assets/colored-transparent_packed.png" id="4_pwqt4"]
 [ext_resource type="PackedScene" uid="uid://dvxfyko6go10j" path="res://scenes/player_components/input_component.tscn" id="4_rqgq7"]
 [ext_resource type="PackedScene" uid="uid://c5go11ej7di68" path="res://scenes/player_components/movement_component.tscn" id="5_8s3m7"]
 [ext_resource type="PackedScene" uid="uid://dy66inpcaslud" path="res://scenes/player_components/animation_component.tscn" id="6_6271w"]
 [ext_resource type="PackedScene" uid="uid://bhgvwnre44ugb" path="res://scenes/player_components/advanced_jump_component.tscn" id="7_fd5fn"]
-[ext_resource type="Texture2D" uid="uid://bdfna5bobinqt" path="res://addons/2d_lights_and_shadows_neutral_point_light.webp" id="8_y83mj"]
+[ext_resource type="Texture2D" path="res://addons/2d_lights_and_shadows_neutral_point_light.webp" id="8_y83mj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68jin"]
 atlas = ExtResource("4_pwqt4")
