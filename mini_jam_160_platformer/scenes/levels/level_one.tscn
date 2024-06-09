@@ -40,6 +40,13 @@ animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
 light_timer = NodePath("../LightTimer")
 
+[node name="AnimationComponent" parent="Player" index="6" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AdvancedJumpComponent" parent="Player" index="7" node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer")]
+jump_buffer_timer = NodePath("JumpBufferTimer")
+coyote_timer = NodePath("CoyoteTimer")
+
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(160, 120)
 
@@ -96,3 +103,5 @@ autostart = true
 [connection signal="body_entered" from="RoomExits/RoomExit1" to="RoomExits/RoomExit1" method="_on_body_entered"]
 [connection signal="body_entered" from="RoomExits/RoomExit2" to="RoomExits/RoomExit2" method="_on_body_entered"]
 [connection signal="player_found_key" from="Rooms/Room3/Key" to="." method="_on_key_player_found_key"]
+
+[editable path="Player"]
