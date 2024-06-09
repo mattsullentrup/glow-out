@@ -19,7 +19,7 @@ func _ready() -> void:
 func setup_player(entry_door, exit_direction) -> void:
 	#player.velocity = Vector2.ZERO
 	var new_position = entry_door.position + Globals.direction_pairs[exit_direction] * offset
-	player.position = new_position
+	player.position.x = new_position.x
 	player.set_physics_process(true)
 	player.set_process(true)
 	player.reset_physics_interpolation()
