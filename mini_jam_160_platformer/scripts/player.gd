@@ -9,7 +9,17 @@ extends CharacterBody2D
 @export var animation_component: AnimationComponent
 @export var jump_component: AdvancedJumpComponent
 
+@export var light_timer: Timer
+
 var has_key := false
+
+
+func _process(_delta: float) -> void:
+	#$PointLight2D.texture_scale = remap(light_timer.time_left, light_timer.wait_time, 0, 3, 0)
+	var tween = create_tween()
+	tween.tween_property(
+			$PointLight2D, "texture_scale", 0, light_timer.time_left
+			).set_ease(Tween.EASE_OUT)
 
 
 func _physics_process(delta: float) -> void:

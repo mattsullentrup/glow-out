@@ -81,9 +81,9 @@ jump_component = NodePath("AdvancedJumpComponent")
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-shadow_enabled = true
 texture = ExtResource("8_y83mj")
-texture_scale = 50.0
+offset = Vector2(0, 4)
+texture_scale = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ave6c")

@@ -31,13 +31,14 @@ tile_set = ExtResource("3_q0fuq")
 anchor_mode = 0
 process_callback = 0
 
-[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component") instance=ExtResource("2_ypko2")]
+[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "light_timer") instance=ExtResource("2_ypko2")]
 position = Vector2(152, 96)
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
+light_timer = NodePath("../LightTimer")
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(160, 120)
@@ -86,6 +87,11 @@ script = ExtResource("2_v2db8")
 
 [node name="Key" parent="Rooms/Room3" instance=ExtResource("6_tcviu")]
 position = Vector2(160, 144)
+
+[node name="LightTimer" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+autostart = true
 
 [connection signal="body_entered" from="RoomExits/RoomExit1" to="RoomExits/RoomExit1" method="_on_body_entered"]
 [connection signal="body_entered" from="RoomExits/RoomExit2" to="RoomExits/RoomExit2" method="_on_body_entered"]
