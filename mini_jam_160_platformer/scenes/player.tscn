@@ -106,4 +106,4 @@ sprite = NodePath("../AnimatedSprite2D")
 [node name="AdvancedJumpComponent" parent="." node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer") instance=ExtResource("7_fd5fn")]
 jump_buffer_timer = NodePath("JumpBufferTimer")
 coyote_timer = NodePath("CoyoteTimer")
-jump_velocity = -300.0
+jump_velocity = -290.0

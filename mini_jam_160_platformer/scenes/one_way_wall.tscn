@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3bt1xt5pgrmu"]
+
+[ext_resource type="Texture2D" uid="uid://bn8votpu7n3ye" path="res://addons/kenney_assets/colored_packed.png" id="1_suayu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52trk"]
+
+[node name="OneWayWall" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_52trk")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_suayu")
+region_enabled = true
+region_rect = Rect2(288, 80, 16, 16)

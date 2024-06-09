@@ -24,6 +24,8 @@ func _ready() -> void:
 	for child: Room in get_tree().get_nodes_in_group("rooms"):
 		if child != initial_room:
 			toggle_room(child, false)
+		else:
+			camera.position = initial_room.position
 
 	for exit: RoomExit in get_tree().get_nodes_in_group("exits"):
 		exit.player_exited_room.connect(_on_player_exited_room)
