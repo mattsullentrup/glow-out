@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=36 format=3 uid="uid://c1oit26yj6eev"]
+[gd_resource type="TileSet" load_steps=40 format=3 uid="uid://c1oit26yj6eev"]
 
 [ext_resource type="Texture2D" uid="uid://bn8votpu7n3ye" path="res://addons/kenney_assets/colored_packed.png" id="1_0hgnn"]
 
@@ -19,6 +19,9 @@ tile_data = PackedInt32Array(0, 1179649, 3, 65536, 1376257, 4, 1, 1245185, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_p4103"]
 tile_data = PackedInt32Array(0, 1376257, 3, 65536, 1179649, 4, 65537, 1245185, 0)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_vn0tg"]
+tile_data = PackedInt32Array(0, 1179649, 3, 65536, 1310721, 1, 1, 1376257, 4)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_c73ij"]
 tile_data = PackedInt32Array(0, 1179649, 3, 65536, 1310721, 1, 1, 1245185, 2)
@@ -64,6 +67,15 @@ polygon = PackedVector2Array(-8, -8, 8, 8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_owstl"]
 polygon = PackedVector2Array(-8, -8, 8, -8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r2qw5"]
+polygon = PackedVector2Array(8, -8, -6, -8, -5, -4, 0, -2, 8, -1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ltcj0"]
+polygon = PackedVector2Array(8, -8, -8, -8, -8, -1, 8, -1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r5ha5"]
+polygon = PackedVector2Array(-8, -8, 6, -8, 5, -4, 0, -2, -8, -1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rht0t"]
 polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
@@ -526,8 +538,17 @@ texture = ExtResource("1_0hgnn")
 19:6/0 = 0
 20:6/0 = 0
 21:6/0 = 0
+21:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_r2qw5")
+21:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 8, -8, 8, -1, 0, -2, -5, -4)
+21:6/0/physics_layer_0/polygon_0/one_way = true
 22:6/0 = 0
+22:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ltcj0")
+22:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, -1, 8, -1)
+22:6/0/physics_layer_0/polygon_0/one_way = true
 23:6/0 = 0
+23:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_r5ha5")
+23:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, -8, -8, -8, -8, -1, 0, -2, 5, -4)
+23:6/0/physics_layer_0/polygon_0/one_way = true
 24:6/0 = 0
 25:6/0 = 0
 26:6/0 = 0
@@ -1335,3 +1356,4 @@ pattern_10 = SubResource("TileMapPattern_w8t8l")
 pattern_11 = SubResource("TileMapPattern_t5mt7")
 pattern_12 = SubResource("TileMapPattern_fno7g")
 pattern_13 = SubResource("TileMapPattern_p4103")
+pattern_14 = SubResource("TileMapPattern_vn0tg")
