@@ -8,18 +8,16 @@ extends CharacterBody2D
 @export var movement_component: MovementComponent
 @export var animation_component: AnimationComponent
 @export var jump_component: AdvancedJumpComponent
-
 @export var light_timer: Timer
+
+@export_subgroup("Values")
+@export var initial_light_amount: float = 30
 
 var has_key := false
 
 
-func _process(_delta: float) -> void:
-	#$PointLight2D.texture_scale = remap(light_timer.time_left, light_timer.wait_time, 0, 3, 0)
-	var tween = create_tween()
-	tween.tween_property(
-			$PointLight2D, "texture_scale", 0, light_timer.time_left
-			).set_ease(Tween.EASE_OUT)
+func _ready() -> void:
+	reset_light()
 
 
 func _physics_process(delta: float) -> void:
@@ -31,6 +29,13 @@ func _physics_process(delta: float) -> void:
 	animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling)
 
 	move_and_slide()
+
+
+func reset_light() -> void:
+	var tween = create_tween()
+	tween.tween_property(
+			$PointLight2D, "texture_scale", 0, light_timer.time_left
+			).set_ease(Tween.EASE_OUT)
 
 
 func enable_key() -> void:

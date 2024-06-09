@@ -52,7 +52,6 @@ func toggle_room(room: Room, should_be_active: bool) -> void:
 
 func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
 	camera.enabled = false
-	#var new_pos = new_room.get_child(0).global_position
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
 	load_new_room.call_deferred(new_room, entry_door, exit_direction)
