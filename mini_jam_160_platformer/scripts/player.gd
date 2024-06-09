@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 
+signal player_collided_with_spike
+
 @export_subgroup("Nodes")
 @export var gravity_component: GravityComponent
 @export var input_component: InputComponent
@@ -14,6 +16,7 @@ extends CharacterBody2D
 @export var initial_light_amount: float = 30
 
 var has_key := false
+var spike_tile_coords: Vector2i = Vector2(22, 0)
 
 
 func _ready() -> void:
@@ -40,3 +43,12 @@ func reset_light() -> void:
 
 func enable_key() -> void:
 	has_key = true
+
+
+func _on_hitbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if not body is TileMapLayer:
+		return
+
+	var coords = body.get_coords_for_body_rid(body_rid)
+	if body.get_cell_atlas_coords(coords) == spike_tile_coords:
+		player_collided_with_spike.emit()

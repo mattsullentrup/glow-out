@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=45 format=3 uid="uid://c1oit26yj6eev"]
+[gd_resource type="TileSet" load_steps=47 format=3 uid="uid://c1oit26yj6eev"]
 
 [ext_resource type="Texture2D" uid="uid://bn8votpu7n3ye" path="res://addons/kenney_assets/colored_packed.png" id="1_0hgnn"]
+[ext_resource type="PackedScene" uid="uid://biy07jpe7jpsa" path="res://scenes/spike.tscn" id="1_5qr75"]
 [ext_resource type="PackedScene" uid="uid://c3mb6i6x1if21" path="res://scenes/one_way_wall/left_one_way_wall.tscn" id="1_7jwoj"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0t0je"]
@@ -52,7 +53,8 @@ tile_data = PackedInt32Array(0, 1376257, 6, 1, 1441793, 6, 2, 1507329, 6)
 tile_data = PackedInt32Array(65536, 1245185, 0, 1, 1310721, 3, 65537, 1245185, 4)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3cjjf"]
-resource_name = "one_way_wall"
+resource_name = "gameplay_items"
+scenes/1/scene = ExtResource("1_5qr75")
 scenes/2/scene = ExtResource("1_7jwoj")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_78vk8"]
@@ -78,6 +80,9 @@ polygon = PackedVector2Array(-8, -8, 8, -8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r2qw5"]
 polygon = PackedVector2Array(8, -8, -6, -8, -5, -4, 0, -2, 8, -1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wuogj"]
+polygon = PackedVector2Array(-4, -1, 0, 6, 4, -1, 8, 8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8vubn"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -148,19 +153,18 @@ texture = ExtResource("1_0hgnn")
 16:0/0 = 0
 17:0/0 = 0
 18:0/0 = 0
-18:0/0/terrain_set = 0
 18:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_78vk8")
 18:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:0/0 = 0
-19:0/0/terrain_set = 0
 19:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_s5jkn")
 19:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 20:0/0 = 0
-20:0/0/terrain_set = 0
 20:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 20:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 21:0/0 = 0
 22:0/0 = 0
+22:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_wuogj")
+22:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 2, 4, 2, 5, 7, -5, 7)
 23:0/0 = 0
 24:0/0 = 0
 25:0/0 = 0
@@ -218,14 +222,12 @@ texture = ExtResource("1_0hgnn")
 16:1/0 = 0
 17:1/0 = 0
 18:1/0 = 0
-18:1/0/terrain_set = 0
 18:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:1/0 = 0
 19:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 20:1/0 = 0
-20:1/0/terrain_set = 0
 20:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 21:1/0 = 0
@@ -287,15 +289,12 @@ texture = ExtResource("1_0hgnn")
 16:2/0 = 0
 17:2/0 = 0
 18:2/0 = 0
-18:2/0/terrain_set = 0
 18:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 18:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:2/0 = 0
-19:2/0/terrain_set = 0
 19:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 19:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 20:2/0 = 0
-20:2/0/terrain_set = 0
 20:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 20:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 21:2/0 = 0
@@ -1357,9 +1356,6 @@ texture = ExtResource("1_0hgnn")
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
-terrain_set_0/mode = 2
-terrain_set_0/terrain_0/name = "Terrain 0"
-terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_2eo36")
 sources/0 = SubResource("TileSetScenesCollectionSource_3cjjf")
 pattern_0 = SubResource("TileMapPattern_0t0je")
