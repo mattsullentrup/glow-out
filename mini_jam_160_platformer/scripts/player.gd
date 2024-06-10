@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 func reset_light() -> void:
 	var tween = create_tween()
 	tween.tween_property(
-			$PointLight2D, "texture_scale", 0, light_timer.time_left
+			$PointLight2D, "texture_scale", 0.2, light_timer.time_left
 			).set_ease(Tween.EASE_OUT)
 
 
