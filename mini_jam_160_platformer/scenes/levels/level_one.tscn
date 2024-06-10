@@ -10,12 +10,11 @@ size = Vector2(16, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uwn4"]
 size = Vector2(16, 64)
 
-[node name="LevelOne" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "start_position", "camera") instance=ExtResource("1_h55ns")]
+[node name="LevelOne" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "camera") instance=ExtResource("1_h55ns")]
 initial_room = NodePath("Rooms/Room1")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")
-start_position = NodePath("StartPosition")
 camera = NodePath("Camera2D")
 
 [node name="BackgroundTileMapLayer" parent="." index="4"]
@@ -32,9 +31,6 @@ movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
 light_timer = NodePath("../LightTimer")
-
-[node name="StartPosition" parent="." index="8"]
-position = Vector2(34, 56)
 
 [node name="RoomExit" parent="RoomExits" index="0" node_paths=PackedStringArray("room_one", "room_two")]
 position = Vector2(320, 136)

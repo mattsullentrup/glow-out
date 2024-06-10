@@ -13,7 +13,7 @@ static var current_room: Room
 
 
 func _ready() -> void:
-	player.position = start_position.position
+	player.position = start_position.global_position
 	player.reset_physics_interpolation()
 	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
 

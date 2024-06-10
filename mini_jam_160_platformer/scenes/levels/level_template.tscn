@@ -13,7 +13,7 @@ script = ExtResource("1_pc1v3")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")
-start_position = NodePath("StartPosition")
+start_position = NodePath("LevelStartPosition")
 camera = NodePath("Camera2D")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -48,7 +48,7 @@ animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
 light_timer = NodePath("../LightTimer")
 
-[node name="StartPosition" type="Marker2D" parent="."]
+[node name="LevelStartPosition" type="Marker2D" parent="."]
 
 [node name="RoomExits" type="Node" parent="."]
 
