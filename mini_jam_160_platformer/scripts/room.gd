@@ -15,20 +15,14 @@ func _ready() -> void:
 			exits.append(node)
 
 
-func setup_player(entry_door, exit_direction) -> void:
+func setup_player(door_exited: RoomExit, new_room_start_position: Marker2D) -> void:
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 
-	match exit_direction:
-		Globals.Directions.SOUTH:
-			player.position.y = entry_door.position.y + offset
-			player.position.x = entry_door.position.x
-		Globals.Directions.NORTH:
-			player.position = Vector2(entry_door.position.x, entry_door.position.y - offset)
-			player.velocity = Vector2.UP * initial_player_upwards_velocity
-		Globals.Directions.EAST:
-			player.position.x = entry_door.position.x + offset
-		Globals.Directions.WEST:
-			player.position.x = entry_door.position.x - offset
+	if new_room_start_position != null:
+		player.position = new_room_start_position.global_position
+
+	if door_exited.is_upwards_exit:
+		player.velocity = Vector2.UP * initial_player_upwards_velocity
 
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	player.reset_physics_interpolation()

@@ -2,20 +2,16 @@ class_name RoomExit
 extends Area2D
 
 
-signal player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions)
+signal player_exited_room(new_room: Room, door_exited: RoomExit, new_room_start_position: Marker2D)
 
-@export var room_one_exit_direction: Globals.Directions
-@export var room_two_exit_direction: Globals.Directions
-
-@export var room_one: Room
-@export var room_two: Room
+@export var is_upwards_exit := false
+@export var sister_exit: RoomExit
+@export var new_room: Room
+@export var new_room_start_position: Marker2D
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
 
-	if Level.current_room == room_one:
-		player_exited_room.emit(room_two, self, room_one_exit_direction)
-	elif Level.current_room == room_two:
-		player_exited_room.emit(room_one, self, room_two_exit_direction)
+	player_exited_room.emit(new_room, self, new_room_start_position)

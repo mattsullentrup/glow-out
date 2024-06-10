@@ -6,14 +6,15 @@ extends Node2D
 @export var player: Player
 @export var level_exit: LevelExit
 @export var key: Key
-@export var start_position: Marker2D
+@export var level_start_position: Marker2D
 @export var camera: Camera2D
 
 static var current_room: Room
+var door_last_exited: RoomExit
 
 
 func _ready() -> void:
-	player.position = start_position.global_position
+	player.position = level_start_position.global_position
 	player.reset_physics_interpolation()
 	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
 
@@ -33,13 +34,14 @@ func _ready() -> void:
 		exit.player_exited_room.connect(_on_player_exited_room)
 
 
-func load_new_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
+func load_new_room(new_room: Room, door_exited: RoomExit, new_room_start_position: Marker2D) -> void:
 	toggle_room(current_room, false)
 
 	toggle_room(new_room, true)
 	current_room = new_room
+	door_last_exited = door_exited
 	new_room.player = player
-	new_room.setup_player(entry_door, exit_direction)
+	new_room.setup_player(door_exited, new_room_start_position)
 
 
 func toggle_room(room: Room, should_be_active: bool) -> void:
@@ -49,14 +51,14 @@ func toggle_room(room: Room, should_be_active: bool) -> void:
 	else:
 		room.process_mode = Node.PROCESS_MODE_DISABLED
 		#remove_child(room)
-	room.visible = should_be_active
+	#room.visible = should_be_active
 
 
-func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
+func _on_player_exited_room(new_room: Room, entry_door: RoomExit, start_position: Marker2D) -> void:
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
 
-	load_new_room.call_deferred(new_room, entry_door, exit_direction)
+	load_new_room.call_deferred(new_room, entry_door, start_position)
 
 
 func _on_key_player_found_key() -> void:
@@ -64,6 +66,6 @@ func _on_key_player_found_key() -> void:
 
 
 func _on_player_collided_with_spike() -> void:
-	var restart_pos = current_room.get_node("StartPosition") as Marker2D
+	var restart_pos = door_last_exited.sister_exit.new_room_start_position as Marker2D
 	player.position = restart_pos.global_position
 	player.reset_physics_interpolation()

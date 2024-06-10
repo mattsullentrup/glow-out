@@ -9,7 +9,7 @@ var level_paths: Array[PackedScene] = [
 		LEVEL_TWO,
 ]
 
-@onready var current_level: int = 1
+@onready var current_level: int = 0
 
 
 func start_new_level() -> void:

@@ -75,7 +75,6 @@ height = 14.0
 radius = 9.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component")]
-modulate = Color(52, 52, 1, 1)
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_aywbf")
@@ -87,6 +86,7 @@ jump_component = NodePath("AdvancedJumpComponent")
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(8, 10)
 texture = ExtResource("8_y83mj")
 texture_scale = 5.0
 
@@ -94,9 +94,10 @@ texture_scale = 5.0
 self_modulate = Color(50, 50, 1, 1)
 sprite_frames = SubResource("SpriteFrames_ave6c")
 animation = &"fall"
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(8, 9)
 shape = SubResource("CapsuleShape2D_esj2h")
 
 [node name="GravityComponent" parent="." instance=ExtResource("3_pdeae")]
@@ -115,6 +116,7 @@ jump_velocity = -290.0
 coyote_time = 0.1
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(8, 8)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
