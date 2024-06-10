@@ -23,11 +23,12 @@ Globals="*res://scripts/autoloads/globals.gd"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/mode=4
 window/size/resizable=false
 window/stretch/mode="viewport"
+window/stretch/scale=6.0
 window/stretch/scale_mode="integer"
 
 [editor]
@@ -91,7 +92,6 @@ common/max_physics_steps_per_frame=16
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 environment/ssao/quality=0
+viewport/hdr_2d=true
 2d/snap/snap_2d_transforms_to_pixel=true

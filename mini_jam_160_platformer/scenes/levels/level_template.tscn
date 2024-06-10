@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dtx6ao6lixuw1"]
+[gd_scene load_steps=8 format=4 uid="uid://dtx6ao6lixuw1"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_pc1v3"]
 [ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="2_f4txp"]
 [ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="2_jypi0"]
+[ext_resource type="Environment" uid="uid://cqm3h80edew7" path="res://environment.tres" id="2_vaesb"]
 [ext_resource type="Script" path="res://scripts/room_exit.gd" id="3_vu80b"]
 [ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/key.tscn" id="6_uvrb7"]
 [ext_resource type="PackedScene" uid="uid://vambnod1vkbf" path="res://scenes/levels/level_exit.tscn" id="7_og3pe"]
@@ -17,6 +18,11 @@ camera = NodePath("Camera2D")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_vaesb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LightTimer" type="Timer" parent="."]
 wait_time = 30.0
