@@ -35,10 +35,9 @@ func load_new_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals
 	toggle_room(current_room, false)
 
 	toggle_room(new_room, true)
-
+	current_room = new_room
 	new_room.player = player
 	new_room.setup_player(entry_door, exit_direction)
-	current_room = new_room
 
 
 func toggle_room(room: Room, should_be_active: bool) -> void:
@@ -54,6 +53,7 @@ func toggle_room(room: Room, should_be_active: bool) -> void:
 func _on_player_exited_room(new_room: Room, entry_door: RoomExit, exit_direction: Globals.Directions) -> void:
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
+
 	load_new_room.call_deferred(new_room, entry_door, exit_direction)
 
 
@@ -62,6 +62,6 @@ func _on_key_player_found_key() -> void:
 
 
 func _on_player_collided_with_spike() -> void:
-	var restart_pos = current_room.get_node("RestartPosition") as Marker2D
+	var restart_pos = current_room.get_node("StartPosition") as Marker2D
 	player.position = restart_pos.global_position
 	player.reset_physics_interpolation()

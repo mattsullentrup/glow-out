@@ -3,7 +3,7 @@ extends Node2D
 
 
 @export var initial_player_upwards_velocity: float = 200
-@export var initial_player_position: Node2D
+@export_enum("northwest:-1", "northeast:1") var initial_player_upwards_direction: int
 
 var exits: Array[RoomExit] = []
 var player: Player
@@ -17,12 +17,29 @@ func _ready() -> void:
 
 
 func setup_player(entry_door, exit_direction) -> void:
-	#player.velocity = Vector2.ZERO
-	var new_position = entry_door.position + Globals.direction_pairs[exit_direction] * offset
-	player.position.x = new_position.x
-	player.set_physics_process(true)
-	player.set_process(true)
+	player.velocity = Vector2.ZERO
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+
+	match exit_direction:
+		Globals.Directions.SOUTH:
+			player.position.y = entry_door.position.y + offset
+			player.position.x = entry_door.position.x
+		Globals.Directions.NORTH:
+			#player.velocity += Vector2(initial_player_upwards_direction, -1) * initial_player_upwards_velocity
+			move_player.call_deferred(entry_door)
+		Globals.Directions.EAST:
+			player.position.x = entry_door.position.x + offset
+		Globals.Directions.WEST:
+			player.position.x = entry_door.position.x - offset
+
+	player.velocity = Vector2.ZERO
+	player.process_mode = Node.PROCESS_MODE_INHERIT
 	player.reset_physics_interpolation()
 
-	if exit_direction == Globals.Directions.NORTH:
-		player.velocity = -Vector2.ONE * initial_player_upwards_velocity
+
+func move_player(entry_door) -> void:
+	var tween = create_tween()
+	tween.tween_property(
+			player, "position", $StartPosition.global_position, 0.4
+			).from(Vector2(entry_door.position.x, entry_door.position.y - offset))
+	await tween.finished

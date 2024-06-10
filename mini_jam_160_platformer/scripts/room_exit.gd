@@ -15,11 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
 
-	body.set_physics_process(false)
-	body.set_process(false)
-	set_physics_process(false)
-	set_process(false)
-
 	if Level.current_room == room_one:
 		player_exited_room.emit(room_two, self, room_one_exit_direction)
 	elif Level.current_room == room_two:

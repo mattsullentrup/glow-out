@@ -114,7 +114,7 @@ jump_velocity = -290.0
 coyote_time = 0.1
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 2)
