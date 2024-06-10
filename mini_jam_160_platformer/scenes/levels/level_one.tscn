@@ -7,13 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xra"]
 size = Vector2(2, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akier"]
+size = Vector2(2, 48)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb41a"]
 size = Vector2(2, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrjhp"]
-size = Vector2(2, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5yog"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfke2"]
 size = Vector2(2, 48)
 
 [node name="LevelOne" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_h55ns")]
@@ -37,7 +37,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAA
 tile_map_data = PackedByteArray("AAAAAAAAAQASAAMAAAAAAAEAAQAUAAEAAAAAAAIAAQAUAAEAAAABAAAAAQATAAIAAAACAAAAAQATAAIAAAACAAQAAQATAAAAAAADAAAAAQATAAIAAAADAAQAAQATAAAAAAAEAAQAAQATAAAAAAAFAAQAAQATAAAAAAAGAAQAAQATAAAAAAAHAAQAAQATAAAAAAAIAAQAAQATAAAAAAAJAAUAAQAUAAEAAAAJAAQAAQAUAAAAAAAJAAYAAQAUAAEAAAAJAAcAAQAUAAEAAAAJAAgAAQAUAAEAAAAJAAkAAQAUAAEAAAAJAAoAAQASAAQAAAAKAAoAAQATAAAAAAALAAoAAQATAAAAAAAMAAoAAQATAAAAAAANAAoAAQATAAAAAAAOAAoAAQATAAAAAAAPAAoAAQATAAAAAAAQAAoAAQATAAAAAAARAAoAAQATAAAAAAASAAoAAQATAAAAAAATAAoAAQATAAAAAAAEAAAAAQATAAIAAAAFAAAAAQATAAIAAAAGAAAAAQATAAIAAAAHAAAAAQATAAIAAAAIAAAAAQATAAIAAAAJAAAAAQATAAIAAAAKAAAAAQATAAIAAAALAAAAAQATAAIAAAAMAAAAAQATAAIAAAANAAEAAQASAAEAAAANAAAAAQATAAMAAAANAAIAAQASAAEAAAANAAMAAQASAAEAAAANAAQAAQASAAEAAAANAAUAAQASAAEAAAANAAYAAQASAAIAAAAOAAYAAQATAAIAAAAPAAYAAQATAAIAAAAQAAYAAQATAAIAAAARAAYAAQATAAIAAAASAAYAAQATAAIAAAATAAYAAQATAAIAAAAPAAEAAQATAAEAAAAFAAYAAQATAAEAAAACAAkAAQATAAEAAAAAAAMAAQAUAAEAAAAAAAQAAQASAAQAAAABAAQAAQATAAAAAAAnAAYAAQAXAAMAAAAoAAYAAQAXAAMAAAAmAAAAAQATAAIAAAAnAAAAAQATAAMAAAAnAAEAAQASAAEAAAAUAAoAAQATAAAAAAAVAAoAAQATAAAAAAAdAAoAAQATAAAAAAAWAAoAAQATAAAAAAAXAAoAAQATAAAAAAAYAAoAAQATAAAAAAAZAAoAAQATAAAAAAAaAAoAAQATAAAAAAAbAAoAAQATAAAAAAAcAAoAAQATAAAAAAAeAAoAAQATAAAAAAAfAAoAAQATAAAAAAAgAAoAAQATAAAAAAAhAAoAAQATAAAAAAAiAAoAAQATAAAAAAAjAAoAAQATAAAAAAAkAAoAAQATAAAAAAAlAAoAAQATAAAAAAAUAAUAAQAUAAEAAAAUAAYAAQAUAAIAAAAVAAQAAQAVAAQAAAAUAAQAAQASAAMAAAAiAAcAAQAVAAYAAAAjAAcAAQAWAAYAAAAkAAcAAQAXAAYAAAAeAAgAAQAWAAYAAAAfAAgAAQAXAAYAAAAdAAgAAQAVAAYAAAAWAAMAAQAVAAQAAAAVAAMAAQASAAMAAAAWAAIAAQASAAMAAAAXAAIAAQATAAIAAAAYAAIAAQATAAIAAAAZAAIAAQATAAIAAAAaAAIAAQATAAIAAAAbAAIAAQATAAIAAAAcAAIAAQATAAIAAAAdAAIAAQAVAAQAAAAfAAEAAQATAAIAAAAgAAEAAQATAAIAAAAhAAAAAQASAAMAAAAhAAEAAQAVAAQAAAAiAAAAAQATAAIAAAAjAAAAAQATAAIAAAAkAAAAAQATAAIAAAAlAAAAAQATAAIAAAAdAAEAAQASAAMAAAAeAAEAAQATAAIAAAApAAYAAQAXAAMAAAAqAAYAAQAXAAMAAAArAAYAAQAXAAMAAAAsAAYAAQAXAAMAAAAoAAEAAQAXAAMAAAApAAEAAQAXAAMAAAAnAAIAAQAXAAMAAAAoAAIAAQAXAAMAAAApAAIAAQAXAAMAAAAqAAAAAQAXAAMAAAArAAAAAQAXAAMAAAAqAAEAAQAXAAMAAAAsAAAAAQAXAAMAAAAtAAAAAQAXAAMAAAAuAAAAAQAXAAMAAAAvAAAAAQAXAAMAAAAwAAAAAQAXAAMAAAAxAAAAAQAXAAMAAAAyAAAAAQAXAAMAAAAzAAAAAQAXAAMAAAA0AAAAAQAXAAMAAAA1AAAAAQAXAAMAAAA2AAAAAQAXAAMAAAAuAAYAAQAXAAMAAAAuAAcAAQAXAAMAAAAuAAgAAQAXAAMAAAAuAAkAAQAXAAMAAAAuAAoAAQAXAAMAAAAvAAoAAQAXAAMAAAAwAAoAAQAXAAMAAAAxAAoAAQAXAAMAAAAyAAoAAQAXAAMAAAAzAAoAAQAXAAMAAAA0AAoAAQAXAAMAAAA1AAoAAQAXAAMAAAA2AAoAAQAXAAMAAAAmAAYAAQAXAAMAAAAmAAoAAQAXAAMAAAAmAAkAAQAXAAMAAAAmAAgAAQAXAAMAAAAmAAcAAQAXAAMAAAAtAAYAAQAXAAMAAAA1AAQAAQAXAAMAAAA0AAQAAQAXAAMAAAAzAAQAAQAXAAMAAAAyAAQAAQAXAAMAAAA1AAcAAQAXAAMAAAA0AAcAAQAXAAMAAAAzAAcAAQAXAAMAAAAyAAcAAQAXAAMAAAAyAAUAAQAXAAMAAAAyAAYAAQAXAAMAAAAwAAgAAQAXAAMAAAAyAAEAAAAAAAAAAgAyAAIAAAAAAAAAAgAyAAMAAAAAAAAAAgAzAAUAAQAXAAMAAAAzAAYAAQAXAAMAAAA0AAUAAQAXAAMAAAA0AAYAAQAXAAMAAAA1AAUAAQAXAAMAAAA1AAYAAQAXAAMAAAAwAAUAAQAXAAMAAAA3AAAAAQAXAAMAAAA3AAYAAQAWAAYAAAA3AAgAAQAWAAYAAAA3AAoAAQAXAAMAAAA4AAAAAQAXAAMAAAA4AAYAAQAXAAYAAAA4AAgAAQAXAAYAAAA4AAoAAQAXAAMAAAA5AAAAAQAXAAMAAAA5AAYAAQAXAAMAAAA5AAgAAQAXAAMAAAA5AAoAAQAXAAMAAAA6AAAAAQAXAAMAAAA6AAQAAQAXAAMAAAA7AAAAAQAXAAMAAAA7AAQAAQAXAAMAAAA2AAgAAQAVAAYAAAA5AAQAAQAXAAMAAAA5AAUAAQAXAAMAAAA5AAcAAQAXAAMAAAA5AAkAAQAXAAMAAAA7AAEAAQAXAAMAAAA7AAIAAQAXAAMAAAA7AAMAAQAXAAMAAAA2AAYAAQAVAAYAAAA2AAQAAQAVAAYAAAA3AAQAAQAWAAYAAAA4AAQAAQAXAAYAAAA=")
 
 [node name="Player" parent="." index="8" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "light_timer")]
-position = Vector2(682, 76)
+position = Vector2(682, 80)
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
@@ -62,55 +62,41 @@ position = Vector2(320, 0)
 [node name="Room3" parent="Rooms" index="2" instance=ExtResource("2_lkdrd")]
 position = Vector2(640, 0)
 
-[node name="RoomExit" parent="Rooms/RoomExits" index="0" node_paths=PackedStringArray("sister_exit", "new_room", "new_room_start_position") instance=ExtResource("2_a6hjp")]
+[node name="RoomExit" parent="Rooms/RoomExits" index="0" node_paths=PackedStringArray("new_room_one", "new_room_two") instance=ExtResource("2_a6hjp")]
 position = Vector2(316, 136)
-sister_exit = NodePath("../RoomExit2")
-new_room = NodePath("../../Room2")
-new_room_start_position = NodePath("../RoomExit2/StartPosition")
+new_room_one = NodePath("../../Room2")
+new_room_two = NodePath("../../Room1")
 
 [node name="CollisionShape2D" parent="Rooms/RoomExits/RoomExit" index="0"]
 shape = SubResource("RectangleShape2D_e5xra")
 
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit" index="1"]
-position = Vector2(-16, 16)
+[node name="StartPosition" parent="Rooms/RoomExits/RoomExit/CollisionShape2D" index="0"]
+position = Vector2(20, 12)
 
-[node name="RoomExit2" parent="Rooms/RoomExits" index="1" node_paths=PackedStringArray("sister_exit", "new_room", "new_room_start_position") instance=ExtResource("2_a6hjp")]
-position = Vector2(324, 136)
-sister_exit = NodePath("../RoomExit")
-new_room = NodePath("../../Room1")
-new_room_start_position = NodePath("../RoomExit/StartPosition")
+[node name="CollisionShape2D2" parent="Rooms/RoomExits/RoomExit" index="1"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_akier")
+
+[node name="StartPosition" parent="Rooms/RoomExits/RoomExit/CollisionShape2D2" index="0"]
+position = Vector2(-24, 12)
+
+[node name="RoomExit2" parent="Rooms/RoomExits" index="1" node_paths=PackedStringArray("new_room_one", "new_room_two") instance=ExtResource("2_a6hjp")]
+position = Vector2(640, 72)
+new_room_one = NodePath("../../Room3")
+new_room_two = NodePath("../../Room2")
 
 [node name="CollisionShape2D" parent="Rooms/RoomExits/RoomExit2" index="0"]
 shape = SubResource("RectangleShape2D_vb41a")
 
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit2" index="1"]
-position = Vector2(16, 16)
+[node name="StartPosition" parent="Rooms/RoomExits/RoomExit2/CollisionShape2D" index="0"]
+position = Vector2(12, 8)
 
-[node name="RoomExit3" parent="Rooms/RoomExits" index="2" node_paths=PackedStringArray("sister_exit", "new_room", "new_room_start_position") instance=ExtResource("2_a6hjp")]
-position = Vector2(636, 72)
-sister_exit = NodePath("../RoomExit4")
-new_room = NodePath("../../Room3")
-new_room_start_position = NodePath("../RoomExit4/StartPosition")
+[node name="CollisionShape2D2" parent="Rooms/RoomExits/RoomExit2" index="1"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_hfke2")
 
-[node name="CollisionShape2D" parent="Rooms/RoomExits/RoomExit3" index="0"]
-shape = SubResource("RectangleShape2D_nrjhp")
-
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit3" index="1"]
-position = Vector2(-16, 16)
-
-[node name="RoomExit4" parent="Rooms/RoomExits" index="3" node_paths=PackedStringArray("sister_exit", "new_room", "new_room_start_position") instance=ExtResource("2_a6hjp")]
-position = Vector2(644, 72)
-sister_exit = NodePath("../RoomExit3")
-new_room = NodePath("../../Room2")
-new_room_start_position = NodePath("../RoomExit3/StartPosition")
-
-[node name="CollisionShape2D" parent="Rooms/RoomExits/RoomExit4" index="0"]
-shape = SubResource("RectangleShape2D_o5yog")
-
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit4" index="1"]
-position = Vector2(16, 16)
+[node name="StartPosition" parent="Rooms/RoomExits/RoomExit2/CollisionShape2D2" index="0"]
+position = Vector2(-24, 8)
 
 [editable path="Rooms/RoomExits/RoomExit"]
 [editable path="Rooms/RoomExits/RoomExit2"]
-[editable path="Rooms/RoomExits/RoomExit3"]
-[editable path="Rooms/RoomExits/RoomExit4"]

@@ -10,7 +10,7 @@ extends Node2D
 @export var camera: Camera2D
 
 static var current_room: Room
-var door_last_exited: RoomExit
+var current_room_restart_position: Marker2D
 
 
 func _ready() -> void:
@@ -39,7 +39,7 @@ func load_new_room(new_room: Room, door_exited: RoomExit, new_room_start_positio
 
 	toggle_room(new_room, true)
 	current_room = new_room
-	door_last_exited = door_exited
+	current_room_restart_position = new_room_start_position
 	new_room.player = player
 	new_room.setup_player(door_exited, new_room_start_position)
 
@@ -66,6 +66,6 @@ func _on_key_player_found_key() -> void:
 
 
 func _on_player_collided_with_spike() -> void:
-	var restart_pos = door_last_exited.sister_exit.new_room_start_position as Marker2D
+	var restart_pos = current_room_restart_position
 	player.position = restart_pos.global_position
 	player.reset_physics_interpolation()
