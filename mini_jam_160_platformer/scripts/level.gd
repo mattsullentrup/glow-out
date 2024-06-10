@@ -10,7 +10,8 @@ extends Node2D
 @export var camera: Camera2D
 
 static var current_room: Room
-var current_room_restart_position: Marker2D
+
+@onready var current_room_restart_position: Marker2D = level_start_position
 
 
 func _ready() -> void:
@@ -23,25 +24,22 @@ func _ready() -> void:
 	current_room = initial_room
 
 	for child: Room in get_tree().get_nodes_in_group("rooms"):
-		child.player = player
 		if child != initial_room:
 			toggle_room(child, false)
 		else:
 			camera.position = initial_room.position
-			child.player = player
 
 	for exit: RoomExit in get_tree().get_nodes_in_group("exits"):
 		exit.player_exited_room.connect(_on_player_exited_room)
 
 
-func load_new_room(new_room: Room, door_exited: RoomExit, new_room_start_position: Marker2D) -> void:
+func load_new_room(new_room: Room, is_playing_moving_up: bool, new_room_start_position: Marker2D) -> void:
 	toggle_room(current_room, false)
 
 	toggle_room(new_room, true)
 	current_room = new_room
 	current_room_restart_position = new_room_start_position
-	new_room.player = player
-	new_room.setup_player(door_exited, new_room_start_position)
+	new_room.setup_player(player, is_playing_moving_up, new_room_start_position)
 
 
 func toggle_room(room: Room, should_be_active: bool) -> void:
@@ -54,11 +52,11 @@ func toggle_room(room: Room, should_be_active: bool) -> void:
 	#room.visible = should_be_active
 
 
-func _on_player_exited_room(new_room: Room, entry_door: RoomExit, start_position: Marker2D) -> void:
+func _on_player_exited_room(new_room: Room, is_player_moving_up: bool, start_position: Marker2D) -> void:
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
 
-	load_new_room.call_deferred(new_room, entry_door, start_position)
+	load_new_room.call_deferred(new_room, is_player_moving_up, start_position)
 
 
 func _on_key_player_found_key() -> void:
