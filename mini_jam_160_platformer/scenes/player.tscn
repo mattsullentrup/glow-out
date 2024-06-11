@@ -21,13 +21,13 @@ region = Rect2(288, 128, 16, 16)
 atlas = ExtResource("4_pwqt4")
 region = Rect2(336, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_exg3b"]
-atlas = ExtResource("4_pwqt4")
-region = Rect2(288, 128, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_righs"]
 atlas = ExtResource("4_pwqt4")
 region = Rect2(320, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exg3b"]
+atlas = ExtResource("4_pwqt4")
+region = Rect2(288, 128, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ave6c"]
 animations = [{
@@ -57,10 +57,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_exg3b")
+"texture": SubResource("AtlasTexture_righs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_righs")
+"texture": SubResource("AtlasTexture_exg3b")
 }],
 "loop": true,
 "name": &"walk",
@@ -93,7 +93,7 @@ texture_scale = 5.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(50, 50, 1, 1)
 sprite_frames = SubResource("SpriteFrames_ave6c")
-animation = &"fall"
+animation = &"walk"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
