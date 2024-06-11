@@ -13,7 +13,7 @@ signal player_collided_with_spike
 @export var light_timer: Timer
 
 @export_subgroup("Values")
-@export var initial_light_amount: float = 30
+@export var initial_light_amount: float = 10
 
 var has_key := false
 var spike_tile_coords: Vector2i = Vector2(22, 0)
