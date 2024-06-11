@@ -11,6 +11,7 @@ signal player_collided_with_spike
 @export var animation_component: AnimationComponent
 @export var jump_component: AdvancedJumpComponent
 @export var light_timer: Timer
+@export var footstep_sound: AudioStreamPlayer2D
 
 @export_subgroup("Values")
 @export var initial_light_amount: float = 10
@@ -52,3 +53,9 @@ func _on_hitbox_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_inde
 	var coords = body.get_coords_for_body_rid(body_rid)
 	if body.get_cell_atlas_coords(coords) == spike_tile_coords:
 		player_collided_with_spike.emit()
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $AnimatedSprite2D.animation == "walk" and is_on_floor():
+		footstep_sound.pitch_scale = randf_range(0.95, 1.05)
+		footstep_sound.play()
