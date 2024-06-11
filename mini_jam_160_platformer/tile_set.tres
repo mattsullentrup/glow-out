@@ -227,7 +227,6 @@ texture = ExtResource("1_0hgnn")
 18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:1/0 = 0
 19:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
-19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 20:1/0 = 0
 20:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jppsu")
 20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
