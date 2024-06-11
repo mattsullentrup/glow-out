@@ -32,6 +32,18 @@ func _physics_process(delta: float) -> void:
 			input_component.get_jump_input_released())
 	animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling)
 
+
+	if $AnimatedSprite2D.is_playing() and $AnimatedSprite2D.animation == "walk":
+		$GPUParticles2D.emitting = true
+		if velocity.x > 0:
+			$GPUParticles2D.process_material.emission_shape_offset.x = 1
+			$GPUParticles2D.process_material.direction.x = -1
+		else:
+			$GPUParticles2D.process_material.emission_shape_offset.x = 16
+			$GPUParticles2D.process_material.direction.x = 1
+	else:
+		$GPUParticles2D.emitting = false
+
 	move_and_slide()
 
 
