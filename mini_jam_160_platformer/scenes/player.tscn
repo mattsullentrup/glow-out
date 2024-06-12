@@ -102,7 +102,7 @@ metadata/_edit_group_ = true
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(8, 10)
 texture = ExtResource("8_y83mj")
-texture_scale = 5.0
+texture_scale = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(50, 50, 1, 1)
