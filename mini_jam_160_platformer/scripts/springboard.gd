@@ -5,6 +5,10 @@ extends Area2D
 @export var force: float = 500
 
 
+func _ready() -> void:
+	$AnimatedSprite2D.frame = 0
+
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is not Player:
 		return

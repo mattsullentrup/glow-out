@@ -65,6 +65,7 @@ position = Vector2(228, 160)
 [node name="Springboard4" parent="Rooms/Room1" index="1" instance=ExtResource("3_2cksf")]
 position = Vector2(188, 144)
 rotation = 3.14159
+spring_direction = 1
 
 [node name="Springboard2" parent="Rooms/Room1" index="2" instance=ExtResource("3_2cksf")]
 position = Vector2(36, 124)
