@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://e075lsqt1qve"]
+
+[ext_resource type="Texture2D" uid="uid://c7n4vxmhmwbcq" path="res://addons/kenney_assets/colored-transparent_packed.png" id="1_7n4j1"]
+[ext_resource type="Script" path="res://scripts/springboard.gd" id="1_oer48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbox8"]
+size = Vector2(16, 12)
+
+[sub_resource type="Animation" id="Animation_v7df6"]
+resource_name = "spring"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.16, 0.23, 0.31, 0.4, 0.61, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 2, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cowft"]
+_data = {
+"spring": SubResource("Animation_v7df6")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb4vx"]
+atlas = ExtResource("1_7n4j1")
+region = Rect2(336, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtyt7"]
+atlas = ExtResource("1_7n4j1")
+region = Rect2(352, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_217pv"]
+atlas = ExtResource("1_7n4j1")
+region = Rect2(368, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6lyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb4vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtyt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_217pv")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 5.0
+}]
+
+[node name="Springboard" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_oer48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 10)
+shape = SubResource("RectangleShape2D_xbox8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cowft")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l6lyu")
+animation = &"spring"
+centered = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
