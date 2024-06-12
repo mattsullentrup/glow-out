@@ -21,7 +21,7 @@ var spike_tile_coords: Vector2i = Vector2(22, 0)
 
 
 func _ready() -> void:
-	reset_light()
+	decrease_light()
 
 
 func _physics_process(delta: float) -> void:
@@ -47,11 +47,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func reset_light() -> void:
+func decrease_light() -> void:
+	$PointLight2D.texture_scale = initial_light_amount
 	var tween = create_tween()
 	tween.tween_property(
 			$PointLight2D, "texture_scale", 0.2, light_timer.time_left
-			).set_ease(Tween.EASE_OUT)
+			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).from_current()
 
 
 func enable_key() -> void:
