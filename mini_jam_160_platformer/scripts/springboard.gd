@@ -16,6 +16,10 @@ func _on_body_entered(body: Node2D) -> void:
 	var player = body as Player
 	#var force: Vector2 = spring_direction * force
 	match spring_direction:
+		Globals.Directions.NORTH when player.is_on_floor():
+			var jump_component = player.get_node("AdvancedJumpComponent") as AdvancedJumpComponent
+			jump_component.is_jumping = true
+			player.velocity.y = -force
 		Globals.Directions.NORTH:
 			player.velocity.y = -force
 		Globals.Directions.SOUTH:
