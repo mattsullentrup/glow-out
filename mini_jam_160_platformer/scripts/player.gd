@@ -4,12 +4,15 @@ extends CharacterBody2D
 
 signal player_collided_with_spike
 
-@export_subgroup("Nodes")
+@export_subgroup("Components")
 @export var gravity_component: GravityComponent
 @export var input_component: InputComponent
 @export var movement_component: MovementComponent
 @export var animation_component: AnimationComponent
 @export var jump_component: AdvancedJumpComponent
+@export var particles_component: ParticlesComponent
+
+@export_subgroup("References")
 @export var light_timer: Timer
 @export var footstep_sound: AudioStreamPlayer2D
 
@@ -31,18 +34,7 @@ func _physics_process(delta: float) -> void:
 	jump_component.handle_jump(self, input_component.get_jump_input(),
 			input_component.get_jump_input_released())
 	animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling)
-
-
-	if $AnimatedSprite2D.is_playing() and $AnimatedSprite2D.animation == "walk":
-		$GPUParticles2D.emitting = true
-		if velocity.x > 0:
-			$GPUParticles2D.process_material.emission_shape_offset.x = 1
-			$GPUParticles2D.process_material.direction.x = -1
-		else:
-			$GPUParticles2D.process_material.emission_shape_offset.x = 16
-			$GPUParticles2D.process_material.direction.x = 1
-	else:
-		$GPUParticles2D.emitting = false
+	particles_component.handle_particles(velocity)
 
 	move_and_slide()
 
