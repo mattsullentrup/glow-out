@@ -2,7 +2,7 @@ class_name Room
 extends Node2D
 
 
-var initial_player_upwards_velocity: float = 300
+var initial_player_upwards_velocity: float = 350
 
 var exits: Array[RoomExit] = []
 var offset: int = 16
@@ -21,7 +21,9 @@ func setup_player(player: Player, is_playing_moving_up: bool, new_room_start_pos
 		player.position = new_room_start_position.global_position
 
 	if is_playing_moving_up:
+		print(player.velocity)
 		player.velocity = Vector2.UP * initial_player_upwards_velocity
+		print(player.velocity)
 
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	player.reset_physics_interpolation()

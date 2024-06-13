@@ -7,7 +7,6 @@ signal player_exited_room(new_room: Room, is_playing_moving_up: bool, new_room_s
 @export var is_upwards_exit := false
 @export var new_room_one: Room
 @export var new_room_two: Room
-#@export var new_room_start_position: Marker2D
 
 
 func _on_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, local_shape_index: int) -> void:

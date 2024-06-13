@@ -51,7 +51,9 @@ func enable_key() -> void:
 	has_key = true
 
 
-func _on_hitbox_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+func _on_hitbox_body_shape_entered(
+		body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int
+) -> void:
 	if not body is TileMapLayer:
 		return
 
