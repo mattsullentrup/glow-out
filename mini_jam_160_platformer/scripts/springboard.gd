@@ -12,8 +12,7 @@ var vector_two_directions: Dictionary = {
 	315: -Vector2.ONE
 }
 
-@export var force: float = 500
-
+var force: float = 450
 var spring_direction: Vector2
 
 
