@@ -18,11 +18,11 @@ size = Vector2(32, 2)
 size = Vector2(32, 2)
 
 [node name="LevelThree" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_q6e0w")]
-initial_room = NodePath("Rooms/Room2")
+initial_room = NodePath("Rooms/Room1")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")
-level_start_position = NodePath("Rooms/RoomExits/RoomExit2/CollisionShape2D/StartPosition")
+level_start_position = NodePath("LevelStartPosition")
 camera = NodePath("Camera2D")
 
 [node name="CanvasModulate" parent="." index="0"]

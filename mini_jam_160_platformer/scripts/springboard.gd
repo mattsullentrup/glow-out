@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var direction_pairs: Dictionary = {
+var vector_two_directions: Dictionary = {
 	0: Vector2.UP,
 	45: Vector2(1, -1),
 	90: Vector2.RIGHT,
@@ -26,7 +26,7 @@ func initialize_directions() -> void:
 	var rot = roundi(rotation_degrees)
 	while rot < 0:
 		rot += 360
-	var dir = direction_pairs.get(rot)
+	var dir = vector_two_directions.get(rot)
 	spring_direction = dir
 
 
@@ -35,21 +35,21 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	var player = body as Player
+	var jump_component = player.get_node("AdvancedJumpComponent") as AdvancedJumpComponent
+	jump_component.already_jumped = true
 	match spring_direction:
 		Vector2.UP when player.is_on_floor():
-			var jump_component = player.get_node("AdvancedJumpComponent") as AdvancedJumpComponent
 			jump_component.is_jumping = true
-			player.velocity.y = -force
+			player.velocity = Vector2(player.velocity.x, -force)
 		Vector2.UP:
-			player.velocity.y = -force
+			player.velocity = Vector2(player.velocity.x, -force)
 		Vector2.DOWN:
-			player.velocity.y = force
+			player.velocity = Vector2(player.velocity.x, force)
 		Vector2.RIGHT:
-			player.velocity.x = force
+			player.velocity = Vector2(force, player.velocity.y)
 		Vector2.LEFT:
-			player.velocity.x = -force
+			player.velocity = Vector2(-force, player.velocity.y)
 		_:
 			player.velocity = spring_direction * force
-			#printerr("Invalid direction")
 
 	$AnimationPlayer.play("spring")
