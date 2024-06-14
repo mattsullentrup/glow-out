@@ -1,8 +1,18 @@
-[gd_scene load_steps=8 format=4 uid="uid://c82b0hf40yvsk"]
+[gd_scene load_steps=12 format=4 uid="uid://c82b0hf40yvsk"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_h55ns"]
 [ext_resource type="PackedScene" uid="uid://bcl0nsj6yqdmp" path="res://scenes/levels/room_exit.tscn" id="2_a6hjp"]
 [ext_resource type="PackedScene" uid="uid://gp2s423gd2e" path="res://scenes/levels/room_template.tscn" id="2_lkdrd"]
+[ext_resource type="Script" path="res://scripts/camera_area_2d.gd" id="5_lvj3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghxro"]
+size = Vector2(304, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5th1f"]
+size = Vector2(304, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opu6j"]
+size = Vector2(304, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xra"]
 size = Vector2(2, 48)
@@ -36,13 +46,14 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAA
 [node name="LevelTileMapLayer" parent="." index="6"]
 tile_map_data = PackedByteArray("AAAAAAAAAQASAAMAAAAAAAEAAQAUAAEAAAAAAAIAAQAUAAEAAAABAAAAAQATAAIAAAACAAAAAQATAAIAAAACAAQAAQATAAAAAAADAAAAAQATAAIAAAADAAQAAQATAAAAAAAEAAQAAQATAAAAAAAFAAQAAQATAAAAAAAGAAQAAQATAAAAAAAHAAQAAQATAAAAAAAIAAQAAQATAAAAAAAJAAUAAQAUAAEAAAAJAAQAAQAUAAAAAAAJAAYAAQAUAAEAAAAJAAcAAQAUAAEAAAAJAAgAAQAUAAEAAAAJAAkAAQAUAAEAAAAJAAoAAQASAAQAAAAKAAoAAQATAAAAAAALAAoAAQATAAAAAAAMAAoAAQATAAAAAAANAAoAAQATAAAAAAAOAAoAAQATAAAAAAAPAAoAAQATAAAAAAAQAAoAAQATAAAAAAARAAoAAQATAAAAAAASAAoAAQATAAAAAAATAAoAAQATAAAAAAAEAAAAAQATAAIAAAAFAAAAAQATAAIAAAAGAAAAAQATAAIAAAAHAAAAAQATAAIAAAAIAAAAAQATAAIAAAAJAAAAAQATAAIAAAAKAAAAAQATAAIAAAALAAAAAQATAAIAAAAMAAAAAQATAAIAAAANAAEAAQASAAEAAAANAAAAAQATAAMAAAANAAIAAQASAAEAAAANAAMAAQASAAEAAAANAAQAAQASAAEAAAANAAUAAQASAAEAAAANAAYAAQASAAIAAAAOAAYAAQATAAIAAAAPAAYAAQATAAIAAAAQAAYAAQATAAIAAAARAAYAAQATAAIAAAASAAYAAQATAAIAAAATAAYAAQATAAIAAAAPAAEAAQATAAEAAAAFAAYAAQATAAEAAAACAAkAAQATAAEAAAAAAAMAAQAUAAEAAAAAAAQAAQASAAQAAAABAAQAAQATAAAAAAAnAAYAAQAXAAMAAAAoAAYAAQAXAAMAAAAmAAAAAQATAAIAAAAnAAAAAQATAAMAAAAnAAEAAQASAAEAAAAUAAoAAQATAAAAAAAVAAoAAQATAAAAAAAdAAoAAQATAAAAAAAWAAoAAQATAAAAAAAXAAoAAQATAAAAAAAYAAoAAQATAAAAAAAZAAoAAQATAAAAAAAaAAoAAQATAAAAAAAbAAoAAQATAAAAAAAcAAoAAQATAAAAAAAeAAoAAQATAAAAAAAfAAoAAQATAAAAAAAgAAoAAQATAAAAAAAhAAoAAQATAAAAAAAiAAoAAQATAAAAAAAjAAoAAQATAAAAAAAkAAoAAQATAAAAAAAlAAoAAQATAAAAAAAUAAUAAQAUAAEAAAAUAAYAAQAUAAIAAAAVAAQAAQAVAAQAAAAUAAQAAQASAAMAAAAiAAcAAQAVAAYAAAAjAAcAAQAWAAYAAAAkAAcAAQAXAAYAAAAeAAgAAQAWAAYAAAAfAAgAAQAXAAYAAAAdAAgAAQAVAAYAAAAWAAMAAQAVAAQAAAAVAAMAAQASAAMAAAAWAAIAAQASAAMAAAAXAAIAAQATAAIAAAAYAAIAAQATAAIAAAAZAAIAAQATAAIAAAAaAAIAAQATAAIAAAAbAAIAAQATAAIAAAAcAAIAAQATAAIAAAAdAAIAAQAVAAQAAAAfAAEAAQATAAIAAAAgAAEAAQATAAIAAAAhAAAAAQASAAMAAAAhAAEAAQAVAAQAAAAiAAAAAQATAAIAAAAjAAAAAQATAAIAAAAkAAAAAQATAAIAAAAlAAAAAQATAAIAAAAdAAEAAQASAAMAAAAeAAEAAQATAAIAAAApAAYAAQAXAAMAAAAqAAYAAQAXAAMAAAArAAYAAQAXAAMAAAAsAAYAAQAXAAMAAAAoAAEAAQAXAAMAAAApAAEAAQAXAAMAAAAnAAIAAQAXAAMAAAAoAAIAAQAXAAMAAAApAAIAAQAXAAMAAAAqAAAAAQAXAAMAAAArAAAAAQAXAAMAAAAqAAEAAQAXAAMAAAAsAAAAAQAXAAMAAAAtAAAAAQAXAAMAAAAuAAAAAQAXAAMAAAAvAAAAAQAXAAMAAAAwAAAAAQAXAAMAAAAxAAAAAQAXAAMAAAAyAAAAAQAXAAMAAAAzAAAAAQAXAAMAAAA0AAAAAQAXAAMAAAA1AAAAAQAXAAMAAAA2AAAAAQAXAAMAAAAuAAYAAQAXAAMAAAAuAAcAAQAXAAMAAAAuAAgAAQAXAAMAAAAuAAkAAQAXAAMAAAAuAAoAAQAXAAMAAAAvAAoAAQAXAAMAAAAwAAoAAQAXAAMAAAAxAAoAAQAXAAMAAAAyAAoAAQAXAAMAAAAzAAoAAQAXAAMAAAA0AAoAAQAXAAMAAAA1AAoAAQAXAAMAAAA2AAoAAQAXAAMAAAAmAAYAAQAXAAMAAAAmAAoAAQAXAAMAAAAmAAkAAQAXAAMAAAAmAAgAAQAXAAMAAAAmAAcAAQAXAAMAAAAtAAYAAQAXAAMAAAA1AAQAAQAXAAMAAAA0AAQAAQAXAAMAAAAzAAQAAQAXAAMAAAAyAAQAAQAXAAMAAAA1AAcAAQAXAAMAAAA0AAcAAQAXAAMAAAAzAAcAAQAXAAMAAAAyAAcAAQAXAAMAAAAyAAUAAQAXAAMAAAAyAAYAAQAXAAMAAAAwAAgAAQAXAAMAAAAyAAEAAAAAAAAAAgAyAAIAAAAAAAAAAgAyAAMAAAAAAAAAAgAzAAUAAQAXAAMAAAAzAAYAAQAXAAMAAAA0AAUAAQAXAAMAAAA0AAYAAQAXAAMAAAA1AAUAAQAXAAMAAAA1AAYAAQAXAAMAAAAwAAUAAQAXAAMAAAA3AAAAAQAXAAMAAAA3AAYAAQAWAAYAAAA3AAgAAQAWAAYAAAA3AAoAAQAXAAMAAAA4AAAAAQAXAAMAAAA4AAYAAQAXAAYAAAA4AAgAAQAXAAYAAAA4AAoAAQAXAAMAAAA5AAAAAQAXAAMAAAA5AAYAAQAXAAMAAAA5AAgAAQAXAAMAAAA5AAoAAQAXAAMAAAA6AAAAAQAXAAMAAAA6AAQAAQAXAAMAAAA7AAAAAQAXAAMAAAA7AAQAAQAXAAMAAAA2AAgAAQAVAAYAAAA5AAQAAQAXAAMAAAA5AAUAAQAXAAMAAAA5AAcAAQAXAAMAAAA5AAkAAQAXAAMAAAA7AAEAAQAXAAMAAAA7AAIAAQAXAAMAAAA7AAMAAQAXAAMAAAA2AAYAAQAVAAYAAAA2AAQAAQAVAAYAAAA3AAQAAQAWAAYAAAA4AAQAAQAXAAYAAAA=")
 
-[node name="Player" parent="." index="8" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "light_timer", "footstep_sound")]
+[node name="Player" parent="." index="8" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "light_timer", "footstep_sound")]
 position = Vector2(682, 80)
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
+particles_component = NodePath("ParticlesComponent")
 light_timer = NodePath("../LightTimer")
 footstep_sound = NodePath("FootstepSound")
 
@@ -57,11 +68,41 @@ position = Vector2(384, 152)
 
 [node name="Room1" parent="Rooms" index="0" instance=ExtResource("2_lkdrd")]
 
+[node name="CameraArea2D" type="Area2D" parent="Rooms/Room1" index="0" groups=["camera_area"]]
+collision_mask = 2
+script = ExtResource("5_lvj3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room1/CameraArea2D" index="0"]
+position = Vector2(160, 96)
+shape = SubResource("RectangleShape2D_ghxro")
+debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
+
 [node name="Room2" parent="Rooms" index="1" instance=ExtResource("2_lkdrd")]
 position = Vector2(320, 0)
 
+[node name="CameraArea2D" type="Area2D" parent="Rooms/Room2" index="0" groups=["camera_area"]]
+collision_mask = 2
+script = ExtResource("5_lvj3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room2/CameraArea2D" index="0"]
+position = Vector2(160, 96)
+shape = SubResource("RectangleShape2D_5th1f")
+debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
+
 [node name="Room3" parent="Rooms" index="2" instance=ExtResource("2_lkdrd")]
 position = Vector2(640, 0)
+
+[node name="CameraArea2D" type="Area2D" parent="Rooms/Room3" index="0" groups=["camera_area"]]
+collision_mask = 2
+script = ExtResource("5_lvj3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room3/CameraArea2D" index="0"]
+position = Vector2(160, 96)
+shape = SubResource("RectangleShape2D_opu6j")
+debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
+
+[node name="RoomExits" parent="Rooms" index="3"]
+process_mode = 4
 
 [node name="RoomExit" parent="Rooms/RoomExits" index="0" node_paths=PackedStringArray("new_room_one", "new_room_two") instance=ExtResource("2_a6hjp")]
 position = Vector2(316, 136)
@@ -82,6 +123,7 @@ shape = SubResource("RectangleShape2D_akier")
 position = Vector2(-24, 12)
 
 [node name="RoomExit2" parent="Rooms/RoomExits" index="1" node_paths=PackedStringArray("new_room_one", "new_room_two") instance=ExtResource("2_a6hjp")]
+visible = false
 position = Vector2(640, 72)
 new_room_one = NodePath("../../Room3")
 new_room_two = NodePath("../../Room2")
@@ -98,6 +140,10 @@ shape = SubResource("RectangleShape2D_hfke2")
 
 [node name="StartPosition" parent="Rooms/RoomExits/RoomExit2/CollisionShape2D2" index="0"]
 position = Vector2(-24, 8)
+
+[connection signal="body_entered" from="Rooms/Room1/CameraArea2D" to="Rooms/Room1/CameraArea2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Rooms/Room2/CameraArea2D" to="Rooms/Room2/CameraArea2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Rooms/Room3/CameraArea2D" to="Rooms/Room3/CameraArea2D" method="_on_body_entered"]
 
 [editable path="Rooms/RoomExits/RoomExit"]
 [editable path="Rooms/RoomExits/RoomExit2"]

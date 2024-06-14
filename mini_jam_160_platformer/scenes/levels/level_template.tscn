@@ -38,13 +38,16 @@ tile_set = ExtResource("2_jypi0")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
 
-[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "light_timer", "footstep_sound") instance=ExtResource("2_f4txp")]
+[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "light_timer", "footstep_sound") instance=ExtResource("2_f4txp")]
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
+particles_component = NodePath("ParticlesComponent")
 light_timer = NodePath("../LightTimer")
 footstep_sound = NodePath("FootstepSound")
 

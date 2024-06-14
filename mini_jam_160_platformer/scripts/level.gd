@@ -14,23 +14,29 @@ static var current_room: Room
 @onready var current_room_restart_position: Marker2D = level_start_position
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	player.position = level_start_position.global_position
 	player.reset_physics_interpolation()
+
+
+func _ready() -> void:
 	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
 
 	level_exit.player_exiting_level.connect(LevelManager._on_player_exiting_level)
 
 	current_room = initial_room
 
-	for child: Room in get_tree().get_nodes_in_group("rooms"):
-		if child != initial_room:
-			toggle_room(child, false)
-		else:
-			camera.position = initial_room.position
+	#for child: Room in get_tree().get_nodes_in_group("rooms"):
+		#if child != initial_room:
+			#toggle_room(child, false)
+		#else:
+	#camera.position = initial_room.position
 
-	for exit: RoomExit in get_tree().get_nodes_in_group("exits"):
-		exit.player_exited_room.connect(_on_player_exited_room)
+	#for exit: RoomExit in get_tree().get_nodes_in_group("exits"):
+		#exit.player_exited_room.connect(_on_player_exited_room)
+
+	for area: Area2D in get_tree().get_nodes_in_group("camera_area"):
+		area.camera = camera
 
 
 func load_new_room(new_room: Room, is_playing_moving_up: bool, new_room_start_position: Marker2D) -> void:

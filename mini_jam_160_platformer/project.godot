@@ -50,6 +50,7 @@ folder_colors={
 
 rooms=""
 exits=""
+camera_area=""
 
 [gui]
 
