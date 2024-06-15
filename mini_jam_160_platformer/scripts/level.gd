@@ -44,8 +44,8 @@ func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
 
-	if is_playing_moving_up:
-		player.velocity = Vector2.UP * initial_player_upwards_velocity
+	#if is_playing_moving_up:
+		#player.velocity = Vector2.UP * initial_player_upwards_velocity
 
 
 func _on_player_exited_room(new_room: Room, is_player_moving_up: bool) -> void:

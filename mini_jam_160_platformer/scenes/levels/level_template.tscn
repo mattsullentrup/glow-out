@@ -47,6 +47,7 @@ tile_set = ExtResource("2_jypi0")
 tile_set = ExtResource("2_jypi0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
 anchor_mode = 0
 process_callback = 0
 position_smoothing_speed = 4.0
