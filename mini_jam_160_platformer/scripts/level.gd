@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 
+@export var camera_transition_duration: float = 0.3
 @export var initial_room: Room
 @export var player: Player
 @export var level_exit: LevelExit
@@ -41,11 +42,17 @@ func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 		previous_room = current_room
 		current_room = new_room
 
-	camera.position = new_room.position
-	camera.reset_physics_interpolation()
+	#camera.position = new_room.position
+	#camera.reset_physics_interpolation()
+	var tween = self.create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.tween_property(
+			camera, "global_position", current_room.global_position, camera_transition_duration
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-	#if is_playing_moving_up:
-		#player.velocity = Vector2.UP * initial_player_upwards_velocity
+
+	if is_playing_moving_up:
+		player.velocity = Vector2.UP * initial_player_upwards_velocity
 
 
 func _on_player_exited_room(new_room: Room, is_player_moving_up: bool) -> void:

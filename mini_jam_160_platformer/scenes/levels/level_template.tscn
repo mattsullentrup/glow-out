@@ -50,9 +50,7 @@ tile_set = ExtResource("2_jypi0")
 physics_interpolation_mode = 1
 anchor_mode = 0
 process_callback = 0
-position_smoothing_speed = 4.0
 script = ExtResource("4_u6u3h")
-transition_speed = 7.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "light_timer", "footstep_sound") instance=ExtResource("2_f4txp")]
 gravity_component = NodePath("GravityComponent")

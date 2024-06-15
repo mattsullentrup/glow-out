@@ -92,6 +92,7 @@ scale_max = 2.0
 physics_interpolation_mode = 1
 z_index = 1
 collision_layer = 2
+floor_snap_length = 2.0
 script = ExtResource("1_aywbf")
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
