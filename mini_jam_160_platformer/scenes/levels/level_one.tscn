@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c82b0hf40yvsk"]
+[gd_scene load_steps=8 format=4 uid="uid://c82b0hf40yvsk"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_h55ns"]
 [ext_resource type="PackedScene" uid="uid://bcl0nsj6yqdmp" path="res://scenes/levels/room_exit.tscn" id="2_a6hjp"]
@@ -14,20 +14,8 @@ size = Vector2(304, 176)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opu6j"]
 size = Vector2(304, 176)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xra"]
-size = Vector2(2, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_akier"]
-size = Vector2(2, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb41a"]
-size = Vector2(2, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfke2"]
-size = Vector2(2, 48)
-
 [node name="LevelOne" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_h55ns")]
-initial_room = NodePath("Rooms/Room1")
+initial_room = NodePath("Rooms/Room2")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")
@@ -101,49 +89,6 @@ position = Vector2(160, 96)
 shape = SubResource("RectangleShape2D_opu6j")
 debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
 
-[node name="RoomExits" parent="Rooms" index="3"]
-process_mode = 4
-
-[node name="RoomExit" parent="Rooms/RoomExits" index="0" node_paths=PackedStringArray("new_room_one", "new_room_two") instance=ExtResource("2_a6hjp")]
-position = Vector2(316, 136)
-new_room_one = NodePath("../../Room2")
-new_room_two = NodePath("../../Room1")
-
-[node name="CollisionShape2D" parent="Rooms/RoomExits/RoomExit" index="0"]
-shape = SubResource("RectangleShape2D_e5xra")
-
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit/CollisionShape2D" index="0"]
-position = Vector2(20, 12)
-
-[node name="CollisionShape2D2" parent="Rooms/RoomExits/RoomExit" index="1"]
-position = Vector2(8, 0)
-shape = SubResource("RectangleShape2D_akier")
-
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit/CollisionShape2D2" index="0"]
-position = Vector2(-24, 12)
-
-[node name="RoomExit2" parent="Rooms/RoomExits" index="1" node_paths=PackedStringArray("new_room_one", "new_room_two") instance=ExtResource("2_a6hjp")]
-visible = false
-position = Vector2(640, 72)
-new_room_one = NodePath("../../Room3")
-new_room_two = NodePath("../../Room2")
-
-[node name="CollisionShape2D" parent="Rooms/RoomExits/RoomExit2" index="0"]
-shape = SubResource("RectangleShape2D_vb41a")
-
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit2/CollisionShape2D" index="0"]
-position = Vector2(12, 8)
-
-[node name="CollisionShape2D2" parent="Rooms/RoomExits/RoomExit2" index="1"]
-position = Vector2(4, 0)
-shape = SubResource("RectangleShape2D_hfke2")
-
-[node name="StartPosition" parent="Rooms/RoomExits/RoomExit2/CollisionShape2D2" index="0"]
-position = Vector2(-24, 8)
-
 [connection signal="body_entered" from="Rooms/Room1/CameraArea2D" to="Rooms/Room1/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/Room2/CameraArea2D" to="Rooms/Room2/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/Room3/CameraArea2D" to="Rooms/Room3/CameraArea2D" method="_on_body_entered"]
-
-[editable path="Rooms/RoomExits/RoomExit"]
-[editable path="Rooms/RoomExits/RoomExit2"]

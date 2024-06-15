@@ -89,6 +89,7 @@ gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "footstep_sound")]
+physics_interpolation_mode = 1
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_aywbf")

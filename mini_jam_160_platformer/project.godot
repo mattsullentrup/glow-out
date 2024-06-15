@@ -89,8 +89,8 @@ jump={
 
 [physics]
 
-common/physics_ticks_per_second=120
-common/max_physics_steps_per_frame=16
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true
 
 [rendering]
 
@@ -98,4 +98,3 @@ textures/canvas_textures/default_texture_filter=0
 environment/ssao/quality=0
 environment/glow/upscale_mode.mobile=1
 viewport/hdr_2d=true
-2d/snap/snap_2d_transforms_to_pixel=true

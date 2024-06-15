@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=4 uid="uid://dtx6ao6lixuw1"]
+[gd_scene load_steps=9 format=4 uid="uid://dtx6ao6lixuw1"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_pc1v3"]
 [ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="2_f4txp"]
 [ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="2_jypi0"]
 [ext_resource type="Environment" uid="uid://cqm3h80edew7" path="res://environment.tres" id="2_vaesb"]
+[ext_resource type="Script" path="res://scripts/fps_label.gd" id="3_r7g4g"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="4_u6u3h"]
 [ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/key.tscn" id="6_uvrb7"]
 [ext_resource type="PackedScene" uid="uid://vambnod1vkbf" path="res://scenes/levels/level_exit.tscn" id="7_og3pe"]
 
 [node name="LevelTemplate" type="Node2D" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera")]
+physics_interpolation_mode = 2
 script = ExtResource("1_pc1v3")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
@@ -23,6 +25,14 @@ color = Color(0, 0, 0, 1)
 environment = ExtResource("2_vaesb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 0, 0.974264, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+script = ExtResource("3_r7g4g")
 
 [node name="LightTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -41,7 +51,7 @@ anchor_mode = 0
 process_callback = 0
 position_smoothing_speed = 4.0
 script = ExtResource("4_u6u3h")
-transition_speed = 5.0
+transition_speed = 7.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "light_timer", "footstep_sound") instance=ExtResource("2_f4txp")]
 gravity_component = NodePath("GravityComponent")
@@ -62,7 +72,5 @@ position = Vector2(64, 120)
 position = Vector2(256, 112)
 
 [node name="Rooms" type="Node" parent="."]
-
-[node name="RoomExits" type="Node" parent="Rooms"]
 
 [connection signal="player_found_key" from="Key" to="." method="_on_key_player_found_key"]

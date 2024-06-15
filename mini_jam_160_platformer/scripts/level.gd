@@ -11,10 +11,16 @@ extends Node2D
 
 static var current_room: Room
 
+var initial_player_upwards_velocity: float = 350
+var previous_room: Room
+
 @onready var current_room_restart_position: Marker2D = level_start_position
 
 
 func _enter_tree() -> void:
+	camera.position = initial_room.position
+	camera.reset_physics_interpolation()
+
 	player.position = level_start_position.global_position
 	player.reset_physics_interpolation()
 
@@ -25,44 +31,25 @@ func _ready() -> void:
 	level_exit.player_exiting_level.connect(LevelManager._on_player_exiting_level)
 
 	current_room = initial_room
-
-	#for child: Room in get_tree().get_nodes_in_group("rooms"):
-		#if child != initial_room:
-			#toggle_room(child, false)
-		#else:
-	#camera.position = initial_room.position
-
-	#for exit: RoomExit in get_tree().get_nodes_in_group("exits"):
-		#exit.player_exited_room.connect(_on_player_exited_room)
-
+#
 	for area: Area2D in get_tree().get_nodes_in_group("camera_area"):
-		area.camera = camera
+		area.player_exited_room.connect(_on_player_exited_room)
 
 
-func load_new_room(new_room: Room, is_playing_moving_up: bool, new_room_start_position: Marker2D) -> void:
-	toggle_room(current_room, false)
+func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
+	if not new_room == current_room:
+		previous_room = current_room
+		current_room = new_room
 
-	toggle_room(new_room, true)
-	current_room = new_room
-	current_room_restart_position = new_room_start_position
-	new_room.setup_player(player, is_playing_moving_up, new_room_start_position)
-
-
-func toggle_room(room: Room, should_be_active: bool) -> void:
-	if should_be_active == true:
-		room.process_mode = Node.PROCESS_MODE_INHERIT
-		#add_child(room)
-	else:
-		room.process_mode = Node.PROCESS_MODE_DISABLED
-		#remove_child(room)
-	#room.visible = should_be_active
-
-
-func _on_player_exited_room(new_room: Room, is_player_moving_up: bool, start_position: Marker2D) -> void:
 	camera.position = new_room.position
 	camera.reset_physics_interpolation()
 
-	load_new_room.call_deferred(new_room, is_player_moving_up, start_position)
+	if is_playing_moving_up:
+		player.velocity = Vector2.UP * initial_player_upwards_velocity
+
+
+func _on_player_exited_room(new_room: Room, is_player_moving_up: bool) -> void:
+	load_new_room.call_deferred(new_room, is_player_moving_up)
 
 
 func _on_key_player_found_key() -> void:
