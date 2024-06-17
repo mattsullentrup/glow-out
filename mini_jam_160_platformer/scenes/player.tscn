@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dy66inpcaslud" path="res://scenes/player_components/animation_component.tscn" id="6_6271w"]
 [ext_resource type="PackedScene" uid="uid://bhgvwnre44ugb" path="res://scenes/player_components/advanced_jump_component.tscn" id="7_fd5fn"]
 [ext_resource type="Texture2D" uid="uid://bdfna5bobinqt" path="res://addons/2d_lights_and_shadows_neutral_point_light.webp" id="8_y83mj"]
-[ext_resource type="AudioStream" uid="uid://b87hf5ywf6red" path="res://addons/footstep_concrete_002.ogg" id="9_51c2a"]
 [ext_resource type="PackedScene" uid="uid://bs0deb2kfmfwm" path="res://scenes/player_components/particles_component.tscn" id="9_66ldv"]
+[ext_resource type="AudioStream" uid="uid://b87hf5ywf6red" path="res://addons/footstep_concrete_002.ogg" id="10_rrmqw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68jin"]
 atlas = ExtResource("4_pwqt4")
@@ -76,15 +76,15 @@ height = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hf7pf"]
 radius = 9.0
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_no3cw"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n6vir"]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(2, 14, 0)
 direction = Vector3(-1, -1, 0)
 spread = 60.0
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
-angular_velocity_min = 50.7
-angular_velocity_max = 50.7
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 
@@ -146,14 +146,9 @@ shape = SubResource("CircleShape2D_hf7pf")
 debug_color = Color(0.7, 0, 0.185268, 0.42)
 
 [node name="FootstepSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_51c2a")
+stream = ExtResource("10_rrmqw")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-show_behind_parent = true
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_no3cw")
+process_material = SubResource("ParticleProcessMaterial_n6vir")
 lifetime = 0.3
-
-[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="body_shape_entered" from="Hitbox" to="." method="_on_hitbox_body_shape_entered"]
