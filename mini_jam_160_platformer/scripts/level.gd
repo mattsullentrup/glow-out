@@ -50,7 +50,6 @@ func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 			camera, "global_position", current_room.global_position, camera_transition_duration
 			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-
 	if is_playing_moving_up:
 		player.velocity = Vector2.UP * initial_player_upwards_velocity
 
