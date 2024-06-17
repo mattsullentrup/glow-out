@@ -33,7 +33,7 @@ func _ready() -> void:
 
 	current_room = initial_room
 #
-	for area: Area2D in get_tree().get_nodes_in_group("camera_area"):
+	for area: Area2D in get_tree().get_nodes_in_group("rooms"):
 		area.player_exited_room.connect(_on_player_exited_room)
 
 

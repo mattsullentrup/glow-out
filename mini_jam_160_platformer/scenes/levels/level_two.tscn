@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://yrij0d0of6h0"]
+[gd_scene load_steps=3 format=4 uid="uid://yrij0d0of6h0"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_dra3a"]
-[ext_resource type="PackedScene" uid="uid://gp2s423gd2e" path="res://scenes/levels/room_template.tscn" id="2_wj6cs"]
-[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/camera_area_2d.tscn" id="3_mwrjb"]
+[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/room.tscn" id="3_mwrjb"]
 
-[node name="LevelTwo" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_dra3a")]
-initial_room = NodePath("Rooms/Room1")
+[node name="LevelTwo" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_dra3a")]
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")
@@ -43,34 +41,22 @@ position = Vector2(256, 152)
 [node name="Key" parent="." index="9"]
 position = Vector2(344, 536)
 
-[node name="Room1" parent="Rooms" index="0" instance=ExtResource("2_wj6cs")]
+[node name="Room" parent="Rooms" index="0" instance=ExtResource("3_mwrjb")]
 
-[node name="CameraArea2D" parent="Rooms/Room1" index="0" instance=ExtResource("3_mwrjb")]
-
-[node name="Room2" parent="Rooms" index="1" instance=ExtResource("2_wj6cs")]
+[node name="Room2" parent="Rooms" index="1" instance=ExtResource("3_mwrjb")]
 position = Vector2(0, 192)
 
-[node name="CameraArea2D" parent="Rooms/Room2" index="0" instance=ExtResource("3_mwrjb")]
-
-[node name="Room3" parent="Rooms" index="2" instance=ExtResource("2_wj6cs")]
+[node name="Room3" parent="Rooms" index="2" instance=ExtResource("3_mwrjb")]
 position = Vector2(-320, 192)
 
-[node name="CameraArea2D" parent="Rooms/Room3" index="0" instance=ExtResource("3_mwrjb")]
-
-[node name="Room4" parent="Rooms" index="3" instance=ExtResource("2_wj6cs")]
+[node name="Room4" parent="Rooms" index="3" instance=ExtResource("3_mwrjb")]
 position = Vector2(320, 192)
 
-[node name="CameraArea2D" parent="Rooms/Room4" index="0" instance=ExtResource("3_mwrjb")]
-
-[node name="Room5" parent="Rooms" index="4" instance=ExtResource("2_wj6cs")]
+[node name="Room5" parent="Rooms" index="4" instance=ExtResource("3_mwrjb")]
 position = Vector2(-320, 0)
 
-[node name="CameraArea2D" parent="Rooms/Room5" index="0" instance=ExtResource("3_mwrjb")]
-
-[node name="Room6" parent="Rooms" index="5" instance=ExtResource("2_wj6cs")]
+[node name="Room6" parent="Rooms" index="5" instance=ExtResource("3_mwrjb")]
 position = Vector2(320, 384)
-
-[node name="CameraArea2D" parent="Rooms/Room6" index="0" instance=ExtResource("3_mwrjb")]
 
 [node name="LevelExit" parent="." index="11"]
 position = Vector2(104, 56)

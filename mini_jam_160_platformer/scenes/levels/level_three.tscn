@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cfq0q677f0mi5"]
+[gd_scene load_steps=4 format=4 uid="uid://cfq0q677f0mi5"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_q6e0w"]
-[ext_resource type="Script" path="res://scripts/room.gd" id="2_3f0fl"]
 [ext_resource type="PackedScene" uid="uid://e075lsqt1qve" path="res://scenes/springboard.tscn" id="3_2cksf"]
-[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/camera_area_2d.tscn" id="5_4swet"]
+[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/room.tscn" id="5_4swet"]
 
-[node name="LevelThree" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_q6e0w")]
-initial_room = NodePath("Rooms/Room6")
+[node name="LevelThree" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_q6e0w")]
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")
@@ -42,102 +40,75 @@ position = Vector2(24, 164)
 [node name="Key" parent="." index="9"]
 position = Vector2(800, 120)
 
-[node name="Room1" type="Node2D" parent="Rooms" index="0" groups=["rooms"]]
-script = ExtResource("2_3f0fl")
+[node name="Room" parent="Rooms" index="0" instance=ExtResource("5_4swet")]
 
-[node name="Springboard" parent="Rooms/Room1" index="0" instance=ExtResource("3_2cksf")]
+[node name="Springboard" parent="Rooms/Room" index="1" instance=ExtResource("3_2cksf")]
 position = Vector2(108, 160)
 
-[node name="CameraArea2D" parent="Rooms/Room1" index="1" instance=ExtResource("5_4swet")]
-
-[node name="Room2" type="Node2D" parent="Rooms" index="1" groups=["rooms"]]
+[node name="Room2" parent="Rooms" index="1" instance=ExtResource("5_4swet")]
 position = Vector2(320, 0)
-script = ExtResource("2_3f0fl")
 
-[node name="Springboard2" parent="Rooms/Room2" index="0" instance=ExtResource("3_2cksf")]
+[node name="Springboard2" parent="Rooms/Room2" index="1" instance=ExtResource("3_2cksf")]
 position = Vector2(124, 168)
 rotation = -0.785398
 
-[node name="Springboard3" parent="Rooms/Room2" index="1" instance=ExtResource("3_2cksf")]
+[node name="Springboard3" parent="Rooms/Room2" index="2" instance=ExtResource("3_2cksf")]
 position = Vector2(48, 64)
-rotation = -4.71239
+rotation = 1.5708
 
-[node name="Springboard4" parent="Rooms/Room2" index="2" instance=ExtResource("3_2cksf")]
+[node name="Springboard4" parent="Rooms/Room2" index="3" instance=ExtResource("3_2cksf")]
 position = Vector2(288, 48)
 rotation = -1.57079
 
-[node name="CameraArea2D" parent="Rooms/Room2" index="3" instance=ExtResource("5_4swet")]
-
-[node name="Room3" type="Node2D" parent="Rooms" index="2" groups=["rooms"]]
+[node name="Room3" parent="Rooms" index="2" instance=ExtResource("5_4swet")]
 position = Vector2(640, 0)
-script = ExtResource("2_3f0fl")
 
-[node name="CameraArea2D" parent="Rooms/Room3" index="0" instance=ExtResource("5_4swet")]
-
-[node name="Room4" type="Node2D" parent="Rooms" index="3" groups=["rooms"]]
+[node name="Room4" parent="Rooms" index="3" instance=ExtResource("5_4swet")]
 position = Vector2(0, -192)
-script = ExtResource("2_3f0fl")
 
-[node name="CameraArea2D" parent="Rooms/Room4" index="0" instance=ExtResource("5_4swet")]
-
-[node name="Room5" type="Node2D" parent="Rooms" index="4" groups=["rooms"]]
+[node name="Room5" parent="Rooms" index="4" instance=ExtResource("5_4swet")]
 position = Vector2(320, -192)
-script = ExtResource("2_3f0fl")
 
-[node name="Springboard" parent="Rooms/Room5" index="0" instance=ExtResource("3_2cksf")]
+[node name="Springboard" parent="Rooms/Room5" index="1" instance=ExtResource("3_2cksf")]
 position = Vector2(152, 64)
 
-[node name="Springboard2" parent="Rooms/Room5" index="1" instance=ExtResource("3_2cksf")]
+[node name="Springboard2" parent="Rooms/Room5" index="2" instance=ExtResource("3_2cksf")]
 position = Vector2(184, 84)
 rotation = 0.785398
 
-[node name="Springboard3" parent="Rooms/Room5" index="2" instance=ExtResource("3_2cksf")]
+[node name="Springboard3" parent="Rooms/Room5" index="3" instance=ExtResource("3_2cksf")]
 position = Vector2(124, 96)
 rotation = -0.785398
 
-[node name="CameraArea2D" parent="Rooms/Room5" index="3" instance=ExtResource("5_4swet")]
-
-[node name="Room6" type="Node2D" parent="Rooms" index="5" groups=["rooms"]]
+[node name="Room6" parent="Rooms" index="5" instance=ExtResource("5_4swet")]
 position = Vector2(640, -192)
-script = ExtResource("2_3f0fl")
 
-[node name="Springboard" parent="Rooms/Room6" index="0" instance=ExtResource("3_2cksf")]
+[node name="Springboard" parent="Rooms/Room6" index="1" instance=ExtResource("3_2cksf")]
 position = Vector2(64, 128)
 
-[node name="Springboard6" parent="Rooms/Room6" index="1" instance=ExtResource("3_2cksf")]
+[node name="Springboard6" parent="Rooms/Room6" index="2" instance=ExtResource("3_2cksf")]
 position = Vector2(48, 128)
 
-[node name="Springboard2" parent="Rooms/Room6" index="2" instance=ExtResource("3_2cksf")]
+[node name="Springboard2" parent="Rooms/Room6" index="3" instance=ExtResource("3_2cksf")]
 position = Vector2(112, 128)
 
-[node name="Springboard3" parent="Rooms/Room6" index="3" instance=ExtResource("3_2cksf")]
+[node name="Springboard3" parent="Rooms/Room6" index="4" instance=ExtResource("3_2cksf")]
 position = Vector2(128, 128)
 
-[node name="Springboard4" parent="Rooms/Room6" index="4" instance=ExtResource("3_2cksf")]
+[node name="Springboard4" parent="Rooms/Room6" index="5" instance=ExtResource("3_2cksf")]
 position = Vector2(176, 128)
 
-[node name="Springboard5" parent="Rooms/Room6" index="5" instance=ExtResource("3_2cksf")]
+[node name="Springboard5" parent="Rooms/Room6" index="6" instance=ExtResource("3_2cksf")]
 position = Vector2(192, 128)
 
-[node name="CameraArea2D" parent="Rooms/Room6" index="6" instance=ExtResource("5_4swet")]
-
-[node name="Room7" type="Node2D" parent="Rooms" index="6" groups=["rooms"]]
+[node name="Room7" parent="Rooms" index="6" instance=ExtResource("5_4swet")]
 position = Vector2(0, -384)
-script = ExtResource("2_3f0fl")
 
-[node name="CameraArea2D" parent="Rooms/Room7" index="0" instance=ExtResource("5_4swet")]
-
-[node name="Room8" type="Node2D" parent="Rooms" index="7" groups=["rooms"]]
+[node name="Room8" parent="Rooms" index="7" instance=ExtResource("5_4swet")]
 position = Vector2(320, -384)
-script = ExtResource("2_3f0fl")
 
-[node name="CameraArea2D" parent="Rooms/Room8" index="0" instance=ExtResource("5_4swet")]
-
-[node name="Room9" type="Node2D" parent="Rooms" index="8" groups=["rooms"]]
+[node name="Room9" parent="Rooms" index="8" instance=ExtResource("5_4swet")]
 position = Vector2(640, -384)
-script = ExtResource("2_3f0fl")
-
-[node name="CameraArea2D" parent="Rooms/Room9" index="0" instance=ExtResource("5_4swet")]
 
 [node name="LevelExit" parent="." index="11"]
 position = Vector2(812, -244)

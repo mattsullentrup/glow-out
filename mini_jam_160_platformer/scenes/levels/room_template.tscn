@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://gp2s423gd2e"]
-
-[ext_resource type="Script" path="res://scripts/room.gd" id="1_u333i"]
-
-[node name="RoomTemplate" type="Node2D" groups=["rooms"]]
-script = ExtResource("1_u333i")
