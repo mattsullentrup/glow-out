@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_dra3a"]
 [ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/room.tscn" id="3_mwrjb"]
 
-[node name="LevelTwo" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_dra3a")]
+[node name="LevelTwo" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_dra3a")]
+initial_room = NodePath("Rooms/Room")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")

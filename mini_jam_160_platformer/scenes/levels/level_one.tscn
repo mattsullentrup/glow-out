@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://c82b0hf40yvsk"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_h55ns"]
-[ext_resource type="Script" path="res://scripts/camera_area_2d.gd" id="5_lvj3t"]
+[ext_resource type="Script" path="res://scripts/room.gd" id="5_lvj3t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghxro"]
 size = Vector2(304, 176)
@@ -12,7 +12,8 @@ size = Vector2(304, 176)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opu6j"]
 size = Vector2(304, 176)
 
-[node name="LevelOne" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_h55ns")]
+[node name="LevelOne" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_h55ns")]
+initial_room = NodePath("Rooms/Room")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
 key = NodePath("Key")

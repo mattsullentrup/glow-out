@@ -15,4 +15,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if player.get_last_motion().y < -0.5:
 		is_player_moving_up = true
 
-	player_exited_room.emit(get_parent(), is_player_moving_up)
+	player_exited_room.emit(self, is_player_moving_up)
