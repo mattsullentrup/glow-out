@@ -5,15 +5,14 @@
 [ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="2_jypi0"]
 [ext_resource type="Environment" uid="uid://cqm3h80edew7" path="res://environment.tres" id="2_vaesb"]
 [ext_resource type="Script" path="res://scripts/fps_label.gd" id="3_r7g4g"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="4_u6u3h"]
 [ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/key.tscn" id="6_uvrb7"]
-[ext_resource type="PackedScene" uid="uid://vambnod1vkbf" path="res://scenes/levels/level_exit.tscn" id="7_og3pe"]
+[ext_resource type="Script" path="res://scripts/level_exit.gd" id="7_laocl"]
+[ext_resource type="Shape2D" uid="uid://ww5mnbqqgyf4" path="res://level_exit_collision_shape.tres" id="8_sfy0s"]
 
-[node name="LevelTemplate" type="Node2D" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera")]
+[node name="LevelTemplate" type="Node2D" node_paths=PackedStringArray("player", "key", "level_start_position", "camera")]
 physics_interpolation_mode = 2
 script = ExtResource("1_pc1v3")
 player = NodePath("Player")
-level_exit = NodePath("LevelExit")
 key = NodePath("Key")
 level_start_position = NodePath("LevelStartPosition")
 camera = NodePath("Camera2D")
@@ -50,7 +49,6 @@ tile_set = ExtResource("2_jypi0")
 physics_interpolation_mode = 1
 anchor_mode = 0
 process_callback = 0
-script = ExtResource("4_u6u3h")
 
 [node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "light_timer", "footstep_sound") instance=ExtResource("2_f4txp")]
 gravity_component = NodePath("GravityComponent")
@@ -67,9 +65,12 @@ footstep_sound = NodePath("FootstepSound")
 [node name="Key" parent="." instance=ExtResource("6_uvrb7")]
 position = Vector2(64, 120)
 
-[node name="LevelExit" parent="." instance=ExtResource("7_og3pe")]
-position = Vector2(256, 112)
-
 [node name="Rooms" type="Node" parent="."]
+
+[node name="LevelExit" type="Area2D" parent="."]
+script = ExtResource("7_laocl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+shape = ExtResource("8_sfy0s")
 
 [connection signal="player_found_key" from="Key" to="." method="_on_key_player_found_key"]

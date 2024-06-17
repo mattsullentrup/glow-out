@@ -47,9 +47,6 @@ position = Vector2(32, 56)
 [node name="Key" parent="." index="9"]
 position = Vector2(928, 56)
 
-[node name="LevelExit" parent="." index="10"]
-position = Vector2(384, 152)
-
 [node name="Room1" parent="Rooms" index="0" instance=ExtResource("2_lkdrd")]
 
 [node name="CameraArea2D" type="Area2D" parent="Rooms/Room1" index="0" groups=["camera_area"]]
@@ -84,6 +81,9 @@ script = ExtResource("5_lvj3t")
 position = Vector2(160, 96)
 shape = SubResource("RectangleShape2D_opu6j")
 debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
+
+[node name="LevelExit" parent="." index="11"]
+position = Vector2(384, 152)
 
 [connection signal="body_entered" from="Rooms/Room1/CameraArea2D" to="Rooms/Room1/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/Room2/CameraArea2D" to="Rooms/Room2/CameraArea2D" method="_on_body_entered"]

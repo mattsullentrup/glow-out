@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level_exit.gd" id="1_4ad6g"]
 [ext_resource type="Texture2D" uid="uid://c7n4vxmhmwbcq" path="res://addons/kenney_assets/colored-transparent_packed.png" id="2_74vso"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l60h"]
-size = Vector2(8, 12)
+[ext_resource type="Shape2D" uid="uid://ww5mnbqqgyf4" path="res://level_exit_collision_shape.tres" id="3_elx7o"]
 
 [node name="LevelExit" type="Area2D"]
 collision_mask = 2
@@ -18,6 +16,6 @@ region_rect = Rect2(80, 160, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_8l60h")
+shape = ExtResource("3_elx7o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

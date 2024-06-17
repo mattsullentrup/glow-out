@@ -43,9 +43,6 @@ position = Vector2(256, 152)
 [node name="Key" parent="." index="9"]
 position = Vector2(344, 536)
 
-[node name="LevelExit" parent="." index="10"]
-position = Vector2(104, 56)
-
 [node name="Room1" parent="Rooms" index="0" instance=ExtResource("2_wj6cs")]
 
 [node name="CameraArea2D" parent="Rooms/Room1" index="0" instance=ExtResource("3_mwrjb")]
@@ -74,3 +71,6 @@ position = Vector2(-320, 0)
 position = Vector2(320, 384)
 
 [node name="CameraArea2D" parent="Rooms/Room6" index="0" instance=ExtResource("3_mwrjb")]
+
+[node name="LevelExit" parent="." index="11"]
+position = Vector2(104, 56)
