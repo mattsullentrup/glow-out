@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=4 uid="uid://yrij0d0of6h0"]
 
-[ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_dra3a"]
-[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/gameplay_elements/room.tscn" id="3_mwrjb"]
+[ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/level_template.tscn" id="1_mlucd"]
+[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/gameplay_elements/room.tscn" id="2_n3qmm"]
 
-[node name="LevelTwo" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_dra3a")]
+[node name="LevelTwo" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_mlucd")]
 initial_room = NodePath("Rooms/Room")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
@@ -42,21 +42,21 @@ position = Vector2(256, 152)
 [node name="Key" parent="." index="9"]
 position = Vector2(344, 536)
 
-[node name="Room" parent="Rooms" index="0" instance=ExtResource("3_mwrjb")]
+[node name="Room" parent="Rooms" index="0" instance=ExtResource("2_n3qmm")]
 
-[node name="Room2" parent="Rooms" index="1" instance=ExtResource("3_mwrjb")]
+[node name="Room2" parent="Rooms" index="1" instance=ExtResource("2_n3qmm")]
 position = Vector2(0, 192)
 
-[node name="Room3" parent="Rooms" index="2" instance=ExtResource("3_mwrjb")]
+[node name="Room3" parent="Rooms" index="2" instance=ExtResource("2_n3qmm")]
 position = Vector2(-320, 192)
 
-[node name="Room4" parent="Rooms" index="3" instance=ExtResource("3_mwrjb")]
+[node name="Room4" parent="Rooms" index="3" instance=ExtResource("2_n3qmm")]
 position = Vector2(320, 192)
 
-[node name="Room5" parent="Rooms" index="4" instance=ExtResource("3_mwrjb")]
+[node name="Room5" parent="Rooms" index="4" instance=ExtResource("2_n3qmm")]
 position = Vector2(-320, 0)
 
-[node name="Room6" parent="Rooms" index="5" instance=ExtResource("3_mwrjb")]
+[node name="Room6" parent="Rooms" index="5" instance=ExtResource("2_n3qmm")]
 position = Vector2(320, 384)
 
 [node name="LevelExit" parent="." index="11"]

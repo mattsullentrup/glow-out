@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://c82b0hf40yvsk"]
 
-[ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_h55ns"]
-[ext_resource type="Script" path="res://scripts/gameplay_elements/room.gd" id="5_lvj3t"]
+[ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/level_template.tscn" id="1_i17ge"]
+[ext_resource type="Script" path="res://scripts/gameplay_elements/room.gd" id="2_pcesw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghxro"]
 size = Vector2(304, 176)
@@ -12,7 +12,7 @@ size = Vector2(304, 176)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opu6j"]
 size = Vector2(304, 176)
 
-[node name="LevelOne" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_h55ns")]
+[node name="LevelOne" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_i17ge")]
 initial_room = NodePath("Rooms/Room")
 player = NodePath("Player")
 level_exit = NodePath("LevelExit")
@@ -48,7 +48,7 @@ position = Vector2(928, 56)
 
 [node name="Room" type="Area2D" parent="Rooms" index="0" groups=["rooms"]]
 collision_mask = 2
-script = ExtResource("5_lvj3t")
+script = ExtResource("2_pcesw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room" index="0"]
 position = Vector2(160, 96)
@@ -58,7 +58,7 @@ debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
 [node name="Room2" type="Area2D" parent="Rooms" index="1" groups=["rooms"]]
 position = Vector2(320, 0)
 collision_mask = 2
-script = ExtResource("5_lvj3t")
+script = ExtResource("2_pcesw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room2" index="0"]
 position = Vector2(160, 96)
@@ -68,7 +68,7 @@ debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
 [node name="Room3" type="Area2D" parent="Rooms" index="2" groups=["rooms"]]
 position = Vector2(640, 0)
 collision_mask = 2
-script = ExtResource("5_lvj3t")
+script = ExtResource("2_pcesw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room3" index="0"]
 position = Vector2(160, 96)
