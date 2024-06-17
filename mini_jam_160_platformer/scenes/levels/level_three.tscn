@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=4 uid="uid://cfq0q677f0mi5"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/levels/level_template.tscn" id="1_q6e0w"]
-[ext_resource type="PackedScene" uid="uid://e075lsqt1qve" path="res://scenes/springboard.tscn" id="3_2cksf"]
-[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/room.tscn" id="5_4swet"]
+[ext_resource type="PackedScene" uid="uid://e075lsqt1qve" path="res://scenes/gameplay_elements/springboard.tscn" id="3_2cksf"]
+[ext_resource type="PackedScene" uid="uid://dvtljl46j5aqo" path="res://scenes/gameplay_elements/room.tscn" id="5_4swet"]
 
 [node name="LevelThree" node_paths=PackedStringArray("initial_room", "player", "level_exit", "key", "level_start_position", "camera") instance=ExtResource("1_q6e0w")]
 initial_room = NodePath("Rooms/Room")

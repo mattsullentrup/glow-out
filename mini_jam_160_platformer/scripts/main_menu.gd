@@ -1,5 +1,20 @@
 extends Control
 
 
+const OPTIONS_MENU := preload("res://scenes/menus/options_menu.tscn") as PackedScene
+
+
 func _on_start_button_pressed() -> void:
 	GameManager.start_new_game()
+
+
+func _on_level_select_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_options_button_pressed() -> void:
+	get_tree().change_scene_to_packed(OPTIONS_MENU)
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

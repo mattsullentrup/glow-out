@@ -12,7 +12,7 @@ config_version=5
 
 config/name="mini_jam_160_platformer"
 config/tags=PackedStringArray("2d", "gdscript", "personal")
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
@@ -45,9 +45,14 @@ version_control/autoload_on_startup=true
 folder_colors={
 "res://addons/": "red",
 "res://scenes/": "orange",
+"res://scenes/gameplay_elements/": "pink",
 "res://scenes/levels/": "green",
+"res://scenes/menus/": "purple",
 "res://scenes/one_way_wall/": "blue",
-"res://scripts/": "yellow"
+"res://scripts/": "yellow",
+"res://scripts/autoloads/": "purple",
+"res://scripts/components/": "pink",
+"res://scripts/menus/": "gray"
 }
 
 [global_group]

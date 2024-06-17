@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvtljl46j5aqo"]
 
-[ext_resource type="Script" path="res://scripts/room.gd" id="1_ejfxb"]
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_7otcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hym7o"]
 size = Vector2(304, 176)
 
 [node name="Room" type="Area2D" groups=["rooms"]]
 collision_mask = 2
-script = ExtResource("1_ejfxb")
+script = ExtResource("1_7otcx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(160, 96)
