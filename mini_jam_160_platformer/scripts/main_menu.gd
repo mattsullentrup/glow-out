@@ -1,5 +1,5 @@
 extends Control
 
 
-func _ready() -> void:
-	LevelManager.start_new_level()
+func _on_start_button_pressed() -> void:
+	GameManager.start_new_game()

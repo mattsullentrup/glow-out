@@ -29,7 +29,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
 
-	level_exit.player_exiting_level.connect(LevelManager._on_player_exiting_level)
+	level_exit.player_exiting_level.connect(GameManager._on_player_exiting_level)
 
 	current_room = initial_room
 #

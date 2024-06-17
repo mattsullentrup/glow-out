@@ -24,5 +24,10 @@ func start_new_level() -> void:
 	current_level += 1
 
 
+func start_new_game() -> void:
+	current_level = 1
+	start_new_level()
+
+
 func _on_player_exiting_level() -> void:
 	start_new_level()
