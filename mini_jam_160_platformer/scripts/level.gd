@@ -20,7 +20,7 @@ var previous_room: Room
 
 func _enter_tree() -> void:
 	camera.position = initial_room.position
-	camera.reset_physics_interpolation()
+	#camera.reset_physics_interpolation()
 
 	player.position = level_start_position.global_position
 	player.reset_physics_interpolation()

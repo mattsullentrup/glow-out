@@ -152,3 +152,5 @@ stream = ExtResource("10_rrmqw")
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_n6vir")
 lifetime = 0.3
+
+[connection signal="body_shape_entered" from="Hitbox" to="." method="_on_hitbox_body_shape_entered"]
