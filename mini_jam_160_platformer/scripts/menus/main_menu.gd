@@ -2,6 +2,7 @@ extends Control
 
 
 const OPTIONS_MENU := preload("res://scenes/menus/options_menu.tscn") as PackedScene
+const LEVEL_SELECT := preload("res://scenes/menus/level_select.tscn") as PackedScene
 
 
 func _on_start_button_pressed() -> void:
@@ -9,7 +10,7 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_level_select_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(LEVEL_SELECT)
 
 
 func _on_options_button_pressed() -> void:

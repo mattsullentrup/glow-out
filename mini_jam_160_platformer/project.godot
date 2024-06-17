@@ -52,6 +52,7 @@ folder_colors={
 "res://scripts/": "yellow",
 "res://scripts/autoloads/": "purple",
 "res://scripts/components/": "pink",
+"res://scripts/gameplay_elements/": "blue",
 "res://scripts/menus/": "gray"
 }
 

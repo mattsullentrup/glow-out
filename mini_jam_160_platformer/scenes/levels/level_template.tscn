@@ -6,7 +6,7 @@
 [ext_resource type="Environment" uid="uid://cqm3h80edew7" path="res://environment.tres" id="2_vaesb"]
 [ext_resource type="Script" path="res://scripts/fps_label.gd" id="3_r7g4g"]
 [ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/gameplay_elements/key.tscn" id="6_uvrb7"]
-[ext_resource type="Script" path="res://scripts/level_exit.gd" id="7_laocl"]
+[ext_resource type="Script" path="res://scripts/gameplay_elements/level_exit.gd" id="7_laocl"]
 [ext_resource type="Shape2D" uid="uid://ww5mnbqqgyf4" path="res://level_exit_collision_shape.tres" id="8_sfy0s"]
 
 [node name="LevelTemplate" type="Node2D" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera")]

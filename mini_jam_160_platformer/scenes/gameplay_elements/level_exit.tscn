@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://vambnod1vkbf"]
 
-[ext_resource type="Script" path="res://scripts/level_exit.gd" id="1_4ad6g"]
+[ext_resource type="Script" path="res://scripts/gameplay_elements/level_exit.gd" id="1_4ad6g"]
 [ext_resource type="Texture2D" uid="uid://c7n4vxmhmwbcq" path="res://addons/kenney_assets/colored-transparent_packed.png" id="2_74vso"]
 [ext_resource type="Shape2D" uid="uid://ww5mnbqqgyf4" path="res://level_exit_collision_shape.tres" id="3_elx7o"]
 
