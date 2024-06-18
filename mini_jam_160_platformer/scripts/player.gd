@@ -56,10 +56,10 @@ func enable_key() -> void:
 
 func _on_hitbox_body_shape_entered(
 		body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	if not body is TileMapLayer:
+	if body is not TileMapLayer:
 		return
-	var tile_map: TileMapLayer = body
 
+	var tile_map: TileMapLayer = body
 	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
 	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords:
 		player_collided_with_spike.emit()

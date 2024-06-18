@@ -11,13 +11,16 @@ func handle_particles(velocity: Vector2) -> void:
 		particles.emitting = false
 		return
 
-	if particles.process_material is ParticleProcessMaterial:
-		particles.emitting = true
-		var process_material: ParticleProcessMaterial = particles.process_material
-		if velocity.x > 0:
-			process_material.emission_shape_offset.x = 1
-			process_material.direction.x = -1
-		else:
-			process_material.emission_shape_offset.x = 16
-			process_material.direction.x = 1
+	if particles.process_material is not ParticleProcessMaterial:
+		push_error("particle process material is not ParticleProcessMaterial")
+		return
+
+	particles.emitting = true
+	var process_material: ParticleProcessMaterial = particles.process_material
+	if velocity.x > 0:
+		process_material.emission_shape_offset.x = 1
+		process_material.direction.x = -1
+	else:
+		process_material.emission_shape_offset.x = 16
+		process_material.direction.x = 1
 
