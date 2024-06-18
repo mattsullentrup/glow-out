@@ -24,14 +24,14 @@ func start_new_game() -> void:
 
 
 func preload_levels() -> void:
-	var dir = DirAccess.open("res://scenes/levels/")
+	var dir: DirAccess = DirAccess.open("res://scenes/levels/")
 
 	if not dir:
 		print("An error occurred when trying to access the path.")
 		return
 
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
+	var file_name: String = dir.get_next()
 	var files: Array[String] = []
 
 	while file_name != "":
@@ -40,7 +40,7 @@ func preload_levels() -> void:
 		file_name = dir.get_next()
 
 	# Sort files by number.
-	files.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+	files.sort_custom(func(a: String, b: String) -> int: return a.naturalnocasecmp_to(b) < 0)
 
 	for file in files:
 		var level := load("res://scenes/levels/" + file) as PackedScene

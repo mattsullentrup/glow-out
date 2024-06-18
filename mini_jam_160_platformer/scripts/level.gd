@@ -33,7 +33,7 @@ func _ready() -> void:
 
 	current_room = initial_room
 #
-	for area: Area2D in get_tree().get_nodes_in_group("rooms"):
+	for area: Room in get_tree().get_nodes_in_group("rooms"):
 		area.player_exited_room.connect(_on_player_exited_room)
 
 
@@ -44,7 +44,7 @@ func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 
 	#camera.position = new_room.position
 	#camera.reset_physics_interpolation()
-	var tween = self.create_tween()
+	var tween: Tween = self.create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(
 			camera, "global_position", current_room.global_position, camera_transition_duration
@@ -63,6 +63,6 @@ func _on_key_player_found_key() -> void:
 
 
 func _on_player_collided_with_spike() -> void:
-	var restart_pos = current_room_restart_position
+	var restart_pos: Marker2D = current_room_restart_position
 	player.position = restart_pos.global_position
 	player.reset_physics_interpolation()

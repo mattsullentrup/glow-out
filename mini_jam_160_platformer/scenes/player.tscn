@@ -88,7 +88,7 @@ angular_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "footstep_sound")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "footstep_sound", "point_light")]
 physics_interpolation_mode = 1
 z_index = 1
 collision_layer = 2
@@ -101,6 +101,7 @@ animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
 particles_component = NodePath("ParticlesComponent")
 footstep_sound = NodePath("FootstepSound")
+point_light = NodePath("PointLight2D")
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

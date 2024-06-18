@@ -10,7 +10,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	var is_player_moving_up := false
-	var player = body as CharacterBody2D
+	var player: Player = body as CharacterBody2D
 
 	if player.get_last_motion().y < -0.5:
 		is_player_moving_up = true

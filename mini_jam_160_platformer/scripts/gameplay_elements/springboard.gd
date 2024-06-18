@@ -15,17 +15,20 @@ var vector_two_directions: Dictionary = {
 var force: float = 450
 var spring_direction: Vector2
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 func _ready() -> void:
 	initialize_directions()
-	$AnimatedSprite2D.frame = 0
+	animated_sprite.frame = 0
 
 
 func initialize_directions() -> void:
-	var rot = roundi(rotation_degrees)
+	var rot: int = roundi(rotation_degrees)
 	while rot < 0:
 		rot += 360
-	var dir = vector_two_directions.get(rot)
+	var dir: Vector2 = vector_two_directions.get(rot)
 	spring_direction = dir
 
 
@@ -33,8 +36,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is not Player:
 		return
 
-	var player = body as Player
-	var jump_component = player.get_node("AdvancedJumpComponent") as AdvancedJumpComponent
+	var player: Player = body as Player
+	var jump_component: AdvancedJumpComponent = player.get_node("AdvancedJumpComponent")
 	jump_component.already_jumped = true
 	match spring_direction:
 		Vector2.UP when player.is_on_floor():
@@ -51,4 +54,4 @@ func _on_body_entered(body: Node2D) -> void:
 		_:
 			player.velocity = spring_direction * force
 
-	$AnimationPlayer.play("spring")
+	animation_player.play("spring")

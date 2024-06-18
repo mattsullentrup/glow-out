@@ -7,13 +7,17 @@ extends Node
 
 
 func handle_particles(velocity: Vector2) -> void:
-	if sprite.is_playing() and sprite.animation == "walk":
-		particles.emitting = true
-		if velocity.x > 0:
-			particles.process_material.emission_shape_offset.x = 1
-			particles.process_material.direction.x = -1
-		else:
-			particles.process_material.emission_shape_offset.x = 16
-			particles.process_material.direction.x = 1
-	else:
+	if not sprite.is_playing() or not sprite.animation == "walk":
 		particles.emitting = false
+		return
+
+	if particles.process_material is ParticleProcessMaterial:
+		particles.emitting = true
+		var process_material: ParticleProcessMaterial = particles.process_material
+		if velocity.x > 0:
+			process_material.emission_shape_offset.x = 1
+			process_material.direction.x = -1
+		else:
+			process_material.emission_shape_offset.x = 16
+			process_material.direction.x = 1
+

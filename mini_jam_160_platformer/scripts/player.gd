@@ -15,12 +15,15 @@ signal player_collided_with_spike
 @export_subgroup("References")
 @export var light_timer: Timer
 @export var footstep_sound: AudioStreamPlayer2D
+@export var point_light: PointLight2D
 
 @export_subgroup("Values")
 @export var initial_light_amount: float = 10
 
 var has_key := false
 var spike_tile_coords: Vector2i = Vector2(22, 0)
+
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -40,10 +43,10 @@ func _physics_process(delta: float) -> void:
 
 
 func decrease_light() -> void:
-	$PointLight2D.texture_scale = initial_light_amount
-	var tween = create_tween()
+	point_light.texture_scale = initial_light_amount
+	var tween: Tween = create_tween()
 	tween.tween_property(
-			$PointLight2D, "texture_scale", 0.2, light_timer.time_left
+			point_light, "texture_scale", 0.2, light_timer.time_left
 			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).from_current()
 
 
@@ -55,13 +58,14 @@ func _on_hitbox_body_shape_entered(
 		body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if not body is TileMapLayer:
 		return
+	var tile_map: TileMapLayer = body
 
-	var coords = body.get_coords_for_body_rid(body_rid)
-	if body.get_cell_atlas_coords(coords) == spike_tile_coords:
+	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
+	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords:
 		player_collided_with_spike.emit()
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if $AnimatedSprite2D.animation == "walk" and is_on_floor():
+	if animated_sprite.animation == "walk" and is_on_floor():
 		footstep_sound.pitch_scale = randf_range(0.95, 1.05)
 		footstep_sound.play()
