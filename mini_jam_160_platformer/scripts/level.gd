@@ -37,6 +37,10 @@ func _ready() -> void:
 		area.player_exited_room.connect(_on_player_exited_room)
 
 
+func _process(_delta: float) -> void:
+	camera.scale = Vector2(1 / camera.zoom.x, 1 / camera.zoom.y)
+
+
 func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 	if not new_room == current_room:
 		previous_room = current_room
