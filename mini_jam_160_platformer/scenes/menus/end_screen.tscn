@@ -1,36 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0afl3jkd7yy4"]
+[gd_scene load_steps=3 format=3 uid="uid://bwjedy40r42tx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v0s1"]
-bg_color = Color(0.278431, 0.176471, 0.235294, 1)
+[ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_ihbbp"]
+[ext_resource type="Script" path="res://scripts/menus/end_screen.gd" id="2_wblni"]
 
-[node name="EndScreen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="EndScreen" instance=ExtResource("1_ihbbp")]
+script = ExtResource("2_wblni")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_4v0s1")
 text = "Thanks
 For
 playing"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
