@@ -26,7 +26,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	player.player_collided_with_spike.connect(func() -> void: player.has_key = true)
+	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
+	key.player_found_key.connect(func() -> void: player.has_key = true)
 	current_room = initial_room
 	for area: Room in get_tree().get_nodes_in_group("rooms"):
 		area.player_exited_room.connect(_on_player_exited_room)
@@ -36,7 +37,7 @@ func _process(_delta: float) -> void:
 	camera.scale = Vector2(1 / camera.zoom.x, 1 / camera.zoom.y)
 
 
-func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
+func move_to_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 	if not new_room == current_room:
 		previous_room = current_room
 		current_room = new_room
@@ -52,10 +53,9 @@ func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 
 
 func _on_player_exited_room(new_room: Room, is_player_moving_up: bool) -> void:
-	load_new_room.call_deferred(new_room, is_player_moving_up)
+	move_to_new_room.call_deferred(new_room, is_player_moving_up)
 
 
 func _on_player_collided_with_spike() -> void:
-	var restart_pos: Marker2D = current_room_restart_position
-	player.position = restart_pos.global_position
+	player.position = current_room_restart_position.global_position
 	player.reset_physics_interpolation()
