@@ -1,56 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbndtu1we48y0"]
+[gd_scene load_steps=3 format=3 uid="uid://bopqnftmmk2bm"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_c7ugr"]
-[ext_resource type="Theme" uid="uid://dwbvedkbo8qh2" path="res://resources/theme.tres" id="1_w4ptu"]
+[ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_krgti"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_w4ptu")
+[node name="MainMenu" instance=ExtResource("1_krgti")]
 script = ExtResource("1_c7ugr")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Panel" parent="." index="0"]
+offset_top = -51.0
+offset_bottom = 349.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 60
-alignment = 1
+[node name="VBoxContainer" parent="MarginContainer" index="0"]
+theme_override_constants/separation = 140
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "GAME NAME"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 40
+theme_override_constants/separation = 32
 alignment = 1
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
 text = "Start"
 
-[node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
 text = "Level Select"
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="2"]
 layout_mode = 2
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="3"]
 layout_mode = 2
 text = "Quit"
 
