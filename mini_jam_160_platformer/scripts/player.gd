@@ -50,10 +50,6 @@ func decrease_light() -> void:
 			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).from_current()
 
 
-func enable_key() -> void:
-	has_key = true
-
-
 func _on_hitbox_body_shape_entered(
 		body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body is not TileMapLayer:

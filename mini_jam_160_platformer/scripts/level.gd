@@ -19,20 +19,15 @@ var previous_room: Room
 
 
 func _enter_tree() -> void:
+	Globals.play_enter_transition(self)
 	camera.position = initial_room.position
-	#camera.reset_physics_interpolation()
-
 	player.position = level_start_position.global_position
 	player.reset_physics_interpolation()
 
 
 func _ready() -> void:
-	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
-
-	level_exit.player_exiting_level.connect(GameManager._on_player_exiting_level)
-
+	player.player_collided_with_spike.connect(func() -> void: player.has_key = true)
 	current_room = initial_room
-#
 	for area: Room in get_tree().get_nodes_in_group("rooms"):
 		area.player_exited_room.connect(_on_player_exited_room)
 
@@ -46,8 +41,6 @@ func load_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
 		previous_room = current_room
 		current_room = new_room
 
-	#camera.position = new_room.position
-	#camera.reset_physics_interpolation()
 	var tween: Tween = self.create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(
@@ -62,15 +55,7 @@ func _on_player_exited_room(new_room: Room, is_player_moving_up: bool) -> void:
 	load_new_room.call_deferred(new_room, is_player_moving_up)
 
 
-func _on_key_player_found_key() -> void:
-	player.enable_key()
-
-
 func _on_player_collided_with_spike() -> void:
 	var restart_pos: Marker2D = current_room_restart_position
 	player.position = restart_pos.global_position
 	player.reset_physics_interpolation()
-
-
-func _on_tree_entered() -> void:
-	Globals.play_enter_transition(self)
