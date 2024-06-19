@@ -7,9 +7,6 @@
 process_mode = 3
 script = ExtResource("1_4fxrg")
 
-[node name="VBoxContainer" parent="MarginContainer" index="0"]
-theme_override_constants/separation = 32
-
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64

@@ -9,9 +9,6 @@ font_size = 48
 [node name="OptionsMenu" instance=ExtResource("1_xt3lp")]
 script = ExtResource("1_omk5s")
 
-[node name="VBoxContainer" parent="MarginContainer" index="0"]
-theme_override_constants/separation = 32
-
 [node name="VolumeSlider" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 alignment = 1
