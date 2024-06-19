@@ -4,7 +4,7 @@ extends Node
 const LOADING_SCREEN = preload("res://scenes/loading_screen.tscn")
 
 
-var scene_to_load_path: String
+var scene_path: String
 var loading_screen_scene_instance: Node
 var loading := false
 
@@ -13,9 +13,9 @@ func _process(_delta: float) -> void:
 	if not loading:
 		return
 
-	var progress = []
+	var progress: Array = []
 	var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(
-			scene_to_load_path, progress
+			scene_path, progress
 	)
 
 	if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
@@ -24,14 +24,15 @@ func _process(_delta: float) -> void:
 		)
 		progress_bar.value = progress[0] * 100
 	elif status == ResourceLoader.THREAD_LOAD_LOADED:
-		get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(scene_to_load_path))
+		var new_scene: PackedScene = ResourceLoader.load_threaded_get(scene_path)
+		get_tree().change_scene_to_packed(new_scene)
 		loading_screen_scene_instance.queue_free()
 		loading = false
 	else:
 		printerr("Loading fucked up")
 
 
-func load_scene(path):
+func load_scene(path: String) -> void:
 	var current_scene: Node = get_tree().current_scene
 
 	loading_screen_scene_instance = LOADING_SCREEN.instantiate()
@@ -45,4 +46,4 @@ func load_scene(path):
 	current_scene.queue_free()
 
 	loading = true
-	scene_to_load_path = path
+	scene_path = path

@@ -33,21 +33,23 @@ func preload_levels() -> void:
 
 	dir.list_dir_begin()
 	var file_name: String = dir.get_next()
-	var files: Array[String] = []
+	#var files: Array[String] = []
 
 	while file_name != "":
 		if not dir.current_is_dir():
-			files.append(file_name)
+			Globals.levels.append("res://scenes/levels/" + file_name)
 		file_name = dir.get_next()
 
 	# Sort files by number.
-	files.sort_custom(func(a: String, b: String) -> int: return a.naturalnocasecmp_to(b) < 0)
+	Globals.levels.sort_custom(
+			func(a: String, b: String) -> int: return a.naturalnocasecmp_to(b) < 0
+	)
 
-	for file in files:
+	#for file in files:
 		#var level := load("res://scenes/levels/" + file) as PackedScene
 		#var path = "res://scenes/levels/" + file
 		#var level: String = load(path)
-		Globals.levels.append("res://scenes/levels/" + file)
+		#Globals.levels.append("res://scenes/levels/" + file)
 
 
 func _on_player_exiting_level() -> void:
