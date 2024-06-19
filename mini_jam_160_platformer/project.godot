@@ -121,5 +121,6 @@ common/physics_interpolation=true
 textures/canvas_textures/default_texture_filter=0
 environment/ssao/quality=0
 environment/glow/upscale_mode.mobile=1
+environment/defaults/default_clear_color=Color(0.278431, 0.176471, 0.235294, 1)
 viewport/hdr_2d=true
 2d/snap/snap_2d_transforms_to_pixel=true

@@ -42,8 +42,7 @@ func preload_levels() -> void:
 
 	# Sort files by number.
 	Globals.levels.sort_custom(
-			func(a: String, b: String) -> int: return a.naturalnocasecmp_to(b) < 0
-	)
+			func(a: String, b: String) -> int: return a.naturalnocasecmp_to(b) < 0)
 
 	#for file in files:
 		#var level := load("res://scenes/levels/" + file) as PackedScene

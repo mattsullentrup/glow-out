@@ -6,9 +6,6 @@
 [node name="LevelTwo" node_paths=PackedStringArray("initial_room") instance=ExtResource("1_mlucd")]
 initial_room = NodePath("Rooms/Room")
 
-[node name="CanvasModulate" parent="." index="0"]
-visible = false
-
 [node name="LightTimer" parent="." index="2"]
 wait_time = 180.0
 

@@ -83,7 +83,7 @@ light_timer = NodePath("../LightTimer")
 [node name="Key" parent="." instance=ExtResource("6_3pfut")]
 position = Vector2(64, 120)
 
-[node name="Rooms" type="Node" parent="."]
+[node name="Rooms" type="Node2D" parent="."]
 
 [node name="LevelExit" parent="." instance=ExtResource("7_epdey")]
 
