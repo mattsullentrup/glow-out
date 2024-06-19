@@ -1,51 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp1v6uqrccrjl"]
+[gd_scene load_steps=4 format=3 uid="uid://bmgu0kvs6csw8"]
 
-[ext_resource type="Theme" uid="uid://dwbvedkbo8qh2" path="res://resources/theme.tres" id="1_5gsr7"]
 [ext_resource type="Script" path="res://scripts/menus/options_menu.gd" id="1_omk5s"]
+[ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_xt3lp"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_20w0v"]
+[sub_resource type="LabelSettings" id="LabelSettings_prhat"]
 font_size = 48
 
-[node name="OptionsMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_5gsr7")
+[node name="OptionsMenu" instance=ExtResource("1_xt3lp")]
 script = ExtResource("1_omk5s")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
+[node name="VBoxContainer" parent="MarginContainer" index="0"]
 theme_override_constants/separation = 32
-alignment = 1
 
-[node name="VolumeSlider" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VolumeSlider" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VolumeSlider"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VolumeSlider" index="0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Volume"
-label_settings = SubResource("LabelSettings_20w0v")
+label_settings = SubResource("LabelSettings_prhat")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VolumeSlider"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VolumeSlider" index="1"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 text = "Back
 "
