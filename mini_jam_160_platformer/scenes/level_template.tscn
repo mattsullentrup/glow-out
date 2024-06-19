@@ -75,16 +75,8 @@ grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3
 
-[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "particles_component", "light_timer", "footstep_sound", "point_light") instance=ExtResource("5_vajoy")]
-gravity_component = NodePath("GravityComponent")
-input_component = NodePath("InputComponent")
-movement_component = NodePath("MovementComponent")
-animation_component = NodePath("AnimationComponent")
-jump_component = NodePath("AdvancedJumpComponent")
-particles_component = NodePath("ParticlesComponent")
+[node name="Player" parent="." node_paths=PackedStringArray("light_timer") instance=ExtResource("5_vajoy")]
 light_timer = NodePath("../LightTimer")
-footstep_sound = NodePath("FootstepSound")
-point_light = NodePath("PointLight2D")
 
 [node name="LevelStartPosition" type="Marker2D" parent="."]
 

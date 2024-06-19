@@ -23,4 +23,3 @@ func handle_particles(velocity: Vector2) -> void:
 	else:
 		process_material.emission_shape_offset.x = 16
 		process_material.direction.x = 1
-
