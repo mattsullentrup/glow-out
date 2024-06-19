@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_mxwrl"]
 
 [node name="PauseMenu" instance=ExtResource("1_mxwrl")]
+process_mode = 3
 script = ExtResource("1_4fxrg")
 
 [node name="VBoxContainer" parent="MarginContainer" index="0"]
