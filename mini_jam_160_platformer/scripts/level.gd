@@ -70,3 +70,7 @@ func _on_player_collided_with_spike() -> void:
 	var restart_pos: Marker2D = current_room_restart_position
 	player.position = restart_pos.global_position
 	player.reset_physics_interpolation()
+
+
+func _on_tree_entered() -> void:
+	Globals.play_enter_transition(self)

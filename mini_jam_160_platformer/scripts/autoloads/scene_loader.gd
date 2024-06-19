@@ -33,17 +33,18 @@ func _process(_delta: float) -> void:
 
 
 func load_scene(path: String) -> void:
-	var current_scene: Node = get_tree().current_scene
-
-	loading_screen_scene_instance = LOADING_SCREEN.instantiate()
-	get_tree().root.call_deferred("add_child", loading_screen_scene_instance)
-
 	if ResourceLoader.has_cached(path):
 		ResourceLoader.load_threaded_get(path)
 	else:
 		ResourceLoader.load_threaded_request(path)
 
-	current_scene.queue_free()
+	var current_scene: Node = get_tree().current_scene
+	#current_scene.queue_free()
+	Globals.play_exit_transition(current_scene)
+	await current_scene.tree_exited
+
+	loading_screen_scene_instance = LOADING_SCREEN.instantiate()
+	get_tree().root.call_deferred("add_child", loading_screen_scene_instance)
 
 	loading = true
 	scene_path = path

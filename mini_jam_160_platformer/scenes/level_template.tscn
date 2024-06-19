@@ -87,4 +87,5 @@ position = Vector2(64, 120)
 
 [node name="LevelExit" parent="." instance=ExtResource("7_epdey")]
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="player_found_key" from="Key" to="." method="_on_key_player_found_key"]
