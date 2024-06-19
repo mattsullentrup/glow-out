@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 60
@@ -29,6 +29,8 @@ alignment = 1
 
 [node name="LevelButtons" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/LevelButtons"]
 layout_mode = 2
