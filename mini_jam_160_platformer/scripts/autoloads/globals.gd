@@ -7,8 +7,8 @@ var levels: Array[String] = []
 
 
 func play_exit_transition(scene: Node) -> void:
-	var transition_scene = TRANSITION_COLOR_RECT.instantiate()
-	var color_rect = transition_scene.get_child(0)
+	var transition_scene: CanvasLayer = TRANSITION_COLOR_RECT.instantiate()
+	var color_rect: ColorRect = transition_scene.get_child(0)
 	color_rect.color = Color(Color.BLACK, 0)
 	scene.add_child(transition_scene)
 
@@ -20,8 +20,8 @@ func play_exit_transition(scene: Node) -> void:
 
 
 func play_enter_transition(scene: Node) -> void:
-	var transition_scene = TRANSITION_COLOR_RECT.instantiate()
-	var color_rect = transition_scene.get_child(0)
+	var transition_scene: CanvasLayer = TRANSITION_COLOR_RECT.instantiate()
+	var color_rect: ColorRect = transition_scene.get_child(0)
 	color_rect.color = Color(Color.BLACK, 1)
 	scene.add_child(transition_scene)
 
