@@ -14,8 +14,7 @@ func _process(_delta: float) -> void:
 
 	var progress: Array = []
 	var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(
-			scene_path, progress
-	)
+			scene_path, progress)
 
 	if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		create_loading_screen(progress)
