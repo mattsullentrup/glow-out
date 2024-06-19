@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=4 uid="uid://dtx6ao6lixuw1"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_r8ove"]
-[ext_resource type="Environment" uid="uid://cqm3h80edew7" path="res://environment.tres" id="2_er00r"]
+[ext_resource type="Environment" uid="uid://cqm3h80edew7" path="res://resources/environment.tres" id="2_er00r"]
 [ext_resource type="PackedScene" uid="uid://cyaiqllnqadol" path="res://scenes/menus/pause_menu.tscn" id="3_0y2fh"]
-[ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://tile_set.tres" id="4_a1nls"]
+[ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://resources/tile_set.tres" id="4_a1nls"]
 [ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="5_vajoy"]
 [ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/gameplay_elements/key.tscn" id="6_3pfut"]
 [ext_resource type="PackedScene" uid="uid://vambnod1vkbf" path="res://scenes/gameplay_elements/level_exit.tscn" id="7_epdey"]
@@ -37,7 +37,6 @@ tile_set = ExtResource("4_a1nls")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-visible = false
 anchor_mode = 0
 zoom = Vector2(6, 6)
 process_callback = 0
