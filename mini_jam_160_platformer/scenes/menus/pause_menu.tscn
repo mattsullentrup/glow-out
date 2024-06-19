@@ -14,10 +14,12 @@ text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
+[node name="MenuButton" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" index="2"]
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" index="2"]
 layout_mode = 2
 text = "Options"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
