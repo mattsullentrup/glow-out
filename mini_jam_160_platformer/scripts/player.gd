@@ -22,6 +22,7 @@ signal player_collided_with_spike
 
 var has_key := false
 var spike_tile_coords: Vector2i = Vector2(22, 0)
+var room_restart_point: Vector2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 

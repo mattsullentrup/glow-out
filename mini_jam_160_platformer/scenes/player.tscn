@@ -128,9 +128,7 @@ shape = SubResource("CapsuleShape2D_esj2h")
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_6271w")]
 sprite = NodePath("../AnimatedSprite2D")
 
-[node name="AdvancedJumpComponent" parent="." node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer") instance=ExtResource("7_fd5fn")]
-jump_buffer_timer = NodePath("JumpBufferTimer")
-coyote_timer = NodePath("CoyoteTimer")
+[node name="AdvancedJumpComponent" parent="." instance=ExtResource("7_fd5fn")]
 jump_velocity = -290.0
 coyote_time = 0.1
 

@@ -57,5 +57,7 @@ func _on_player_exited_room(new_room: Room, is_player_moving_up: bool) -> void:
 
 
 func _on_player_collided_with_spike() -> void:
-	player.position = current_room_restart_position.global_position
+	#player.position = current_room_restart_position.global_position
+	if player.room_restart_point:
+		player.position = player.room_restart_point
 	player.reset_physics_interpolation()
