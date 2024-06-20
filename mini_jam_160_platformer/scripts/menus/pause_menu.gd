@@ -3,6 +3,9 @@ extends Control
 
 const MAIN_MENU := "res://scenes/menus/main_menu.tscn" as String
 
+@export var options: Control
+@export var menu_contents: VBoxContainer
+
 
 func _ready() -> void:
 	hide()
@@ -22,5 +25,9 @@ func _process(_delta: float) -> void:
 
 func _on_menu_button_pressed() -> void:
 	get_tree().paused = false
-	#get_tree().change_scene_to_file(MAIN_MENU)
 	SceneLoader.load_scene(MAIN_MENU)
+
+
+func _on_options_button_pressed() -> void:
+	menu_contents.hide()
+	options.show()

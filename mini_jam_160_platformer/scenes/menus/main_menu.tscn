@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bopqnftmmk2bm"]
+[gd_scene load_steps=5 format=3 uid="uid://bopqnftmmk2bm"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_c7ugr"]
 [ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_krgti"]
+[ext_resource type="PackedScene" uid="uid://mkkeckcqoyao" path="res://scenes/menus/level_select_menu.tscn" id="3_xdy1d"]
+[ext_resource type="PackedScene" uid="uid://bmgu0kvs6csw8" path="res://scenes/menus/options_menu.tscn" id="4_7a4qe"]
 
-[node name="MainMenu" instance=ExtResource("1_krgti")]
+[node name="MainMenu" node_paths=PackedStringArray("level_select", "options", "menu_contents") instance=ExtResource("1_krgti")]
 script = ExtResource("1_c7ugr")
+level_select = NodePath("MarginContainer/LevelSelectMenu")
+options = NodePath("MarginContainer/OptionsMenu")
+menu_contents = NodePath("MarginContainer/VBoxContainer")
 
 [node name="VBoxContainer" parent="MarginContainer" index="1"]
+visible = false
 size_flags_vertical = 0
 theme_override_constants/separation = 174
 
@@ -37,6 +43,14 @@ text = "Options"
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="3"]
 layout_mode = 2
 text = "Quit"
+
+[node name="LevelSelectMenu" parent="MarginContainer" index="2" instance=ExtResource("3_xdy1d")]
+visible = false
+layout_mode = 2
+
+[node name="OptionsMenu" parent="MarginContainer" index="3" instance=ExtResource("4_7a4qe")]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

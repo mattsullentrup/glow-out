@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://vdr6humwbyq3"]
+[gd_scene load_steps=4 format=3 uid="uid://vdr6humwbyq3"]
 
 [ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_4fxrg"]
 [ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_mxwrl"]
+[ext_resource type="PackedScene" uid="uid://bmgu0kvs6csw8" path="res://scenes/menus/options_menu.tscn" id="3_w3xmv"]
 
-[node name="PauseMenu" instance=ExtResource("1_mxwrl")]
+[node name="PauseMenu" node_paths=PackedStringArray("options", "menu_contents") instance=ExtResource("1_mxwrl")]
 process_mode = 3
 script = ExtResource("1_4fxrg")
+options = NodePath("MarginContainer/OptionsMenu")
+menu_contents = NodePath("MarginContainer/VBoxContainer")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
@@ -14,12 +17,16 @@ text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MenuButton" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
-layout_mode = 2
-text = "Main Menu"
-
-[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" index="2"]
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 text = "Options"
 
+[node name="MenuButton" type="Button" parent="MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="OptionsMenu" parent="MarginContainer" index="2" instance=ExtResource("3_w3xmv")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

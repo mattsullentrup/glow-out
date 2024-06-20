@@ -7,6 +7,9 @@
 script = ExtResource("2_570xc")
 level_buttons = NodePath("MarginContainer/VBoxContainer/LevelButtons")
 
+[node name="Panel" parent="MarginContainer" index="0"]
+visible = false
+
 [node name="LevelButtons" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_constants/separation = 12

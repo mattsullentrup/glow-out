@@ -1,12 +1,14 @@
 extends Control
 
 
-const OPTIONS_MENU := preload("res://scenes/menus/options_menu.tscn") as PackedScene
-const LEVEL_SELECT := preload("res://scenes/menus/level_select_menu.tscn") as PackedScene
+@export var level_select: Control
+@export var options: Control
+@export var menu_contents: VBoxContainer
 
 
 func _enter_tree() -> void:
 	Globals.play_enter_transition(self)
+	menu_contents.show()
 
 
 func _on_start_button_pressed() -> void:
@@ -14,11 +16,13 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_level_select_button_pressed() -> void:
-	get_tree().change_scene_to_packed(LEVEL_SELECT)
+	menu_contents.hide()
+	level_select.show()
 
 
 func _on_options_button_pressed() -> void:
-	get_tree().change_scene_to_packed(OPTIONS_MENU)
+	menu_contents.hide()
+	options.show()
 
 
 func _on_quit_button_pressed() -> void:

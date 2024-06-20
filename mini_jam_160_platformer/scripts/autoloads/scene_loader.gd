@@ -19,12 +19,11 @@ func check_load_status() -> void:
 
 	match status:
 		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
-			print("not loading")
 			set_process(false)
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			progress_changed.emit(progress[0])
 		ResourceLoader.THREAD_LOAD_FAILED:
-			printerr("loading fucked up")
+			printerr("loading messed up")
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var new_scene: PackedScene = ResourceLoader.load_threaded_get(scene_path)
 			progress_changed.emit(1.0)
