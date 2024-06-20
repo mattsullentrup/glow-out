@@ -7,6 +7,8 @@ extends Node2D
 @export var noise_shake_speed: float = 30.0
 @export var noise_shake_strength: float = 60.0
 
+@export var intensity = 30.0
+
 var camera: Camera2D
 var noise_i: float = 0.0
 var shake_strength: float = 0.0
@@ -36,4 +38,19 @@ func get_noise_offset(delta: float) -> Vector2:
 
 
 func apply_shake() -> void:
-	shake_strength = random_shake_strength
+	#shake_strength = random_shake_strength
+
+	var tween = self.create_tween()
+	tween.interpolate_property(self,"offset", get_random_offset(),get_random_offset(), 0.1, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+
+	tween.interpolate_property(self,"offset", get_random_offset(),Vector2(0,0), 0.1, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+
+	tween.start()
+
+
+
+func get_random_offset() -> Vector2:
+	return Vector2(
+		rand.randf_range(-intensity, intensity),
+		rand.randf_range(-intensity, intensity)
+	)
