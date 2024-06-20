@@ -28,7 +28,7 @@ func initialize_directions() -> void:
 	var rot: int = roundi(rotation_degrees)
 	while rot < 0:
 		rot += 360
-	var dir: Vector2 = vector_two_directions.get(rot)
+	var dir: Vector2 = vector_two_directions.get(rot, Vector2.UP)
 	spring_direction = dir
 
 
