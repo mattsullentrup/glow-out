@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://x4xvyjhuuchw"]
+[gd_scene load_steps=22 format=3 uid="uid://x4xvyjhuuchw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_aywbf"]
 [ext_resource type="PackedScene" uid="uid://8ae3us1t6ex0" path="res://scenes/player_components/gravity_component.tscn" id="3_pdeae"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bdfna5bobinqt" path="res://addons/2d_lights_and_shadows_neutral_point_light.webp" id="8_y83mj"]
 [ext_resource type="PackedScene" uid="uid://bs0deb2kfmfwm" path="res://scenes/player_components/particles_component.tscn" id="9_66ldv"]
 [ext_resource type="AudioStream" uid="uid://b87hf5ywf6red" path="res://addons/footstep_concrete_002.ogg" id="10_rrmqw"]
+[ext_resource type="Script" path="res://scripts/screen_shake.gd" id="11_lp4fb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68jin"]
 atlas = ExtResource("4_pwqt4")
@@ -182,5 +183,8 @@ amount = 24
 process_material = SubResource("ParticleProcessMaterial_2e2mr")
 one_shot = true
 explosiveness = 1.0
+
+[node name="ScreenShake" type="Node2D" parent="."]
+script = ExtResource("11_lp4fb")
 
 [connection signal="body_shape_entered" from="Hitbox" to="." method="_on_hitbox_body_shape_entered"]

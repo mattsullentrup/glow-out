@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 
 
-#signal player_collided_with_spike
 
 @export_subgroup("Components")
 @export var gravity_component: GravityComponent
@@ -23,13 +22,11 @@ var room_restart_point: Vector2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_particles: GPUParticles2D = $DeathParticles
+@onready var screen_shake: ScreenShake = $ScreenShake
 
 
 func _ready() -> void:
-	decrease_light()
-
-#func _process(delta: float) -> void:
-	#point_light.texture_scale = lerpf(point_light.texture_scale, 0.2, 0.5 * delta)
+	start_decreasing_light()
 
 
 func _physics_process(delta: float) -> void:
@@ -44,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func decrease_light() -> void:
+func start_decreasing_light() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(
 			point_light, "texture_scale", 0.2, light_timer.time_left
@@ -56,6 +53,7 @@ func start_death_routine() -> void:
 	set_physics_process(false)
 	set_process(false)
 
+	screen_shake.apply_shake()
 	death_particles.emitting = true
 	await death_particles.finished
 
@@ -80,7 +78,6 @@ func _on_hitbox_body_shape_entered(
 	var tile_map: TileMapLayer = body
 	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
 	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords:
-		#player_collided_with_spike.emit()
 		start_death_routine()
 
 
