@@ -41,7 +41,8 @@ func apply_shake() -> void:
 	#shake_strength = random_shake_strength
 
 	var tween = self.create_tween()
-	tween.interpolate_property(self,"offset", get_random_offset(),get_random_offset(), 0.1, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+	#tween.interpolate_property(self,"offset", get_random_offset(),get_random_offset(), 0.1, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+	tween.interpolate_value(self,"offset", get_random_offset(),get_random_offset(), 0.1, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 
 	tween.interpolate_property(self,"offset", get_random_offset(),Vector2(0,0), 0.1, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 
