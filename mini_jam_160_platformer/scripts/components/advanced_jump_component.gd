@@ -68,7 +68,7 @@ func handle_variable_jump_height(body: CharacterBody2D, jump_released: bool) -> 
 
 	if jump_released and is_going_up:
 		#body.velocity.y = 0
-		body.velocity.y = lerpf(body.velocity.y, 0, get_physics_process_delta_time() * 75)
+		body.velocity.y = lerpf(body.velocity.y, 0, get_physics_process_delta_time() * 60)
 		already_jumped = true
 
 

@@ -5,7 +5,7 @@ extends Node
 
 
 func _enter_tree() -> void:
-	preload_levels()
+	find_level_paths()
 
 
 func start_new_level(new_level: String) -> void:
@@ -23,7 +23,7 @@ func start_new_game() -> void:
 	start_new_level(Globals.levels[current_level - 1])
 
 
-func preload_levels() -> void:
+func find_level_paths() -> void:
 	var dir: DirAccess = DirAccess.open("res://scenes/levels/")
 
 	if not dir:
