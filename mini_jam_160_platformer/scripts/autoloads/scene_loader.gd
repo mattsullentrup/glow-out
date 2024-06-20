@@ -38,14 +38,18 @@ func create_loading_screen() -> void:
 
 
 func load_scene(path: String) -> void:
+	scene_path = path
 	if ResourceLoader.has_cached(path):
 		ResourceLoader.load_threaded_get(path)
 	else:
 		ResourceLoader.load_threaded_request(path)
 
-	scene_path = path
 	var current_scene: Node = get_tree().current_scene
 	Globals.play_exit_transition(current_scene)
 	await current_scene.tree_exited
-	create_loading_screen()
 	set_process(true)
+
+	var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(
+			scene_path, progress)
+	if not status == ResourceLoader.THREAD_LOAD_LOADED:
+		create_loading_screen()
