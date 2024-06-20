@@ -22,6 +22,7 @@ var spike_tile_coords: Vector2i = Vector2(22, 0)
 var room_restart_point: Vector2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var death_particles: GPUParticles2D = $DeathParticles
 
 
 func _ready() -> void:
@@ -55,15 +56,19 @@ func start_death_routine() -> void:
 	set_physics_process(false)
 	set_process(false)
 
+	death_particles.emitting = true
+	await death_particles.finished
+
 	if not room_restart_point:
 		push_error("no room restart point")
 
 	var tween: Tween = self.create_tween()
-	tween.tween_property(self, "global_position", room_restart_point, 10)
+	tween.tween_property(self, "global_position", room_restart_point, 1)
 	await tween.finished
 
 	reset_physics_interpolation()
 	set_physics_process(true)
+	set_process(true)
 	animated_sprite.show()
 
 
