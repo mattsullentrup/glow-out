@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
-signal player_collided_with_spike
+#signal player_collided_with_spike
 
 @export_subgroup("Components")
 @export var gravity_component: GravityComponent
@@ -27,6 +27,9 @@ var room_restart_point: Vector2
 func _ready() -> void:
 	decrease_light()
 
+#func _process(delta: float) -> void:
+	#point_light.texture_scale = lerpf(point_light.texture_scale, 0.2, 0.5 * delta)
+
 
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
@@ -47,6 +50,23 @@ func decrease_light() -> void:
 			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 
+func start_death_routine() -> void:
+	animated_sprite.hide()
+	set_physics_process(false)
+	set_process(false)
+
+	if not room_restart_point:
+		push_error("no room restart point")
+
+	var tween: Tween = self.create_tween()
+	tween.tween_property(self, "global_position", room_restart_point, 10)
+	await tween.finished
+
+	reset_physics_interpolation()
+	set_physics_process(true)
+	animated_sprite.show()
+
+
 func _on_hitbox_body_shape_entered(
 		body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body is not TileMapLayer:
@@ -55,7 +75,8 @@ func _on_hitbox_body_shape_entered(
 	var tile_map: TileMapLayer = body
 	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
 	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords:
-		player_collided_with_spike.emit()
+		#player_collided_with_spike.emit()
+		start_death_routine()
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:

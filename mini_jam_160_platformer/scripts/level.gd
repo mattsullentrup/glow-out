@@ -32,7 +32,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	canvas_modulate.show()
 	player.animated_sprite.flip_h = player_starts_facing_left
-	player.player_collided_with_spike.connect(_on_player_collided_with_spike)
+	#player.player_collided_with_spike.connect(_on_player_collided_with_spike)
 	key.player_found_key.connect(func() -> void: player.has_key = true)
 	current_room = initial_room
 	for area: Room in get_tree().get_nodes_in_group("rooms"):
@@ -62,7 +62,9 @@ func _on_player_exited_room(new_room: Room, is_player_moving_up: bool) -> void:
 	move_to_new_room.call_deferred(new_room, is_player_moving_up)
 
 
-func _on_player_collided_with_spike() -> void:
-	if player.room_restart_point:
-		player.position = player.room_restart_point
-	player.reset_physics_interpolation()
+#func _on_player_collided_with_spike() -> void:
+	#if not player.room_restart_point:
+		#push_error("no room restart point")
+		#return
+#
+	#player.position = player.room_restart_point
