@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://digntpdwwngl1"]
+
+[sub_resource type="GDScript" id="GDScript_igyjs"]
+script/source = "extends Resource
+
+
+@export var initial_light_amount: int = 60
+@export var player_should_start_facing_left := false
+"
+
+[resource]
+resource_name = "LevelData"
+script = SubResource("GDScript_igyjs")
+initial_light_amount = 180
+player_should_start_facing_left = true

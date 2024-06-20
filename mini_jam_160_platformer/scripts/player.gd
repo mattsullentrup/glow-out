@@ -17,9 +17,6 @@ signal player_collided_with_spike
 @export var footstep_sound: AudioStreamPlayer2D
 @export var point_light: PointLight2D
 
-@export_subgroup("Values")
-@export var initial_light_amount: float = 10
-
 var has_key := false
 var spike_tile_coords: Vector2i = Vector2(22, 0)
 var room_restart_point: Vector2
@@ -44,11 +41,10 @@ func _physics_process(delta: float) -> void:
 
 
 func decrease_light() -> void:
-	point_light.texture_scale = initial_light_amount
 	var tween: Tween = create_tween()
 	tween.tween_property(
 			point_light, "texture_scale", 0.2, light_timer.time_left
-			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).from_current()
+			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 
 func _on_hitbox_body_shape_entered(
