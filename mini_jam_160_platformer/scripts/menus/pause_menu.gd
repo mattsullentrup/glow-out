@@ -22,4 +22,5 @@ func _process(_delta: float) -> void:
 
 func _on_menu_button_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file(MAIN_MENU)
+	#get_tree().change_scene_to_file(MAIN_MENU)
+	SceneLoader.load_scene(MAIN_MENU)
