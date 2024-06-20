@@ -38,7 +38,7 @@ func check_load_status() -> void:
 func create_loading_screen() -> void:
 	var loading_screen: LoadingScreen = LOADING_SCREEN.instantiate()
 	if loading_screen is LoadingScreen:
-		get_tree().root.call_deferred("add_child", loading_screen)
+		get_tree().root.add_child(loading_screen)
 		progress_changed.connect(loading_screen.update_progress_bar)
 		#loading_screen.progress = progress
 
@@ -49,9 +49,9 @@ func load_scene(path: String) -> void:
 	else:
 		ResourceLoader.load_threaded_request(path)
 
-	create_loading_screen()
 	set_process(true)
 	scene_path = path
 	var current_scene: Node = get_tree().current_scene
 	Globals.play_exit_transition(current_scene)
 	await current_scene.tree_exited
+	create_loading_screen()
