@@ -1,9 +1,10 @@
+class_name ScreenShake
 extends Node2D
 
 
 const DECAY_RATE: float = 5
 const INTENSITY: float = 30
-const INITIAL_STRENGTH: float = 60
+const INITIAL_STRENGTH: float = 30
 
 var noise_i: float = 0.0
 var shake_strength: float = 0.0
@@ -17,6 +18,7 @@ func _ready() -> void:
 	rng.randomize()
 	noise.seed = rng.randi()
 	noise.frequency = 0.5
+	camera = get_viewport().get_camera_2d()
 	set_process(false)
 
 
