@@ -186,10 +186,5 @@ explosiveness = 1.0
 
 [node name="ScreenShake" type="Node2D" parent="."]
 script = ExtResource("11_lp4fb")
-random_shake_strength = null
-shake_decay_rate = null
-noise_shake_speed = null
-noise_shake_strength = null
-intensity = null
 
 [connection signal="body_shape_entered" from="Hitbox" to="." method="_on_hitbox_body_shape_entered"]
