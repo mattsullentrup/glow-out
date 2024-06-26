@@ -1,36 +1,35 @@
-class_name ScreenShake
 extends Node2D
 
 
-@export var random_shake_strength: float = 30.0
-@export var shake_decay_rate: float = 5.0
-@export var noise_shake_speed: float = 30.0
-@export var noise_shake_strength: float = 60.0
+const DECAY_RATE: float = 5
+const INTENSITY: float = 30
+const INITIAL_STRENGTH: float = 60
 
-@export var intensity: float = 30.0
-
-var camera: Camera2D
 var noise_i: float = 0.0
 var shake_strength: float = 0.0
+var camera: Camera2D
 
-@onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-@onready var noise: FastNoiseLite = FastNoiseLite.new()
+@onready var rng := RandomNumberGenerator.new()
+@onready var noise := FastNoiseLite.new()
 
 
 func _ready() -> void:
-	camera = get_viewport().get_camera_2d()
 	rng.randomize()
 	noise.seed = rng.randi()
 	noise.frequency = 0.5
+	set_process(false)
 
 
 func _process(delta: float) -> void:
-	shake_strength = lerpf(shake_strength, 0, shake_decay_rate * delta)
-	camera.offset = get_noise_offset(delta)
+	shake_strength = lerpf(shake_strength, 0, DECAY_RATE * delta)
+	camera.offset = get_random_offset(delta)
+
+	if is_zero_approx(shake_strength):
+		set_process(false)
 
 
-func get_noise_offset(delta: float) -> Vector2:
-	noise_i += delta * noise_shake_speed
+func get_random_offset(delta: float) -> Vector2:
+	noise_i += delta * INTENSITY
 	return Vector2(
 		noise.get_noise_2d(1, noise_i) * shake_strength,
 		noise.get_noise_2d(100, noise_i) * shake_strength
@@ -38,11 +37,5 @@ func get_noise_offset(delta: float) -> Vector2:
 
 
 func apply_shake() -> void:
-	shake_strength = random_shake_strength
-
-
-func get_random_offset() -> Vector2:
-	return Vector2(
-		rng.randf_range(-intensity, intensity),
-		rng.randf_range(-intensity, intensity)
-	)
+	set_process(true)
+	shake_strength = INITIAL_STRENGTH
