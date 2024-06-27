@@ -1,3 +1,22 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://br76xy74bu4m5"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://br76xy74bu4m5"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_fmxs5"]
+resource_name = "Limiter"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_5ti8w"]
+resource_name = "Reverb"
+damping = 0.1
+hipass = 0.5
+wet = 0.4
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectLimiter_fmxs5")
+bus/0/effect/0/enabled = true
+bus/1/name = &"SoundFX"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_5ti8w")
+bus/1/effect/0/enabled = true
