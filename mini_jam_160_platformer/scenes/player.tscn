@@ -138,6 +138,8 @@ texture_scale = 2.5
 self_modulate = Color(50, 50, 1, 1)
 sprite_frames = SubResource("SpriteFrames_ave6c")
 animation = &"walk"
+frame = 1
+frame_progress = 0.67096
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -187,4 +189,6 @@ explosiveness = 1.0
 [node name="ScreenShake" type="Node2D" parent="."]
 script = ExtResource("11_lp4fb")
 
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_shape_entered" from="Hitbox" to="." method="_on_hitbox_body_shape_entered"]
