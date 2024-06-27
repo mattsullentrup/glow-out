@@ -2,6 +2,8 @@ class_name AdvancedJumpComponent
 extends Node
 
 
+signal player_jumped
+
 @export_subgroup("Nodes")
 @export var jump_buffer_timer: Timer
 @export var coyote_timer: Timer
@@ -73,6 +75,7 @@ func handle_variable_jump_height(body: CharacterBody2D, jump_released: bool) -> 
 
 
 func jump(body: CharacterBody2D) -> void:
+	player_jumped.emit()
 	body.velocity.y = jump_velocity
 	jump_buffer_timer.stop()
 	is_jumping = true

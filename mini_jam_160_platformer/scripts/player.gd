@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 
+#region variables
 @export_subgroup("Components")
 @export var gravity_component: GravityComponent
 @export var input_component: InputComponent
@@ -10,23 +11,26 @@ extends CharacterBody2D
 @export var animation_component: AnimationComponent
 @export var jump_component: AdvancedJumpComponent
 @export var particles_component: ParticlesComponent
+@export var audio_component: AudioComponent
 
 @export_subgroup("References")
 @export var light_timer: Timer
 @export var footstep_sound: AudioStreamPlayer2D
 @export var point_light: PointLight2D
+@export var death_particles: GPUParticles2D
 
 var has_key := false
 var spike_tile_coords: Vector2i = Vector2(22, 0)
 var room_restart_point: Vector2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var death_particles: GPUParticles2D = $DeathParticles
 @onready var screen_shake: ScreenShake = $ScreenShake
+#endregion
 
 
 func _ready() -> void:
 	start_decreasing_light()
+	jump_component.player_jumped.connect(audio_component.handle_jump)
 
 
 func _physics_process(delta: float) -> void:
@@ -82,6 +86,7 @@ func _on_hitbox_body_shape_entered(
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if animated_sprite.animation == "walk" and is_on_floor():
-		footstep_sound.pitch_scale = randf_range(0.95, 1.05)
-		footstep_sound.play()
+	#if animated_sprite.animation == "walk" and is_on_floor():
+		#footstep_sound.pitch_scale = randf_range(0.95, 1.05)
+		#footstep_sound.play()
+		pass
