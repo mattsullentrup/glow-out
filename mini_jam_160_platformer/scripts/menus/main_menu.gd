@@ -5,10 +5,16 @@ extends Control
 @export var options: Control
 @export var menu_contents: VBoxContainer
 
+@onready var start_button: Button = $MarginContainer/VBoxContainer/VBoxContainer/StartButton
+
 
 func _enter_tree() -> void:
 	Globals.play_enter_transition(self)
 	menu_contents.show()
+
+
+func _ready() -> void:
+	start_button.grab_focus()
 
 
 func _on_start_button_pressed() -> void:

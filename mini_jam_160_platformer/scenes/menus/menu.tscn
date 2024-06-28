@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cehcyowp68jjr"]
 
-[ext_resource type="Theme" uid="uid://dwbvedkbo8qh2" path="res://resources/theme.tres" id="1_3gh2f"]
+[ext_resource type="Theme" uid="uid://dwbvedkbo8qh2" path="res://resources/theme.tres" id="1_nn8da"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_3gh2f")
+theme = ExtResource("1_nn8da")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

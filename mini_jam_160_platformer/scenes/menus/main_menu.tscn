@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bopqnftmmk2bm"]
+[gd_scene load_steps=7 format=3 uid="uid://bopqnftmmk2bm"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_c7ugr"]
 [ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_krgti"]
 [ext_resource type="PackedScene" uid="uid://mkkeckcqoyao" path="res://scenes/menus/level_select_menu.tscn" id="3_xdy1d"]
 [ext_resource type="PackedScene" uid="uid://bmgu0kvs6csw8" path="res://scenes/menus/options_menu.tscn" id="4_7a4qe"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_rdapx"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_3wa2x"]
+events = [SubResource("InputEventKey_rdapx")]
 
 [node name="MainMenu" node_paths=PackedStringArray("level_select", "options", "menu_contents") instance=ExtResource("1_krgti")]
 script = ExtResource("1_c7ugr")
@@ -25,23 +32,33 @@ horizontal_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../LevelSelectButton")
+shortcut = SubResource("Shortcut_3wa2x")
 text = "Start"
 
 [node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
 text = "Level Select"
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../LevelSelectButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="3"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
 text = "Quit"
 
 [node name="LevelSelectMenu" parent="MarginContainer" index="2" instance=ExtResource("3_xdy1d")]

@@ -78,7 +78,6 @@ exits=""
 
 [gui]
 
-theme/custom="res://resources/theme.tres"
 theme/custom_font="res://addons/kenney_assets/Kenney Mini.ttf"
 
 [input]
