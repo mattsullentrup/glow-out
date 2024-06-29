@@ -6,7 +6,6 @@ extends Control
 
 
 func _ready() -> void:
-	#self.draw.connect(_on_draw)
 	hide()
 
 	var parent_menu := owner as ParentMenu
