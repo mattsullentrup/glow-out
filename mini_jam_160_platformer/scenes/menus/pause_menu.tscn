@@ -18,6 +18,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
@@ -28,5 +29,6 @@ text = "Main Menu"
 [node name="OptionsMenu" parent="MarginContainer" index="2" instance=ExtResource("3_w3xmv")]
 layout_mode = 2
 
+[connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

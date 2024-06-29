@@ -1,10 +1,12 @@
-extends Control
+extends ParentMenu
 
 
 const MAIN_MENU := "res://scenes/menus/main_menu.tscn" as String
 
 @export var options: Control
 @export var menu_contents: VBoxContainer
+
+@onready var options_button: Button = %OptionsButton
 
 
 func _ready() -> void:
@@ -17,9 +19,11 @@ func _process(_delta: float) -> void:
 
 	if get_tree().paused == true:
 		get_tree().paused = false
+		options.hide()
 		hide()
 	elif get_tree().paused == false:
 		show()
+		menu_contents.show()
 		get_tree().paused = true
 
 
@@ -31,3 +35,13 @@ func _on_menu_button_pressed() -> void:
 func _on_options_button_pressed() -> void:
 	menu_contents.hide()
 	options.show()
+
+
+func _on_draw() -> void:
+	options_button.grab_focus()
+
+
+func _on_sub_menu_back_button_pressed() -> void:
+	options.hide()
+	menu_contents.show()
+	options_button.grab_focus()

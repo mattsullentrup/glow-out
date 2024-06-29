@@ -1,4 +1,5 @@
-extends Control
+class_name MainMenu
+extends ParentMenu
 
 
 @export var level_select: Control
@@ -35,5 +36,9 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 
-func _on_sub_menu_hidden() -> void:
+func _on_sub_menu_back_button_pressed() -> void:
+	level_select.hide()
+	options.hide()
+
+	menu_contents.show()
 	start_button.grab_focus()
