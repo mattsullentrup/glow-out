@@ -83,10 +83,3 @@ func _on_hitbox_body_shape_entered(
 	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
 	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords:
 		start_death_routine()
-
-
-func _on_animated_sprite_2d_frame_changed() -> void:
-	#if animated_sprite.animation == "walk" and is_on_floor():
-		#footstep_sound.pitch_scale = randf_range(0.95, 1.05)
-		#footstep_sound.play()
-		pass
