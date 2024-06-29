@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bhgvwnre44ugb" path="res://scenes/player_components/advanced_jump_component.tscn" id="7_fd5fn"]
 [ext_resource type="Texture2D" uid="uid://bdfna5bobinqt" path="res://addons/2d_lights_and_shadows_neutral_point_light.webp" id="8_y83mj"]
 [ext_resource type="PackedScene" uid="uid://bs0deb2kfmfwm" path="res://scenes/player_components/particles_component.tscn" id="9_66ldv"]
-[ext_resource type="AudioStream" uid="uid://b87hf5ywf6red" path="res://addons/footstep_concrete_002.ogg" id="10_rrmqw"]
 [ext_resource type="PackedScene" uid="uid://5b7egs30teqy" path="res://scenes/player_components/audio_component.tscn" id="11_l0ii6"]
 [ext_resource type="Script" path="res://scripts/screen_shake.gd" id="11_lp4fb"]
+[ext_resource type="AudioStream" uid="uid://tp43qh16jfop" path="res://addons/footstep.wav" id="12_176ln"]
 [ext_resource type="AudioStream" uid="uid://b2x67py6kt0ut" path="res://addons/jump.wav" id="12_ldwt1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68jin"]
@@ -202,8 +202,7 @@ explosiveness = 1.0
 [node name="SoundFX" type="Node2D" parent="."]
 
 [node name="FootstepSound" type="AudioStreamPlayer2D" parent="SoundFX"]
-stream = ExtResource("10_rrmqw")
-volume_db = 6.0
+stream = ExtResource("12_176ln")
 bus = &"SoundFX"
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="SoundFX"]
