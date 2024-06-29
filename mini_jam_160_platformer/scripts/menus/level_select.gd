@@ -5,6 +5,8 @@ const MAIN_MENU := "res://scenes/menus/main_menu.tscn" as String
 
 @export var level_buttons: VBoxContainer
 
+@onready var back_button: Button = %BackButton
+
 
 func _ready() -> void:
 	hide()
@@ -23,3 +25,7 @@ func _on_back_button_pressed() -> void:
 		return
 	menu.show()
 	hide()
+
+
+func _on_draw() -> void:
+	back_button.grab_focus()

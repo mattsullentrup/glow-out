@@ -1,16 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bopqnftmmk2bm"]
+[gd_scene load_steps=5 format=3 uid="uid://bopqnftmmk2bm"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_c7ugr"]
 [ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_krgti"]
 [ext_resource type="PackedScene" uid="uid://mkkeckcqoyao" path="res://scenes/menus/level_select_menu.tscn" id="3_xdy1d"]
 [ext_resource type="PackedScene" uid="uid://bmgu0kvs6csw8" path="res://scenes/menus/options_menu.tscn" id="4_7a4qe"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_rdapx"]
-device = -1
-keycode = 4194309
-
-[sub_resource type="Shortcut" id="Shortcut_3wa2x"]
-events = [SubResource("InputEventKey_rdapx")]
 
 [node name="MainMenu" node_paths=PackedStringArray("level_select", "options", "menu_contents") instance=ExtResource("1_krgti")]
 script = ExtResource("1_c7ugr")
@@ -40,7 +33,6 @@ alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../LevelSelectButton")
-shortcut = SubResource("Shortcut_3wa2x")
 text = "Start"
 
 [node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
@@ -73,3 +65,6 @@ layout_mode = 2
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="hidden" from="MarginContainer/LevelSelectMenu" to="." method="_on_sub_menu_hidden"]
+[connection signal="draw" from="MarginContainer/OptionsMenu" to="MarginContainer/OptionsMenu" method="_on_draw"]
+[connection signal="hidden" from="MarginContainer/OptionsMenu" to="." method="_on_sub_menu_hidden"]
