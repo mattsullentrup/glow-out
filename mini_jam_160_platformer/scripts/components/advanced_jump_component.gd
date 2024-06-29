@@ -3,6 +3,7 @@ extends Node
 
 
 signal player_jumped
+signal player_landed
 
 @export_subgroup("Nodes")
 @export var jump_buffer_timer: Timer
@@ -19,7 +20,7 @@ var was_on_floor_last_frame: bool = false
 
 
 func has_just_landed(body: CharacterBody2D) -> bool:
-	return body.is_on_floor() and not was_on_floor_last_frame and is_jumping
+	return body.is_on_floor() and not was_on_floor_last_frame #and is_jumping
 
 
 func is_allowed_to_jump(body: CharacterBody2D, want_to_jump: bool) -> bool:
@@ -29,6 +30,7 @@ func is_allowed_to_jump(body: CharacterBody2D, want_to_jump: bool) -> bool:
 func handle_jump(body: CharacterBody2D, want_to_jump: bool, jump_released: bool) -> void:
 	if has_just_landed(body):
 		is_jumping = false
+		player_landed.emit()
 
 	if is_allowed_to_jump(body, want_to_jump):
 		jump(body)

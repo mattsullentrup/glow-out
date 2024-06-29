@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://x4xvyjhuuchw"]
+[gd_scene load_steps=25 format=3 uid="uid://x4xvyjhuuchw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_aywbf"]
 [ext_resource type="PackedScene" uid="uid://8ae3us1t6ex0" path="res://scenes/player_components/gravity_component.tscn" id="3_pdeae"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/screen_shake.gd" id="11_lp4fb"]
 [ext_resource type="AudioStream" uid="uid://tp43qh16jfop" path="res://addons/footstep.wav" id="12_176ln"]
 [ext_resource type="AudioStream" uid="uid://b2x67py6kt0ut" path="res://addons/jump.wav" id="12_ldwt1"]
+[ext_resource type="AudioStream" uid="uid://ccxgfffjj131h" path="res://addons/landing.wav" id="14_pgehc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68jin"]
 atlas = ExtResource("4_pwqt4")
@@ -180,10 +181,11 @@ coyote_time = 0.1
 sprite = NodePath("../../AnimatedSprite2D")
 particles = NodePath("../../Particles/RunParticles")
 
-[node name="AudioComponent" parent="Components" node_paths=PackedStringArray("footstep_sound", "jump_sound", "animated_sprite") instance=ExtResource("11_l0ii6")]
+[node name="AudioComponent" parent="Components" node_paths=PackedStringArray("animated_sprite", "footstep_sound", "jump_sound", "landing_sound") instance=ExtResource("11_l0ii6")]
+animated_sprite = NodePath("../../AnimatedSprite2D")
 footstep_sound = NodePath("../../SoundFX/FootstepSound")
 jump_sound = NodePath("../../SoundFX/JumpSound")
-animated_sprite = NodePath("../../AnimatedSprite2D")
+landing_sound = NodePath("../../SoundFX/LandingSound")
 
 [node name="Particles" type="Node2D" parent="."]
 
@@ -207,6 +209,10 @@ bus = &"SoundFX"
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="SoundFX"]
 stream = ExtResource("12_ldwt1")
+bus = &"SoundFX"
+
+[node name="LandingSound" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("14_pgehc")
 bus = &"SoundFX"
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="Components/AudioComponent" method="_on_animated_sprite_2d_animation_changed"]
