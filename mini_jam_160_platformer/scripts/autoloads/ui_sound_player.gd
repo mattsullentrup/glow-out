@@ -1,7 +1,6 @@
 extends Node
 
 
-@onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var button_sound: AudioStreamPlayer = $ButtonSound
 
 
@@ -22,7 +21,6 @@ func connect_buttons(root: Node) -> void:
 
 func connect_to_button(button: BaseButton) -> void:
 	button.pressed.connect(_on_button_pressed)
-	button.focus_exited.connect(_on_button_focus_exited)
 
 
 func _on_scene_tree_node_added(node: Node) -> void:
@@ -33,7 +31,3 @@ func _on_scene_tree_node_added(node: Node) -> void:
 
 func _on_button_pressed() -> void:
 	button_sound.play()
-
-
-func _on_button_focus_exited() -> void:
-	click_sound.play()
