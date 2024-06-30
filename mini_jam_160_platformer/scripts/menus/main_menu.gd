@@ -6,7 +6,7 @@ extends ParentMenu
 @export var options: Control
 @export var menu_contents: VBoxContainer
 
-@onready var start_button: Button = $MarginContainer/VBoxContainer/VBoxContainer/StartButton
+@onready var start_button: Button = %StartButton
 
 
 func _enter_tree() -> void:

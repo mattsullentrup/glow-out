@@ -1,70 +1,111 @@
-[gd_scene load_steps=5 format=3 uid="uid://bopqnftmmk2bm"]
+[gd_scene load_steps=6 format=3 uid="uid://bopqnftmmk2bm"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_c7ugr"]
-[ext_resource type="PackedScene" uid="uid://cehcyowp68jjr" path="res://scenes/menus/menu.tscn" id="1_krgti"]
+[ext_resource type="Theme" uid="uid://dwbvedkbo8qh2" path="res://resources/theme.tres" id="1_id1jb"]
+[ext_resource type="TileSet" uid="uid://c1oit26yj6eev" path="res://resources/tile_set.tres" id="3_kyywx"]
 [ext_resource type="PackedScene" uid="uid://mkkeckcqoyao" path="res://scenes/menus/level_select_menu.tscn" id="3_xdy1d"]
 [ext_resource type="PackedScene" uid="uid://bmgu0kvs6csw8" path="res://scenes/menus/options_menu.tscn" id="4_7a4qe"]
 
-[node name="MainMenu" node_paths=PackedStringArray("level_select", "options", "menu_contents") instance=ExtResource("1_krgti")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("level_select", "options", "menu_contents")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_id1jb")
 script = ExtResource("1_c7ugr")
-level_select = NodePath("MarginContainer/LevelSelectMenu")
-options = NodePath("MarginContainer/OptionsMenu")
-menu_contents = NodePath("MarginContainer/VBoxContainer")
+level_select = NodePath("CanvasLayer/MarginContainer/LevelSelectMenu")
+options = NodePath("CanvasLayer/MarginContainer/OptionsMenu")
+menu_contents = NodePath("CanvasLayer/MarginContainer/VBoxContainer")
 
-[node name="VBoxContainer" parent="MarginContainer" index="1"]
-visible = false
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 5, 0, 5, 0, 1, 0, 19, 0, 1, 0, 0, 0)
+tile_set = ExtResource("3_kyywx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(6, 6)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 320
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 320
+theme_override_constants/margin_bottom = 90
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_constants/separation = 174
+theme_override_constants/separation = 170
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
-text = "GAME NAME"
+text = "GLOW OUT"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 2
+theme = ExtResource("1_id1jb")
 theme_override_constants/separation = 16
-alignment = 1
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+[node name="StartButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../LevelSelectButton")
+theme = ExtResource("1_id1jb")
 text = "Start"
 
-[node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+[node name="LevelSelectButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
+theme = ExtResource("1_id1jb")
 text = "Level Select"
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="2"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../LevelSelectButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
+theme = ExtResource("1_id1jb")
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" index="3"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
+theme = ExtResource("1_id1jb")
 text = "Quit"
 
-[node name="LevelSelectMenu" parent="MarginContainer" index="2" instance=ExtResource("3_xdy1d")]
+[node name="LevelSelectMenu" parent="CanvasLayer/MarginContainer" instance=ExtResource("3_xdy1d")]
 visible = false
 layout_mode = 2
 
-[node name="OptionsMenu" parent="MarginContainer" index="3" instance=ExtResource("4_7a4qe")]
+[node name="OptionsMenu" parent="CanvasLayer/MarginContainer" instance=ExtResource("4_7a4qe")]
 visible = false
 layout_mode = 2
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 
-[editable path="MarginContainer/LevelSelectMenu"]
-[editable path="MarginContainer/OptionsMenu"]
+[editable path="CanvasLayer/MarginContainer/LevelSelectMenu"]
+[editable path="CanvasLayer/MarginContainer/OptionsMenu"]
