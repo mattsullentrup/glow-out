@@ -20,7 +20,6 @@ func get_restart_input(delta: float) -> void:
 
 	time_held += delta
 	if time_held > 1:
-		#player_restarting.emit()
 		time_held = 0
 		get_tree().reload_current_scene()
 

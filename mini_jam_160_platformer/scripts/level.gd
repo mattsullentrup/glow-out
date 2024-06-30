@@ -29,6 +29,7 @@ func _enter_tree() -> void:
 	player.light_timer.wait_time = initial_light_amount
 
 
+
 func _ready() -> void:
 	canvas_modulate.show()
 	player.animated_sprite.flip_h = player_starts_facing_left

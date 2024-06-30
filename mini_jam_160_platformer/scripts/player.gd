@@ -36,6 +36,20 @@ func _ready() -> void:
 	jump_component.player_landed.connect(particles_component.handle_landing_particles)
 
 
+func _process(_delta: float) -> void:
+	var progress_bar: ProgressBar = %RestartProgressBar
+	if progress_bar is not ProgressBar:
+		return
+
+	progress_bar.value = input_component.time_held
+
+	if input_component.time_held == 0:
+		progress_bar.modulate = Color.TRANSPARENT
+		return
+
+	progress_bar.modulate = lerp(Color.TRANSPARENT, Color.WHITE, input_component.time_held)
+
+
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
 	movement_component.handle_horizontal_movement(self, input_component.input_horizontal)

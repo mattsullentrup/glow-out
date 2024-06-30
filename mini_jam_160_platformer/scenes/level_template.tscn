@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dtx6ao6lixuw1"]
+[gd_scene load_steps=10 format=4 uid="uid://dtx6ao6lixuw1"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_r8ove"]
 [ext_resource type="Environment" uid="uid://cqm3h80edew7" path="res://resources/environment.tres" id="2_er00r"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://x4xvyjhuuchw" path="res://scenes/player.tscn" id="5_vajoy"]
 [ext_resource type="PackedScene" uid="uid://btxpg15hosexv" path="res://scenes/gameplay_elements/key.tscn" id="6_3pfut"]
 [ext_resource type="PackedScene" uid="uid://vambnod1vkbf" path="res://scenes/gameplay_elements/level_exit.tscn" id="7_epdey"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmyey"]
+bg_color = Color(0.68, 0.68, 0.68, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b6k6"]
+bg_color = Color(0.90732, 0.858347, 0.352221, 1)
 
 [node name="LevelTemplate" type="Node2D" node_paths=PackedStringArray("player", "level_exit", "key", "level_start_position", "camera")]
 physics_interpolation_mode = 2
@@ -30,6 +36,20 @@ offset_bottom = 540.0
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3
+
+[node name="RestartProgressBar" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_fmyey")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5b6k6")
+max_value = 1.0
+value = 0.53
+show_percentage = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
