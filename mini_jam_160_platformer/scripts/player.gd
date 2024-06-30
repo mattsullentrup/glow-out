@@ -33,6 +33,7 @@ func _ready() -> void:
 
 	jump_component.player_jumped.connect(audio_component.handle_jump)
 	jump_component.player_landed.connect(audio_component.handle_landing)
+	jump_component.player_landed.connect(particles_component.handle_landing_particles)
 
 
 func _physics_process(delta: float) -> void:
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 			input_component.get_jump_input_released())
 	animation_component.handle_move_animation(input_component.input_horizontal)
 	animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling)
-	particles_component.handle_particles(velocity)
+	particles_component.handle_run_particles(velocity)
 
 	move_and_slide()
 

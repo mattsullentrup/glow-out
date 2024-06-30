@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://x4xvyjhuuchw"]
+[gd_scene load_steps=26 format=3 uid="uid://x4xvyjhuuchw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_aywbf"]
 [ext_resource type="PackedScene" uid="uid://8ae3us1t6ex0" path="res://scenes/player_components/gravity_component.tscn" id="3_pdeae"]
@@ -92,6 +92,21 @@ angular_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_84xxj"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(8, 16, 0)
+emission_shape = 3
+emission_box_extents = Vector3(8, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 80.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 2.5
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2e2mr"]
 lifetime_randomness = 1.0
 particle_flag_disable_z = true
@@ -177,9 +192,10 @@ sprite = NodePath("../../AnimatedSprite2D")
 jump_velocity = -290.0
 coyote_time = 0.1
 
-[node name="ParticlesComponent" parent="Components" node_paths=PackedStringArray("sprite", "particles") instance=ExtResource("9_66ldv")]
+[node name="ParticlesComponent" parent="Components" node_paths=PackedStringArray("sprite", "run_particles", "landing_particles") instance=ExtResource("9_66ldv")]
 sprite = NodePath("../../AnimatedSprite2D")
-particles = NodePath("../../Particles/RunParticles")
+run_particles = NodePath("../../Particles/RunParticles")
+landing_particles = NodePath("../../Particles/LandingParticles")
 
 [node name="AudioComponent" parent="Components" node_paths=PackedStringArray("animated_sprite", "footstep_sound", "jump_sound", "landing_sound") instance=ExtResource("11_l0ii6")]
 animated_sprite = NodePath("../../AnimatedSprite2D")
@@ -190,9 +206,18 @@ landing_sound = NodePath("../../SoundFX/LandingSound")
 [node name="Particles" type="Node2D" parent="."]
 
 [node name="RunParticles" type="GPUParticles2D" parent="Particles"]
+z_index = -1
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_n6vir")
 lifetime = 0.3
+
+[node name="LandingParticles" type="GPUParticles2D" parent="Particles"]
+z_index = -1
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_84xxj")
+lifetime = 0.2
+one_shot = true
 
 [node name="DeathParticles" type="GPUParticles2D" parent="Particles"]
 emitting = false
