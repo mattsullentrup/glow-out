@@ -27,6 +27,7 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 GameManager="*res://scripts/autoloads/game_manager.gd"
 Globals="*res://scripts/autoloads/globals.gd"
 SceneLoader="*res://scripts/autoloads/scene_loader.gd"
+UISoundPlayer="*res://scenes/ui_sound_player.tscn"
 
 [debug]
 
@@ -58,6 +59,9 @@ version_control/autoload_on_startup=true
 
 folder_colors={
 "res://addons/": "red",
+"res://addons/godot-git-plugin/": "purple",
+"res://addons/kenney_assets/": "green",
+"res://addons/sounds/": "orange",
 "res://resources/": "green",
 "res://scenes/": "orange",
 "res://scenes/gameplay_elements/": "pink",

@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bs0deb2kfmfwm" path="res://scenes/player_components/particles_component.tscn" id="9_66ldv"]
 [ext_resource type="PackedScene" uid="uid://5b7egs30teqy" path="res://scenes/player_components/audio_component.tscn" id="11_l0ii6"]
 [ext_resource type="Script" path="res://scripts/screen_shake.gd" id="11_lp4fb"]
-[ext_resource type="AudioStream" uid="uid://tp43qh16jfop" path="res://addons/footstep.wav" id="12_176ln"]
-[ext_resource type="AudioStream" uid="uid://b2x67py6kt0ut" path="res://addons/jump.wav" id="12_ldwt1"]
-[ext_resource type="AudioStream" uid="uid://ccxgfffjj131h" path="res://addons/landing.wav" id="14_pgehc"]
+[ext_resource type="AudioStream" uid="uid://tp43qh16jfop" path="res://addons/sounds/footstep.wav" id="12_176ln"]
+[ext_resource type="AudioStream" uid="uid://b2x67py6kt0ut" path="res://addons/sounds/jump.wav" id="12_ldwt1"]
+[ext_resource type="AudioStream" uid="uid://ccxgfffjj131h" path="res://addons/sounds/landing.wav" id="14_pgehc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68jin"]
 atlas = ExtResource("4_pwqt4")

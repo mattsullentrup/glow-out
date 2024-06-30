@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://gjpqkbpnn745"]
+
+[ext_resource type="Script" path="res://scripts/autoloads/ui_sound_player.gd" id="1_36q3p"]
+[ext_resource type="AudioStream" uid="uid://314670r73xmp" path="res://addons/sounds/menu_click.wav" id="1_mk8qp"]
+[ext_resource type="AudioStream" uid="uid://b2x67py6kt0ut" path="res://addons/sounds/jump.wav" id="3_s1vm0"]
+
+[node name="UISoundPlayer" type="Node"]
+script = ExtResource("1_36q3p")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_mk8qp")
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s1vm0")
