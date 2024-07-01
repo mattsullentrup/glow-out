@@ -19,7 +19,7 @@ extends CharacterBody2D
 @export var point_light: PointLight2D
 @export var death_particles: GPUParticles2D
 
-var has_key := true
+var has_key := false
 var spike_tile_coords: Vector2i = Vector2(22, 0)
 var room_restart_point: Vector2
 

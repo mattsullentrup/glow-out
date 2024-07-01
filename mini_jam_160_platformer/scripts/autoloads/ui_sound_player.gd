@@ -37,6 +37,4 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_focused() -> void:
-	var index: int = AudioServer.get_bus_index("ClickSound")
-	print(AudioServer.is_bus_mute(index))
 	click_sound.play()
