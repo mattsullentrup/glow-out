@@ -79,5 +79,6 @@ centered = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_am2x4")
+bus = &"SoundFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

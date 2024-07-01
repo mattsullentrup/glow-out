@@ -31,14 +31,12 @@ func initialize_directions() -> void:
 	var rot: int = roundi(rotation_degrees)
 	while rot < 0:
 		rot += 360
+
 	var dir: Vector2 = vector_two_directions.get(rot, Vector2.UP)
 	spring_direction = dir
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is not Player:
-		return
-
+func add_velocity(body: Node2D) -> void:
 	var player: Player = body as Player
 	player.jump_component.already_jumped = true
 	match spring_direction:
@@ -56,9 +54,6 @@ func _on_body_entered(body: Node2D) -> void:
 		_:
 			player.velocity = spring_direction * force
 
-	animation_player.play("spring")
-	play_sound()
-
 
 func play_sound() -> void:
 	if is_sound_playing == true:
@@ -67,3 +62,13 @@ func play_sound() -> void:
 	audio_stream_player.play()
 	await get_tree().create_timer(0.05).timeout
 	is_sound_playing = false
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is not Player:
+		return
+
+	add_velocity(body)
+
+	animation_player.play("spring")
+	play_sound()
