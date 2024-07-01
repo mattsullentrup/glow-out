@@ -76,6 +76,7 @@ func start_death_routine() -> void:
 	set_process(false)
 
 	screen_shake.apply_shake()
+	audio_component.handle_death()
 	death_particles.emitting = true
 	await death_particles.finished
 

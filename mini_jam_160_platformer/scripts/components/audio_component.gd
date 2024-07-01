@@ -6,6 +6,7 @@ extends Node
 @export var footstep_sound: AudioStreamPlayer2D
 @export var jump_sound: AudioStreamPlayer2D
 @export var landing_sound: AudioStreamPlayer2D
+@export var death_sound: AudioStreamPlayer2D
 
 @onready var player: Player = get_owner()
 
@@ -16,6 +17,10 @@ func handle_jump() -> void:
 
 func handle_landing() -> void:
 	landing_sound.play()
+
+
+func handle_death() -> void:
+	death_sound.play()
 
 
 func _on_animated_sprite_2d_animation_changed() -> void:
