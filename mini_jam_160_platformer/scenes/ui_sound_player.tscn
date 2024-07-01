@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/autoloads/ui_sound_player.gd" id="1_36q3p"]
 [ext_resource type="AudioStream" uid="uid://314670r73xmp" path="res://addons/sounds/menu_click.wav" id="1_mk8qp"]
-[ext_resource type="AudioStream" uid="uid://b2x67py6kt0ut" path="res://addons/sounds/jump.wav" id="2_xti5x"]
+[ext_resource type="AudioStream" uid="uid://cixynx2j422qj" path="res://addons/sounds/button_pressed.wav" id="2_2tt0d"]
 
 [node name="UISoundPlayer" type="Node"]
 process_mode = 3
 script = ExtResource("1_36q3p")
 
 [node name="PressedSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xti5x")
+stream = ExtResource("2_2tt0d")
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_mk8qp")
