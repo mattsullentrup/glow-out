@@ -17,6 +17,7 @@ var spring_direction: Vector2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready() -> void:
@@ -55,3 +56,4 @@ func _on_body_entered(body: Node2D) -> void:
 			player.velocity = spring_direction * force
 
 	animation_player.play("spring")
+	audio_stream_player.play()
