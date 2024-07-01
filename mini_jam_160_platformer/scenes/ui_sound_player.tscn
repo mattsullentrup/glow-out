@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b2x67py6kt0ut" path="res://addons/sounds/jump.wav" id="2_xti5x"]
 
 [node name="UISoundPlayer" type="Node"]
+process_mode = 3
 script = ExtResource("1_36q3p")
 
 [node name="PressedSound" type="AudioStreamPlayer" parent="."]
