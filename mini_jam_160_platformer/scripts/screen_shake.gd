@@ -23,7 +23,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	#print(is_processing())
 	shake_strength = lerpf(shake_strength, 0, DECAY_RATE * delta)
 	camera.offset = get_random_offset(delta)
 

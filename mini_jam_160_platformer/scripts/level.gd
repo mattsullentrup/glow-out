@@ -41,7 +41,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	camera.scale = Vector2(1 / camera.zoom.x, 1 / camera.zoom.y)
-	print(player.is_processing())
 
 
 func move_to_new_room(new_room: Room, is_playing_moving_up: bool) -> void:
