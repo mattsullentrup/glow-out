@@ -38,10 +38,10 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_draw() -> void:
-	options_button.grab_focus()
+	Globals.mute_click_sound_on_menu_change(options_button)
 
 
 func _on_sub_menu_back_button_pressed() -> void:
 	options.hide()
 	menu_contents.show()
-	options_button.grab_focus()
+	Globals.mute_click_sound_on_menu_change(options_button)

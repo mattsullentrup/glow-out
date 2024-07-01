@@ -30,3 +30,13 @@ func play_enter_transition(scene: Node) -> void:
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	await tween.finished
 	transition_scene.queue_free()
+
+
+func mute_click_sound_on_menu_change(button: Button) -> void:
+	var index: int = AudioServer.get_bus_index("ClickSound")
+	AudioServer.set_bus_mute(index, true)
+	button.grab_focus()
+	var sound_player: UISoundPlayer
+	if UISoundPlayer.click_sound.playing == true:
+		await UISoundPlayer.click_sound.finished
+	AudioServer.set_bus_mute(index, false)

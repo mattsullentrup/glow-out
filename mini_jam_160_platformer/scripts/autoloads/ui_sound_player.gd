@@ -1,7 +1,8 @@
 extends Node
 
 
-@onready var button_sound: AudioStreamPlayer = $ButtonSound
+@onready var pressed_sound: AudioStreamPlayer = $PressedSound
+@onready var click_sound: AudioStreamPlayer = $ClickSound
 
 
 func _ready() -> void:
@@ -21,6 +22,25 @@ func connect_buttons(root: Node) -> void:
 
 func connect_to_button(button: BaseButton) -> void:
 	button.pressed.connect(_on_button_pressed)
+	button.mouse_entered.connect(_on_button_focused)
+	button.focus_entered.connect(_on_button_focused)
+	#button.gui_input.connect(_on_button_gui_input)
+
+
+func _on_button_gui_input(event: InputEvent) -> void:
+	#if event is InputEventMouseMotion:
+		#return
+	#if event is InputEventJoypadMotion:
+		#if event.get_action_strength("ui_down") > 0.1 or event.get_action_strength("ui_up") > 0.1:
+			#click_sound.play()
+			#return
+	#if event.is_action_released("ui_up") or event.is_action_released("ui_down"):
+		#if event is InputEventJoypadMotion:
+			#if event.get_action_strength("ui_down") > 0.1 or event.get_action_strength("ui_up") > 0.1:
+				#click_sound.play()
+			#return
+		#click_sound.play()
+	print(event)
 
 
 func _on_scene_tree_node_added(node: Node) -> void:
@@ -30,4 +50,9 @@ func _on_scene_tree_node_added(node: Node) -> void:
 
 
 func _on_button_pressed() -> void:
-	button_sound.play()
+	pressed_sound.play()
+
+
+func _on_button_focused() -> void:
+	#print(node)
+	click_sound.play()

@@ -15,7 +15,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	start_button.grab_focus()
+	Globals.mute_click_sound_on_menu_change(start_button)
 
 
 func _on_start_button_pressed() -> void:
@@ -41,4 +41,4 @@ func _on_sub_menu_back_button_pressed() -> void:
 	options.hide()
 
 	menu_contents.show()
-	start_button.grab_focus()
+	Globals.mute_click_sound_on_menu_change(start_button)

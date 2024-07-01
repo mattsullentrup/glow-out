@@ -14,4 +14,4 @@ func _ready() -> void:
 
 
 func _on_draw() -> void:
-	back_button.grab_focus()
+	Globals.mute_click_sound_on_menu_change(back_button)
