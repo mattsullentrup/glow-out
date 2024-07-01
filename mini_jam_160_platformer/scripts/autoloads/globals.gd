@@ -36,7 +36,9 @@ func mute_click_sound_on_menu_change(button: Button) -> void:
 	var index: int = AudioServer.get_bus_index("ClickSound")
 	AudioServer.set_bus_mute(index, true)
 	button.grab_focus()
-	var sound_player: UISoundPlayer
+
+	@warning_ignore("unsafe_property_access")
 	if UISoundPlayer.click_sound.playing == true:
+		@warning_ignore("unsafe_property_access")
 		await UISoundPlayer.click_sound.finished
 	AudioServer.set_bus_mute(index, false)
