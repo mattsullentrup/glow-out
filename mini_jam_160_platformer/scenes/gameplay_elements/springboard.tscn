@@ -58,7 +58,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Springboard" type="Area2D"]
+[node name="Springboard" type="Area2D" groups=["springboards"]]
 collision_mask = 2
 script = ExtResource("1_oer48")
 

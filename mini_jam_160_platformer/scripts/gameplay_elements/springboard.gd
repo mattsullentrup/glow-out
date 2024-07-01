@@ -15,6 +15,8 @@ var vector_two_directions: Dictionary = {
 var force: float = 450
 var spring_direction: Vector2
 
+static var is_sound_playing := false
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -55,4 +57,13 @@ func _on_body_entered(body: Node2D) -> void:
 			player.velocity = spring_direction * force
 
 	animation_player.play("spring")
+	play_sound()
+
+
+func play_sound() -> void:
+	if is_sound_playing == true:
+		return
+	is_sound_playing = true
 	audio_stream_player.play()
+	await get_tree().create_timer(0.05).timeout
+	is_sound_playing = false
