@@ -12,7 +12,6 @@ var progress: Array = []
 func _process(_delta: float) -> void:
 	check_load_status()
 
-
 func check_load_status() -> void:
 	var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(
 			scene_path, progress)

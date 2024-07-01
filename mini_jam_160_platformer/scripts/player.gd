@@ -19,12 +19,13 @@ extends CharacterBody2D
 @export var point_light: PointLight2D
 @export var death_particles: GPUParticles2D
 
-var has_key := false
+var has_key := true
 var spike_tile_coords: Vector2i = Vector2(22, 0)
 var room_restart_point: Vector2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var screen_shake: ScreenShake = $ScreenShake
+@onready var run_particles: GPUParticles2D = $Particles/RunParticles
 #endregion
 
 
@@ -100,3 +101,9 @@ func _on_hitbox_body_shape_entered(
 	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
 	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords:
 		start_death_routine()
+
+
+func _on_level_exit_player_exiting_level() -> void:
+	animated_sprite.hide()
+	run_particles.hide()
+	process_mode = Node.PROCESS_MODE_DISABLED

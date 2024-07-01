@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 
 
 func get_restart_input(delta: float) -> void:
-	print(time_held)
 	if not Input.is_action_pressed("restart"):
 		time_held = 0
 		return
