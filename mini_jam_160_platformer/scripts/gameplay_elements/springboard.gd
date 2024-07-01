@@ -38,7 +38,6 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	var player: Player = body as Player
-	#var jump_component: AdvancedJumpComponent = player.jump_component
 	player.jump_component.already_jumped = true
 	match spring_direction:
 		Vector2.UP when player.is_on_floor():

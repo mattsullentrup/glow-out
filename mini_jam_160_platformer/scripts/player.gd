@@ -74,6 +74,8 @@ func start_death_routine() -> void:
 	animated_sprite.hide()
 	set_physics_process(false)
 	set_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 
 	screen_shake.apply_shake()
 	audio_component.handle_death()
@@ -90,6 +92,8 @@ func start_death_routine() -> void:
 	reset_physics_interpolation()
 	set_physics_process(true)
 	set_process(true)
+	$CollisionShape2D.set_deferred("disabled", false)
+	$Hitbox/CollisionShape2D.set_deferred("disabled", false)
 	animated_sprite.show()
 
 
