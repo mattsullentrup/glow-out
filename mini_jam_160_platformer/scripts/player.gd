@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var death_particles: GPUParticles2D
 
 var has_key := false
+var is_alive := true
 var spike_tile_coords: Vector2i = Vector2(22, 0)
 var room_restart_point: Vector2
 
@@ -85,6 +86,7 @@ func start_decreasing_light() -> void:
 
 
 func start_death_routine() -> void:
+	is_alive = false
 	animated_sprite.hide()
 	set_physics_process(false)
 	set_process(false)
@@ -110,6 +112,7 @@ func start_death_routine() -> void:
 	$Hitbox/CollisionShape2D.set_deferred("disabled", false)
 	animated_sprite.show()
 	prevent_landing_effects_on_startup()
+	is_alive = true
 
 
 func _on_hitbox_body_shape_entered(
@@ -119,7 +122,7 @@ func _on_hitbox_body_shape_entered(
 
 	var tile_map: TileMapLayer = body
 	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
-	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords:
+	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords and is_alive:
 		start_death_routine()
 
 
