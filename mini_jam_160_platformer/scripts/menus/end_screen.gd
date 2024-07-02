@@ -7,6 +7,7 @@ const MAIN_MENU := "res://scenes/menus/main_menu.tscn" as String
 
 
 func _ready() -> void:
+	Globals.mute_click_sound_on_menu_change(main_menu_button)
 	main_menu_button.grab_focus()
 
 
