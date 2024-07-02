@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=28 format=3 uid="uid://c1oit26yj6eev"]
+[gd_resource type="TileSet" load_steps=27 format=3 uid="uid://c1oit26yj6eev"]
 
 [ext_resource type="PackedScene" uid="uid://c3mb6i6x1if21" path="res://scenes/one_way_wall/left_one_way_wall.tscn" id="1_7jwoj"]
 [ext_resource type="Texture2D" uid="uid://bn8votpu7n3ye" path="res://addons/kenney_assets/colored_packed.png" id="2_7tooc"]
@@ -29,9 +29,6 @@ tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 2
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_124es"]
 tile_data = PackedInt32Array(0, 1179649, 0, 65536, 1179649, 1, 1, 1310721, 0, 65537, 1310721, 1)
-
-[sub_resource type="TileMapPattern" id="TileMapPattern_85bka"]
-tile_data = PackedInt32Array(65536, 1310721, 3, 1, 1179649, 1, 65537, 1245185, 4)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_davwl"]
 tile_data = PackedInt32Array(0, 1245185, 2, 1, 1245185, 3, 65537, 1179649, 1)
@@ -1216,4 +1213,3 @@ pattern_13 = SubResource("TileMapPattern_vn0tg")
 pattern_14 = SubResource("TileMapPattern_1nbot")
 pattern_15 = SubResource("TileMapPattern_nf7x6")
 pattern_16 = SubResource("TileMapPattern_124es")
-pattern_17 = SubResource("TileMapPattern_85bka")

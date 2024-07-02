@@ -26,6 +26,8 @@ var room_restart_point: Vector2
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var screen_shake: ScreenShake = $ScreenShake
 @onready var run_particles: GPUParticles2D = $Particles/RunParticles
+@onready var landing_sound: AudioStreamPlayer2D = $SoundFX/LandingSound
+@onready var landing_particles: GPUParticles2D = $Particles/LandingParticles
 #endregion
 
 
@@ -35,6 +37,8 @@ func _ready() -> void:
 	jump_component.player_jumped.connect(audio_component.handle_jump)
 	jump_component.player_landed.connect(audio_component.handle_landing)
 	jump_component.player_landed.connect(particles_component.handle_landing_particles)
+
+	prevent_landing_effects_on_startup()
 
 
 func _process(_delta: float) -> void:
@@ -61,6 +65,16 @@ func _physics_process(delta: float) -> void:
 	particles_component.handle_run_particles(velocity)
 
 	move_and_slide()
+
+
+func prevent_landing_effects_on_startup() -> void:
+	var initial_volume: float = landing_sound.volume_db
+	landing_sound.volume_db = -80
+	landing_particles.hide()
+	await get_tree().create_timer(0.5).timeout
+	landing_sound.volume_db = initial_volume
+	landing_particles.emitting = false
+	landing_particles.show()
 
 
 func start_decreasing_light() -> void:
@@ -95,6 +109,7 @@ func start_death_routine() -> void:
 	$CollisionShape2D.set_deferred("disabled", false)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", false)
 	animated_sprite.show()
+	prevent_landing_effects_on_startup()
 
 
 func _on_hitbox_body_shape_entered(
