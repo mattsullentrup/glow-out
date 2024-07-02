@@ -9,9 +9,6 @@ func _enter_tree() -> void:
 
 
 func start_new_level(new_level: String) -> void:
-	if Globals.levels.size() < current_level:
-		get_tree().change_scene_to_file.call_deferred("res://scenes/end_screen.tscn")
-		return
 
 	SceneLoader.load_scene(new_level)
 
@@ -45,5 +42,8 @@ func find_level_paths() -> void:
 
 func _on_player_exiting_level() -> void:
 	current_level += 1
+	if Globals.levels.size() < current_level:
+		SceneLoader.load_scene("res://scenes/menus/end_screen.tscn")
+		return
 	var new_level: String = Globals.levels[current_level - 1]
 	start_new_level(new_level)
