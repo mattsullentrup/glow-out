@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
+const INITIAL_LIGHT_SCALE: float = 2.5
 
 #region variables
 @export_subgroup("Components")
@@ -23,12 +24,15 @@ var has_key := false
 var is_alive := true
 var spike_tile_coords: Vector2i = Vector2(22, 0)
 var room_restart_point: Vector2
+var light_tween: Tween
+var initial_light_time: int
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var screen_shake: ScreenShake = $ScreenShake
 @onready var run_particles: GPUParticles2D = $Particles/RunParticles
 @onready var landing_sound: AudioStreamPlayer2D = $SoundFX/LandingSound
 @onready var landing_particles: GPUParticles2D = $Particles/LandingParticles
+@onready var recharge_sound: AudioStreamPlayer2D = $SoundFX/RechargeSound
 #endregion
 
 
@@ -79,10 +83,31 @@ func prevent_landing_effects_on_startup() -> void:
 
 
 func start_decreasing_light() -> void:
-	var tween: Tween = create_tween()
-	tween.tween_property(
+	light_timer.wait_time = initial_light_time
+	if light_tween:
+		light_tween.kill()
+	light_tween = create_tween()
+	light_tween.tween_property(
 			point_light, "texture_scale", 0.2, light_timer.time_left
-			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).from(initial_light_time)
+
+
+func recharge() -> void:
+	if light_tween:
+		light_tween.kill()
+	light_tween = create_tween()
+	light_tween.tween_property(
+			point_light, "texture_scale", INITIAL_LIGHT_SCALE, 1
+			).from_current()
+
+	light_tween.set_parallel()
+
+	recharge_sound.play()
+	light_tween.tween_property(recharge_sound, "pitch_scale", 4, 1).from(0.5)
+	await light_tween.finished
+	recharge_sound.stop()
+
+	start_decreasing_light()
 
 
 func start_death_routine() -> void:
@@ -115,18 +140,25 @@ func start_death_routine() -> void:
 	is_alive = true
 
 
+func check_for_spike_collision(body_rid: RID, body: Node2D) -> void:
+		var tile_map: TileMapLayer = body
+		var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
+		if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords and is_alive:
+			start_death_routine()
+
+
 func _on_hitbox_body_shape_entered(
 		body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	if body is not TileMapLayer:
-		return
-
-	var tile_map: TileMapLayer = body
-	var coords: Vector2i = tile_map.get_coords_for_body_rid(body_rid)
-	if tile_map.get_cell_atlas_coords(coords) == spike_tile_coords and is_alive:
-		start_death_routine()
+	if body is TileMapLayer:
+		check_for_spike_collision(body_rid, body)
 
 
 func _on_level_exit_player_exiting_level() -> void:
 	animated_sprite.hide()
 	run_particles.hide()
 	process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.name == "RechargeStation":
+		recharge()

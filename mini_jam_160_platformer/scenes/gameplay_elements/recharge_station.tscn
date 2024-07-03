@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dudxvyvgg0qyt"]
+
+[ext_resource type="Texture2D" uid="uid://c7n4vxmhmwbcq" path="res://addons/kenney_assets/colored-transparent_packed.png" id="1_vc7tu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7t3h"]
+size = Vector2(32, 32)
+
+[node name="RechargeStation" type="Area2D"]
+collision_mask = 6
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("1_vc7tu")
+region_enabled = true
+region_rect = Rect2(624, 240, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vc7tu")
+region_enabled = true
+region_rect = Rect2(432, 336, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c7t3h")

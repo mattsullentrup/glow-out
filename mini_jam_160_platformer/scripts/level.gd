@@ -3,7 +3,7 @@ extends Node2D
 
 
 @export var player_starts_facing_left := false
-@export var initial_light_amount: int = 30
+@export var initial_light_time: int = 30
 @export var camera_transition_duration: float = 0.3
 
 @export_category("Nodes")
@@ -26,7 +26,7 @@ func _enter_tree() -> void:
 	camera.position = initial_room.position
 	player.position = level_start_position.global_position
 	player.reset_physics_interpolation()
-	player.light_timer.wait_time = initial_light_amount
+	player.initial_light_time = initial_light_time
 	level_exit.player_exiting_level.connect(player._on_level_exit_player_exiting_level)
 
 
@@ -37,7 +37,6 @@ func _ready() -> void:
 	current_room = initial_room
 	for area: Room in get_tree().get_nodes_in_group("rooms"):
 		area.player_exited_room.connect(_on_player_exited_room)
-
 
 func _process(_delta: float) -> void:
 	camera.scale = Vector2(1 / camera.zoom.x, 1 / camera.zoom.y)

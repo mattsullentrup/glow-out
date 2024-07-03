@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://c82b0hf40yvsk"]
+[gd_scene load_steps=7 format=4 uid="uid://c82b0hf40yvsk"]
 
 [ext_resource type="PackedScene" uid="uid://dtx6ao6lixuw1" path="res://scenes/level_template.tscn" id="1_i17ge"]
 [ext_resource type="Script" path="res://scripts/gameplay_elements/room.gd" id="2_pcesw"]
+[ext_resource type="PackedScene" uid="uid://dudxvyvgg0qyt" path="res://scenes/gameplay_elements/recharge_station.tscn" id="3_pvf76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghxro"]
 size = Vector2(304, 176)
@@ -13,7 +14,6 @@ size = Vector2(304, 176)
 size = Vector2(304, 176)
 
 [node name="LevelOne" node_paths=PackedStringArray("initial_room") instance=ExtResource("1_i17ge")]
-initial_light_amount = 60
 initial_room = NodePath("Rooms/Room")
 
 [node name="BackgroundTileMapLayer" parent="." index="3"]
@@ -49,6 +49,9 @@ script = ExtResource("2_pcesw")
 position = Vector2(160, 96)
 shape = SubResource("RectangleShape2D_5th1f")
 debug_color = Color(0.70366, 0.502766, 0.194491, 0.42)
+
+[node name="RechargeStation" parent="Rooms/Room2" index="1" instance=ExtResource("3_pvf76")]
+position = Vector2(248, 144)
 
 [node name="Room3" type="Area2D" parent="Rooms" index="2" groups=["rooms"]]
 position = Vector2(640, 0)

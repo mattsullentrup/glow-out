@@ -12,7 +12,6 @@ size = Vector2(20, 64)
 size = Vector2(20, 32)
 
 [node name="LevelThree" node_paths=PackedStringArray("initial_room") instance=ExtResource("1_cjeut")]
-initial_light_amount = 240
 initial_room = NodePath("Rooms/Room")
 
 [node name="CanvasModulate" parent="." index="1"]

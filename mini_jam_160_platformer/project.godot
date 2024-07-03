@@ -14,7 +14,7 @@ config/name="mini_jam_160_platformer"
 config/tags=PackedStringArray("2d", "gdscript", "personal")
 run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-run/max_fps=60
+run/max_fps=120
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
