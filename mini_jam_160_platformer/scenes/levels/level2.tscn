@@ -21,7 +21,7 @@ size = Vector2(32, 16)
 
 [node name="LevelTwo" node_paths=PackedStringArray("initial_room") instance=ExtResource("1_mlucd")]
 player_starts_facing_left = true
-initial_light_amount = 180
+initial_light_time = 180
 initial_room = NodePath("Rooms/Room")
 
 [node name="CanvasModulate" parent="." index="1"]

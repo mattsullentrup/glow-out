@@ -156,7 +156,6 @@ metadata/_edit_group_ = true
 
 [node name="LightTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(8, 10)

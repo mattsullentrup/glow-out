@@ -14,6 +14,7 @@ size = Vector2(304, 176)
 size = Vector2(304, 176)
 
 [node name="LevelOne" node_paths=PackedStringArray("initial_room") instance=ExtResource("1_i17ge")]
+initial_light_time = 60
 initial_room = NodePath("Rooms/Room")
 
 [node name="BackgroundTileMapLayer" parent="." index="3"]

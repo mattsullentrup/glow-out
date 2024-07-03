@@ -37,6 +37,7 @@ var initial_light_time: int
 
 
 func _ready() -> void:
+	point_light.texture_scale = INITIAL_LIGHT_SCALE
 	start_decreasing_light()
 
 	jump_component.player_jumped.connect(audio_component.handle_jump)
@@ -47,6 +48,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	print(light_timer.time_left)
 	var progress_bar: ProgressBar = %RestartProgressBar
 	if progress_bar is not ProgressBar:
 		return
@@ -58,6 +60,7 @@ func _process(_delta: float) -> void:
 		return
 
 	progress_bar.modulate = lerp(Color.TRANSPARENT, Color.WHITE, input_component.time_held)
+
 
 
 func _physics_process(delta: float) -> void:
@@ -83,13 +86,13 @@ func prevent_landing_effects_on_startup() -> void:
 
 
 func start_decreasing_light() -> void:
-	light_timer.wait_time = initial_light_time
+	light_timer.start(initial_light_time)
 	if light_tween:
 		light_tween.kill()
 	light_tween = create_tween()
 	light_tween.tween_property(
 			point_light, "texture_scale", 0.2, light_timer.time_left
-			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).from(initial_light_time)
+			).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 
 func recharge() -> void:
