@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="mini_jam_160_platformer"
+config/name="glow_out"
 config/tags=PackedStringArray("2d", "gdscript", "personal")
 run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
