@@ -48,7 +48,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	print(light_timer.time_left)
+	#print(light_timer.time_left)
 	var progress_bar: ProgressBar = %RestartProgressBar
 	if progress_bar is not ProgressBar:
 		return

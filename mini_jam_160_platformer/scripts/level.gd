@@ -38,6 +38,7 @@ func _ready() -> void:
 	for area: Room in get_tree().get_nodes_in_group("rooms"):
 		area.player_exited_room.connect(_on_player_exited_room)
 
+
 func _process(_delta: float) -> void:
 	camera.scale = Vector2(1 / camera.zoom.x, 1 / camera.zoom.y)
 
