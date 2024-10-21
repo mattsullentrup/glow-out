@@ -46,6 +46,7 @@ window/size/initial_position_type=2
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+display_server/driver.linuxbsd="wayland"
 
 [dotnet]
 

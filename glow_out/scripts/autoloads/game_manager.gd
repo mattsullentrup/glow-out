@@ -9,9 +9,7 @@ func _enter_tree() -> void:
 
 
 func start_new_level(new_level: String) -> void:
-
 	SceneLoader.load_scene(new_level)
-
 	current_level = Globals.levels.find(new_level) + 1
 
 
