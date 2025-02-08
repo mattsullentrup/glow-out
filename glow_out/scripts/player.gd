@@ -62,7 +62,6 @@ func _process(_delta: float) -> void:
 	progress_bar.modulate = lerp(Color.TRANSPARENT, Color.WHITE, input_component.time_held)
 
 
-
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
 	movement_component.handle_horizontal_movement(self, input_component.input_horizontal)
